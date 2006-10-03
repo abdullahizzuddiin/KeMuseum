@@ -17,6 +17,15 @@ public class Koordinat {
 		return longitude;
 	}
 	
+	/**
+	 * Memeriksa apakah koordinat ini berada di dalam "bounding box" yang dibentuk
+	 * titikSudut1 dan titikSudut2
+	 * 
+	 * @param titikSudut1 koordinat titik sudut pertama
+	 * @param titikSudut2 koordinat titik sudut kedua
+	 * @return true bila koordinat ini berada di dalam "bounding box" yang dibentuk
+	 * titikSudut1 dan titikSudut2 
+	 */
 	public boolean diDalam(Koordinat titikSudut1, Koordinat titikSudut2){
 		float kiri = Math.min(titikSudut1.getLongitude(), titikSudut2.getLongitude());
 		float kanan = Math.max(titikSudut1.getLongitude(), titikSudut2.getLongitude());

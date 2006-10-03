@@ -66,6 +66,7 @@ public class Ruangan {
 	public boolean cekJawaban(List<String> jawaban){
 		boolean benarSemua = true;
 		for (int i = 0; i < daftarPertanyaan.size(); i++){
+			// cek kebenaran untuk setiap pertanyaan i dan jawaban i 
 			Pertanyaan p = daftarPertanyaan.get(i);
 			if (!p.getJawaban().equals(jawaban.get(i))){
 				benarSemua = false;
@@ -79,7 +80,9 @@ public class Ruangan {
 		List<Barang> ret = new ArrayList<Barang>();
 		
 		for (Barang b : daftarBarang){
-			
+			if (b.mengandungKataKunci(kataKunci)){
+				ret.add(b);
+			}
 		}
 		
 		return ret;
