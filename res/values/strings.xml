@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KeMuseum</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_view_info_pengembang">ViewInfoPengembang</string>
+    <string name="title_activity_view_pilih_museum">ViewPilihMuseum</string>
+    <string name="title_activity_view_capaian">ViewCapaian</string>
+    <string name="title_activity_view_pencarian">ViewPencarian</string>
+    <string name="title_activity_view_museum_terkunci">ViewMuseumTerkunci</string>
+    <string name="title_activity_view_museum_terbuka">ViewMuseumTerbuka</string>
+    <string name="title_activity_view_pertanyaan">ViewPertanyaan</string>
+    <string name="title_activity_view_ruangan">ViewRuangan</string>
+    <string name="title_activity_view_unduh_museum">ViewUnduhMuseum</string>
+    <string name="title_activity_view_daftar_keinginan">ViewDaftarKeinginan</string>
+
+</resources>
