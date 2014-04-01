@@ -1,0 +1,5 @@
+# abaikan .class
+bin/classes/*
+
+# abaikan gen
+gen/*
