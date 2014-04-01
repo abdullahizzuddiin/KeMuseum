@@ -19,14 +19,7 @@ public class ViewInfoPengembang extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		inisiasi();
-//		setClickListener();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.view_info_pengembang, menu);
-		return true;
+		setClickListener();
 	}
 	
 	public void inisiasi()
@@ -73,6 +66,16 @@ public class ViewInfoPengembang extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(ViewInfoPengembang.this, ViewInfoPengembang.class);
 				startActivity(i); 
+			}
+		});
+    	
+    	llCari.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(ViewInfoPengembang.this, ViewPencarian.class);
+				startActivity(i);
 			}
 		});
     }
