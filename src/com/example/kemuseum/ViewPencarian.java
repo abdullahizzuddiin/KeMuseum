@@ -13,7 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ViewPencarian extends Activity {	
-	LinearLayout llHeaderTulisan, llPilMuseum, llCapaian, llCari, llAbout, llPencarian2, llBody, Test;
+	LinearLayout llHeaderTulisan, llPilMuseum, llCapaian, llCari, llAbout, llPencarian2, llBody, layoutAsli;
 	TextView tvHeaderTulisan;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +39,10 @@ public class ViewPencarian extends Activity {
     	llAbout = (LinearLayout) findViewById(R.id.llAbout);
     	tvHeaderTulisan = (TextView) findViewById(R.id.tvHeaderTulisan);
 		llPencarian2 = (LinearLayout) findViewById(R.id.llPencarian2);
-		Test = (LinearLayout)View.inflate(this, R.layout.activity_view_pencarian, null);
+		
+		layoutAsli = (LinearLayout)View.inflate(this, R.layout.activity_view_pencarian, null);
 		llBody = (LinearLayout) findViewById(R.id.llBody);
-		llBody.addView(Test);
+		llBody.addView(layoutAsli);
 	}
 	
     public void setClickListener()
