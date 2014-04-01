@@ -1,5 +1,19 @@
-# abaikan .class
-bin/classes/*
-
-# abaikan gen
+# abaikan mereka!
+bin/*
 gen/*
+
+*.apk
+*.ap_
+*.dex
+*.class
+
+local.properties
+.classpath
+.project
+
+proguard/
+
+*.iml
+*.ipr
+*.iws
+.idea/
