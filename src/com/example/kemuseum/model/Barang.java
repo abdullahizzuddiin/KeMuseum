@@ -14,7 +14,7 @@ public class Barang {
 	private String nama;
 	private String deskripsi;
 	
-	// kategori barang, dipisahkan spasi. Contoh: "kesenian,kebudayaan,majapahit,kalung"
+	// kategori barang, dipisahkan koma. Contoh: "kesenian,kebudayaan,majapahit,kalung"
 	private String kategori;
 	
 	public Barang(int id, String namaBerkasGambar, String nama, String deskripsi, String kategori){
