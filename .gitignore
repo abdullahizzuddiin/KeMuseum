@@ -1,6 +1,6 @@
 # abaikan mereka!
-bin/*
-gen/*
+bin/
+gen/
 
 *.apk
 *.ap_
