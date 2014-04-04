@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Ruangan {
 	private int id;
+	private int idMuseum;
 	private String nama;
 	private String deskripsi;
 	private int prioritas;
@@ -12,9 +13,10 @@ public class Ruangan {
 	private List<Barang> daftarBarang;
 	private List<Pertanyaan> daftarPertanyaan;
 	
-	public Ruangan(int id, String nama, String deskripsi, 
+	public Ruangan(int idMuseum, int id, String nama, String deskripsi, 
 			        int prioritas, boolean statusTerkunci){
 		this.id = id;
+		this.idMuseum = idMuseum;
 		this.nama = nama;
 		this.deskripsi = deskripsi;
 		this.prioritas = prioritas;
@@ -25,6 +27,10 @@ public class Ruangan {
 	
 	public int getId(){
 		return id;
+	}
+	
+	public int getIdMuseum(){
+		return idMuseum;
 	}
 	
 	public String getNama(){

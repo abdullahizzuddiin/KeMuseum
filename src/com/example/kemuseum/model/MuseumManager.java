@@ -8,6 +8,8 @@ public class MuseumManager {
 	
 	public MuseumManager(){
 		daftarMuseum = new ArrayList<Museum>();
+		
+		// TODO loads database
 	}
 	
 	public List<Museum> getDaftarMuseum(){

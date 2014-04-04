@@ -6,6 +6,8 @@ import java.util.List;
 public class Barang {
 	// nomor id barang
 	private int id;
+	private int idRuangan;
+	private int idMuseum;
 	
 	// nama berkas gambar pada folder assets
 	private String namaBerkasGambar;
@@ -17,7 +19,9 @@ public class Barang {
 	// kategori barang, dipisahkan koma. Contoh: "kesenian,kebudayaan,majapahit,kalung"
 	private String kategori;
 	
-	public Barang(int id, String namaBerkasGambar, String nama, String deskripsi, String kategori){
+	public Barang(int idMuseum, int idRuangan, int id, String namaBerkasGambar, String nama, String deskripsi, String kategori){
+		this.idMuseum = idMuseum;
+		this.idRuangan = idRuangan;
 		this.id = id;
 		this.namaBerkasGambar = namaBerkasGambar;
 		this.nama = nama;
@@ -27,6 +31,14 @@ public class Barang {
 	
 	public int getId(){
 		return id;
+	}
+	
+	public int getIdRuangan(){
+		return idRuangan;
+	}
+	
+	public int getIdMuseum(){
+		return idMuseum;
 	}
 	
 	public String getNamaBerkasGambar(){
