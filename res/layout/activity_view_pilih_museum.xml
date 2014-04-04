@@ -6,25 +6,11 @@
     android:gravity="center_horizontal"
     android:background="#96C34C">
 	
-    <!--  
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/llViewCapaian"
-        android:background="#96C34C">
+        android:id="@+id/llViewCapaian">
         
     </LinearLayout>
--->
- <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Abdullah Izzuddiin Alqassam" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dika Handika" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Joanina Widiani" />
+ 
 </LinearLayout>
