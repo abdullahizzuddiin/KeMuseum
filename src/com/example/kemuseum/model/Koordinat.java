@@ -4,6 +4,12 @@ public class Koordinat {
 	private float latitude;
 	private float longitude;
 	
+	public Koordinat(String s){
+		String t[] = s.split(";");
+		latitude = Float.parseFloat(t[0]);
+		longitude = Float.parseFloat(t[1]);
+	}
+	
 	public Koordinat(float latitude, float longitude){
 		this.latitude = latitude;
 		this.longitude = longitude;
