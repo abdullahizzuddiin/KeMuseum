@@ -53,6 +53,10 @@ public class Barang {
 		return deskripsi;
 	}
 	
+	public String getKategori(){
+		return kategori;
+	}
+	
 	public boolean mengandungKataKunci(String kataKunci){
 		boolean ada = false;
 		

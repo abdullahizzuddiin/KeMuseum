@@ -57,6 +57,12 @@ public class JSONParser {
 	public static final String KEINGINAN_EMAIL = "email";
 	public static final String KEINGINAN_DESKRIPSI = "deskripsi";
 	
+	/**
+	 * Diberikan string JSON, return objek Museum dari JSON itu
+	 * 
+	 * @param museumJSON string yang merepresentasikan JSON-nya
+	 * @return objek Museum yang bersangkutan, dan null bila JSON tidak valid
+	 */
 	public static Museum toMuseum(String museumJSON){
 		Museum m = null;
 		try{
@@ -102,6 +108,12 @@ public class JSONParser {
 		return k;
 	}
 	
+	/**
+	 * Diberikan objek JSON, mengembalikan objek konkrit Museum
+	 * @param obj objek JSON
+	 * @return objek Museum yang bersangkutan
+	 * @throws JSONException bila JSON tidak valid
+	 */
 	private static Museum toMuseum(JSONObject obj) throws JSONException{
 		// berurutan
 		int id = obj.getInt(MUSEUM_ID);
@@ -191,5 +203,135 @@ public class JSONParser {
 		Keinginan k = new Keinginan(id, tanggal, nama, email, deskripsi);
 		
 		return k;
+	}
+	
+	/**
+	 * Diberikan sebuah objek Museum, mengembalikan string JSON untuk objek tersebut
+	 * 
+	 * @param m Objek Museum yang ingin dibuat JSON-nya
+	 * @return string JSON dari objek yang bersangkutan, dan string kosong bila ada masalah
+	 */
+	public static String toJSON(Museum m){
+		String s = "";
+		
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put(MUSEUM_ID, m.getId());
+			obj.put(MUSEUM_NAMA, m.getNama());
+			obj.put(MUSEUM_DESKRIPSI, m.getDeskripsi());
+			obj.put(MUSEUM_KOORDINAT_KIRI_ATAS, m.getStringKoordinatKiriAtas());
+			obj.put(MUSEUM_KOORDINAT_KANAN_BAWAH, m.getStringKoordinatKananBawah());
+			obj.put(MUSEUM_STATUS_TERKUNCI, m.getStatusTerkunci());
+			
+			JSONArray daftarRuanganJSON = new JSONArray();
+			List<Ruangan> daftarRuangan = m.getDaftarRuangan();
+			for (Ruangan r : daftarRuangan){
+				JSONObject rj = new JSONObject(toJSON(r));
+				daftarRuanganJSON.put(rj);
+			}
+			obj.put(MUSEUM_DAFTAR_RUANGAN, daftarRuanganJSON);
+			
+			s = obj.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return s;
+	}
+	
+	public static String toJSON(Ruangan r){
+		String s = "";
+		
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put(RUANGAN_ID_MUSEUM, r.getIdMuseum());
+			obj.put(RUANGAN_ID, r.getId());
+			obj.put(RUANGAN_NAMA, r.getNama());
+			obj.put(RUANGAN_DESKRIPSI, r.getDeskripsi());
+			obj.put(RUANGAN_STATUS_TERKUNCI, r.getStatusTerkunci());
+			obj.put(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI, r.getBanyakPercobaanBukaKunci());
+			obj.put(RUANGAN_PRIORITAS, r.getPrioritas());
+			
+			JSONArray daftarBarangJSON = new JSONArray();
+			List<Barang> daftarBarang = r.getDaftarBarang();
+			for (Barang b : daftarBarang){
+				JSONObject bj = new JSONObject(toJSON(b));
+				daftarBarangJSON.put(bj);
+			}
+			obj.put(RUANGAN_DAFTAR_BARANG, daftarBarangJSON);
+			
+			JSONArray daftarPertanyaanJSON = new JSONArray();
+			List<Pertanyaan> daftarPertanyaan = r.getDaftarPertanyaan();
+			for (Pertanyaan p : daftarPertanyaan){
+				JSONObject pj = new JSONObject(toJSON(p));
+				daftarPertanyaanJSON.put(pj);
+			}
+			obj.put(RUANGAN_DAFTAR_PERTANYAAN, daftarPertanyaanJSON);
+			
+			s = obj.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return s;		
+	}
+	
+	public static String toJSON(Barang b){
+		String s = "";
+		
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put(BARANG_ID_MUSEUM, b.getIdMuseum());
+			obj.put(BARANG_ID_RUANGAN, b.getIdRuangan());
+			obj.put(BARANG_ID, b.getId());
+			obj.put(BARANG_NAMA_BERKAS_GAMBAR, b.getNamaBerkasGambar());
+			obj.put(BARANG_NAMA, b.getNama());
+			obj.put(BARANG_DESKRIPSI, b.getDeksipsi());
+			obj.put(BARANG_KATEGORI, b.getKategori());
+			
+			s = obj.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return s;
+	}
+	
+	public static String toJSON(Pertanyaan p){
+		String s = "";
+		
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put(PERTANYAAN_ID_MUSEUM, p.getIdMuseum());
+			obj.put(PERTANYAAN_ID_RUANGAN, p.getIdRuangan());
+			obj.put(PERTANYAAN_ID, p.getId());
+			obj.put(PERTANYAAN_SOAL, p.getSoal());
+			obj.put(PERTANYAAN_JAWABAN, p.getJawaban());
+			
+			s = obj.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return s;
+	}
+	
+	public static String toJSON(Keinginan k){
+		String s = "";
+		
+		try {
+			JSONObject obj = new JSONObject();
+			obj.put(KEINGINAN_ID, k.getId());
+			obj.put(KEINGINAN_TANGGAL, k.getTanggal());
+			obj.put(KEINGINAN_NAMA, k.getNama());
+			obj.put(KEINGINAN_EMAIL, k.getEmail());
+			obj.put(KEINGINAN_DESKRIPSI, k.getDeskripsi());
+			
+			s = obj.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	
+		return s;
 	}
 }

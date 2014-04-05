@@ -36,6 +36,14 @@ public class Museum {
 		return deskripsi;
 	}
 	
+	public String getStringKoordinatKiriAtas(){
+		return koordinatKiriAtas.toString();
+	}
+	
+	public String getStringKoordinatKananBawah(){
+		return koordinatKananBawah.toString();
+	}
+	
 	public List<Ruangan> getDaftarRuangan(){
 		return daftarRuangan;
 	}
