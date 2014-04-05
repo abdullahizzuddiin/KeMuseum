@@ -95,6 +95,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 			"create table " + TABLE_MUSEUM + "(" +
 				MUSEUM_ID + " integer not null," +
 				MUSEUM_NAMA + " text," +
+				MUSEUM_DESKRIPSI + " text," +
 				MUSEUM_KOORDINAT_KIRI_ATAS + " text not null," +
 				MUSEUM_KOORDINAT_KANAN_BAWAH + " text not null," +
 				MUSEUM_STATUS_TERKUNCI + " integer not null," +
