@@ -9,20 +9,23 @@ public class Ruangan {
 	private String nama;
 	private String deskripsi;
 	private int prioritas;
+	private int banyakPercobaanBukaKunci;
 	private boolean statusTerkunci;
 	private List<Barang> daftarBarang;
 	private List<Pertanyaan> daftarPertanyaan;
 	
 	public Ruangan(int idMuseum, int id, String nama, String deskripsi, 
-			        int prioritas, boolean statusTerkunci){
-		this.id = id;
+			        boolean statusTerkunci, int banyakPercobaanBukaKunci, int prioritas,
+			        List<Barang> daftarBarang, List<Pertanyaan> daftarPertanyaan){
 		this.idMuseum = idMuseum;
+		this.id = id;
 		this.nama = nama;
 		this.deskripsi = deskripsi;
-		this.prioritas = prioritas;
 		this.statusTerkunci = statusTerkunci;
-		daftarBarang = new ArrayList<Barang>();
-		daftarPertanyaan = new ArrayList<Pertanyaan>();
+		this.banyakPercobaanBukaKunci = banyakPercobaanBukaKunci;
+		this.prioritas = prioritas;
+		this.daftarBarang = daftarBarang;
+		this.daftarPertanyaan = daftarPertanyaan;
 	}
 	
 	public int getId(){
@@ -49,6 +52,10 @@ public class Ruangan {
 		return statusTerkunci;
 	}
 	
+	public int getBanyakPercobaanBukaKunci(){
+		return banyakPercobaanBukaKunci;
+	}
+	
 	public List<Barang> getDaftarBarang(){
 		return daftarBarang;
 	}
@@ -57,16 +64,12 @@ public class Ruangan {
 		return daftarPertanyaan;
 	}
 	
-	public void tambahBarang(Barang barang){
-		daftarBarang.add(barang);
-	}
-	
-	public void tambahPertanyaan(Pertanyaan pertanyaan){
-		daftarPertanyaan.add(pertanyaan);
-	}
-	
 	public void setStatusTerkunci(boolean nilai){
 		statusTerkunci = nilai;
+	}
+	
+	public void setBanyakPercobaanBukaKunci(int nilai){
+		banyakPercobaanBukaKunci = nilai;
 	}
 	
 	public boolean cekJawaban(List<String> jawaban){

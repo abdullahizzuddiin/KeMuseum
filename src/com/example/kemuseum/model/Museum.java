@@ -14,27 +14,15 @@ public class Museum {
 	
 	public Museum(int id, String nama, String deskripsi, 
 			       Koordinat koordinatKiriAtas, Koordinat koordinatKananBawah, 
-			       boolean statusTerkunci){
+			       boolean statusTerkunci, List<Ruangan> daftarRuangan){
 		this.id = id;
 		this.nama = nama;
 		this.deskripsi = deskripsi;
 		this.koordinatKiriAtas = koordinatKiriAtas;
 		this.koordinatKananBawah = koordinatKananBawah;
 		this.statusTerkunci = statusTerkunci;
-		daftarRuangan = new ArrayList<Ruangan>();
+		this.daftarRuangan = daftarRuangan;
 	}
-	
-	public Museum(int id, String nama, String deskripsi, 
-		       String koordinatKiriAtas, String koordinatKananBawah, 
-		       boolean statusTerkunci){
-	this.id = id;
-	this.nama = nama;
-	this.deskripsi = deskripsi;
-	this.koordinatKiriAtas = new Koordinat(koordinatKiriAtas);
-	this.koordinatKananBawah = new Koordinat(koordinatKananBawah);
-	this.statusTerkunci = statusTerkunci;
-	daftarRuangan = new ArrayList<Ruangan>();
-}
 	
 	public int getId(){
 		return id;

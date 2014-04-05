@@ -8,9 +8,9 @@ public class Pertanyaan {
 	private String jawaban;
 	
 	public Pertanyaan(int idMuseum, int idRuangan, int id, String soal, String jawaban){
-		this.id = id;
-		this.idRuangan = idRuangan;
 		this.idMuseum = idMuseum;
+		this.idRuangan = idRuangan;
+		this.id = id;
 		this.soal = soal;
 		this.jawaban = jawaban;
 	}

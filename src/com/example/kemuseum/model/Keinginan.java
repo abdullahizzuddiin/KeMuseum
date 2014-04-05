@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Keinginan {
 	private int id;
-	private Date tanggal;
+	private String tanggal;
 	private String nama;
 	private String email;
 	private String deskripsi;
 	
-	public Keinginan(int id, Date tanggal, String nama, String email, String deskripsi){
+	public Keinginan(int id, String tanggal, String nama, String email, String deskripsi){
 		this.id = id;
 		this.tanggal = tanggal;
 		this.nama = nama;
@@ -21,7 +21,7 @@ public class Keinginan {
 		return id;
 	}
 	
-	public Date getTanggal(){
+	public String getTanggal(){
 		return tanggal;
 	}
 	

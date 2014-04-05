@@ -54,6 +54,42 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String KEINGINAN_EMAIL = "email";
 	public static final String KEINGINAN_DESKRIPSI = "deskripsi";
 	
+	// definisi setiap kolom
+	public static final String[] COLUMN_MUSEUM = {MUSEUM_ID, 
+		                                            MUSEUM_NAMA, 
+		                                            MUSEUM_DESKRIPSI, 
+		                                            MUSEUM_KOORDINAT_KIRI_ATAS,
+		                                            MUSEUM_KOORDINAT_KANAN_BAWAH,
+		                                            MUSEUM_STATUS_TERKUNCI};
+	
+	public static final String[] COLUMN_RUANGAN = {RUANGAN_ID_MUSEUM,
+		    										 RUANGAN_ID,
+		    										 RUANGAN_NAMA,
+		    										 RUANGAN_DESKRIPSI,
+		    										 RUANGAN_STATUS_TERKUNCI,
+		    										 RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI,
+		    										 RUANGAN_PRIORITAS};
+	
+	public static final String[] COLUMN_BARANG = {BARANG_ID_MUSEUM,
+					  								BARANG_ID_RUANGAN,
+					  								BARANG_ID,
+					  								BARANG_NAMA_BERKAS_GAMBAR,
+					  								BARANG_NAMA,
+					  								BARANG_DESKRIPSI,
+					  								BARANG_KATEGORI};
+	
+	public static final String[] COLUMN_PERTANYAAN = {PERTANYAAN_ID_MUSEUM,
+														PERTANYAAN_ID_RUANGAN,
+														PERTANYAAN_ID,
+														PERTANYAAN_SOAL,
+														PERTANYAAN_JAWABAN};
+	
+	public static final String[] COLUMN_KEINGINAN = {KEINGINAN_ID,
+														KEINGINAN_TANGGAL,
+														KEINGINAN_NAMA,
+														KEINGINAN_EMAIL,
+														KEINGINAN_DESKRIPSI};
+	
 	// definisi setiap pembuatan tabel
 	private static final String CREATE_MUSEUM = 
 			"create table " + TABLE_MUSEUM + "(" +
