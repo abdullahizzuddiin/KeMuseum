@@ -140,8 +140,8 @@ public class MuseumManager {
 		if (target != null){
 			if (target.cekDiDalam(koordinat)){
 				sukses = true;
-				
-				// TODO: write to database
+				target.setStatusTerkunci(true);
+				// TODO: database??
 			}
 		}
 		
