@@ -1,16 +1,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
+    android:background="#FFFFFF" 
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="#96C34C">
+    android:id="@+id/llViewPilMus">
 	
     <LinearLayout 
+        android:id="@+id/llMusFas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/llViewCapaian">
-        
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:textColor="#96C34C"
+            android:text="Museum Fasilkom"
+            android:text="Status: Terbuka"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9pt"
+            android:textColor="#96C34C"
+            android:text="Status: Terbuka"/>
     </LinearLayout>
- 
+    
+ 	<LinearLayout
+ 	    android:id="@+id/llMusFat" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12pt"
+            android:textColor="#96C34C"
+            android:text="Museum Fatahillah"
+            android:text="Status: Terkunci"/>
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9pt"
+            android:textColor="#96C34C"
+            android:text="Status: Terkunci"/>
+    </LinearLayout>
 </LinearLayout>

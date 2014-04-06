@@ -7,101 +7,31 @@
 	
     <LinearLayout 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#40FF40"
-	    android:id="@+id/llHeaderTulisan">
-	    
-	    <!--harusnya ini bentuknya gambar -->
-        <TextView 
-	        android:id="@+id/tvHeaderTulisan"
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:text="KeMuseum"
-	        android:gravity="left"
-	        android:textSize="12pt"/>
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:baselineAligned="false"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:orientation="horizontal"
-	    android:id="@+id/llHeader">
-        	
-        <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="1"
-	        android:orientation="horizontal"
-	        android:background="#D8CAA8"
-		    android:id="@+id/llPilMuseum">
-	        	<TextView 
-			        android:id="@+id/tvHeaderTulisan"
-			        android:layout_width="wrap_content"
-			        android:layout_height="wrap_content"
-			        android:text="Museum"
-			        android:gravity="left"
-			        android:textSize="9pt"/>
-	    </LinearLayout>
-	    
-	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="1"
-	        android:orientation="horizontal"
-	        android:background="#5C832F"
-		    android:id="@+id/llCapaian">	        
-	        	<TextView 
-			        android:id="@+id/tvHeaderTulisan"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
-			        android:text="Capaian"
-			        android:gravity="left"
-			        android:textSize="9pt"/>
-	    </LinearLayout>
-	    
-	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="1"
-	        android:orientation="horizontal"
-	        android:background="#F6E497"
-		    android:id="@+id/llCari">
-	    		<TextView 
-			        android:id="@+id/tvHeaderTulisan"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
-			        android:text="Cari"
-			        android:gravity="left"
-			        android:textSize="9pt"/>    
-	    </LinearLayout>
-	    
-	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="1"
-	        android:orientation="horizontal"
-	        android:background="#FCFAE1"
-		    android:id="@+id/llAbout">
-	        	<TextView 
-			        android:id="@+id/tvHeaderTulisan"
-			        android:layout_width="fill_parent"
-			        android:layout_height="fill_parent"
-			        android:text="About"
-			        android:gravity="left"
-			        android:textSize="9pt"/>
-	    </LinearLayout>
-    </LinearLayout>
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
         android:orientation="vertical"
-        android:background="#000000"
-	    android:id="@+id/llBody">
+        android:background="#40FF40"
+        android:gravity="center"
+	    android:id="@+id/llBody"
+	    android:layout_weight="1">
+	    
+        <Button 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pilih Museum"
+            android:id="@+id/ButtPilMus"
+            android:onClick="ButtPilMus_onClick"/>
+        <Button 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lihat Capaian"
+            android:id="@+id/ButtCapaian"
+            android:onClick="ButtCapaian_onClick"/>
+        <Button 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengembang"
+            android:id="@+id/ButtPengembang"
+            android:onClick="ButtPengembang_onClick"/>
     </LinearLayout>
     
 </LinearLayout>

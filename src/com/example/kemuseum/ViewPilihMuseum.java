@@ -1,5 +1,7 @@
 package com.example.kemuseum;
 
+import com.example.kemuseum.R;
+
 import android.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,12 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewPilihMuseum extends Activity {	
-	LinearLayout llHeaderTulisan, llPilMuseum, llCapaian, llCari, llAbout, llPencarian2, llBody, layoutAsli;
-	TextView tvHeaderTulisan;
+	LinearLayout llMusFas, llMusFat;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_view_pilih_museum);
 		inisiasi();
 		setClickListener();
 	}
@@ -31,48 +32,33 @@ public class ViewPilihMuseum extends Activity {
 	
 	public void inisiasi()
 	{
-		llHeaderTulisan = (LinearLayout) findViewById(R.id.llHeaderTulisan);
-    	llPilMuseum = (LinearLayout) findViewById(R.id.llPilMuseum);
-    	llCapaian = (LinearLayout) findViewById(R.id.llCapaian);
-    	llCari = (LinearLayout) findViewById(R.id.llCari);
-    	llAbout = (LinearLayout) findViewById(R.id.llAbout);
-    	tvHeaderTulisan = (TextView) findViewById(R.id.tvHeaderTulisan);
-		llPencarian2 = (LinearLayout) findViewById(R.id.llPencarian2);
-		
-		layoutAsli = (LinearLayout)View.inflate(this, R.layout.activity_view_pilih_museum, null);
-		llBody = (LinearLayout) findViewById(R.id.llBody);
-		llBody.addView(layoutAsli);
+		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
+		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
 	}
 	
     public void setClickListener()
     {
-    	llCari.setOnClickListener(new OnClickListener() {
+    	llMusFas.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(ViewPilihMuseum.this, ViewPencarian.class);
-				startActivity(i);
-			}
-		});
-
-    	llCapaian.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent(ViewPilihMuseum.this, ViewCapaian.class);
-				startActivity(i);
+				Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerbuka.class);
+				i.putExtra("Terbuka", "a");
+				final int a = 1;
+				startActivityForResult(i, a);
 			}
 		});
     	
-    	llAbout.setOnClickListener(new OnClickListener() {
+    	llMusFat.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent(ViewPilihMuseum.this, ViewInfoPengembang.class);
-				startActivity(i); 
+				Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerkunci.class);
+				i.putExtra("Terkunci", "a");
+				final int a = 1;
+				startActivityForResult(i, a);
 			}
 		});
     }

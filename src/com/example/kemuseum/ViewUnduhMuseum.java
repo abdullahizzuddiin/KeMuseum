@@ -1,5 +1,7 @@
 package com.example.kemuseum;
 
+import com.example.kemuseum.R;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
