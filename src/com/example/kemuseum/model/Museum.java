@@ -3,6 +3,8 @@ package com.example.kemuseum.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 public class Museum {
 	private int id;
 	private String nama;
