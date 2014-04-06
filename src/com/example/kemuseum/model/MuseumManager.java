@@ -3,13 +3,27 @@ package com.example.kemuseum.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
 public class MuseumManager {
 	private List<Museum> daftarMuseum;
+	private String dataDir;
+	private AssetManager assetManager;
+	private Context applicationContext;
 	
-	public MuseumManager(){
-		daftarMuseum = new ArrayList<Museum>();
+	private boolean DEBUG_MODE = true;
+	
+	public MuseumManager(AssetManager assetManager, Context applicationContext){
+		this.assetManager = assetManager;
+		this.applicationContext = applicationContext;
+		dataDir = applicationContext.getFilesDir().getAbsolutePath();
 		
 		// TODO loads database
+		if (DEBUG_MODE){
+			// simpan file museum dummy.json dari folder assets ke internal memory (dataDir)
+			
+		}
 	}
 	
 	public List<Museum> getDaftarMuseum(){

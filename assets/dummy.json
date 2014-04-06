@@ -1,0 +1,183 @@
+{
+	"_id" : 1,
+	"nama" : "nama museum 1",
+	"deskripsi" : "deskripsi museum 1",
+	"koordinat_kiri_atas" : "0.394383 0.840188",
+	"koordinat_kanan_bawah" : "0.798440 0.783099",
+	"status_terkunci" : true,
+	"ruangan" : [
+	{
+		"_id_museum" : 1,
+		"_id" : 0,
+		"nama" : "nama ruangan 1 0",
+		"deskripsi" : "deskripsi ruangan 1 0",
+		"status_terkunci" : true,
+		"banyak_percobaan_buka_kunci" : 719885386,
+		"prioritas" : 1649760492,
+		"barang" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 0,
+			"_id" : 0,
+			"nama_berkas_gambar" : "nama berkas gambar 1 0 0",
+			"nama" : "nama barang 1 0 0",
+			"deskripsi" : "deskripsi barang 1 0 0",
+			"kategori" : "kategori barang 1 0 0"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 0,
+			"_id" : 1,
+			"nama_berkas_gambar" : "nama berkas gambar 1 0 1",
+			"nama" : "nama barang 1 0 1",
+			"deskripsi" : "deskripsi barang 1 0 1",
+			"kategori" : "kategori barang 1 0 1"
+		}
+		],
+		"pertanyaan" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 0,
+			"_id" : 0,
+			"soal" : "soal pertanyaan 1 0 0",
+			"jawaban" : "jawaban pertanyaan 1 0 0"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 0,
+			"_id" : 1,
+			"soal" : "soal pertanyaan 1 0 1",
+			"jawaban" : "jawaban pertanyaan 1 0 1"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 0,
+			"_id" : 2,
+			"soal" : "soal pertanyaan 1 0 2",
+			"jawaban" : "jawaban pertanyaan 1 0 2"
+		}
+		]
+	}
+	,
+	{
+		"_id_museum" : 1,
+		"_id" : 1,
+		"nama" : "nama ruangan 1 1",
+		"deskripsi" : "deskripsi ruangan 1 1",
+		"status_terkunci" : true,
+		"banyak_percobaan_buka_kunci" : 1189641421,
+		"prioritas" : 1025202362,
+		"barang" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 0,
+			"nama_berkas_gambar" : "nama berkas gambar 1 1 0",
+			"nama" : "nama barang 1 1 0",
+			"deskripsi" : "deskripsi barang 1 1 0",
+			"kategori" : "kategori barang 1 1 0"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 1,
+			"nama_berkas_gambar" : "nama berkas gambar 1 1 1",
+			"nama" : "nama barang 1 1 1",
+			"deskripsi" : "deskripsi barang 1 1 1",
+			"kategori" : "kategori barang 1 1 1"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 2,
+			"nama_berkas_gambar" : "nama berkas gambar 1 1 2",
+			"nama" : "nama barang 1 1 2",
+			"deskripsi" : "deskripsi barang 1 1 2",
+			"kategori" : "kategori barang 1 1 2"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 3,
+			"nama_berkas_gambar" : "nama berkas gambar 1 1 3",
+			"nama" : "nama barang 1 1 3",
+			"deskripsi" : "deskripsi barang 1 1 3",
+			"kategori" : "kategori barang 1 1 3"
+		}
+		],
+		"pertanyaan" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 0,
+			"soal" : "soal pertanyaan 1 1 0",
+			"jawaban" : "jawaban pertanyaan 1 1 0"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 1,
+			"_id" : 1,
+			"soal" : "soal pertanyaan 1 1 1",
+			"jawaban" : "jawaban pertanyaan 1 1 1"
+		}
+		]
+	}
+	,
+	{
+		"_id_museum" : 1,
+		"_id" : 2,
+		"nama" : "nama ruangan 1 2",
+		"deskripsi" : "deskripsi ruangan 1 2",
+		"status_terkunci" : true,
+		"banyak_percobaan_buka_kunci" : 783368690,
+		"prioritas" : 1102520059,
+		"barang" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 2,
+			"_id" : 0,
+			"nama_berkas_gambar" : "nama berkas gambar 1 2 0",
+			"nama" : "nama barang 1 2 0",
+			"deskripsi" : "deskripsi barang 1 2 0",
+			"kategori" : "kategori barang 1 2 0"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 2,
+			"_id" : 1,
+			"nama_berkas_gambar" : "nama berkas gambar 1 2 1",
+			"nama" : "nama barang 1 2 1",
+			"deskripsi" : "deskripsi barang 1 2 1",
+			"kategori" : "kategori barang 1 2 1"
+		}
+		,
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 2,
+			"_id" : 2,
+			"nama_berkas_gambar" : "nama berkas gambar 1 2 2",
+			"nama" : "nama barang 1 2 2",
+			"deskripsi" : "deskripsi barang 1 2 2",
+			"kategori" : "kategori barang 1 2 2"
+		}
+		],
+		"pertanyaan" : [
+		{
+			"_id_museum" : 1,
+			"_id_ruangan" : 2,
+			"_id" : 0,
+			"soal" : "soal pertanyaan 1 2 0",
+			"jawaban" : "jawaban pertanyaan 1 2 0"
+		}
+		]
+	}
+	]
+}
