@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/testus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Museum ini terkunci" />
@@ -13,6 +14,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Silahkan unduh terlebih dahulu" />
+        android:text="Silahkan Check-in terlebih dahulu" />
+    
+    <ProgressBar
+        android:id="@+id/jubar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.database.Cursor;
+import android.util.Log;
 
 import com.example.kemuseum.model.Barang;
 import com.example.kemuseum.model.Keinginan;
@@ -68,6 +68,7 @@ public class JSONParser {
 		try{
 			m = toMuseum(new JSONObject(museumJSON));
 		}catch (JSONException e){
+			Log.d("JSONParser", "gan string -> json bermasalah");
 		}
 		return m;
 	}
@@ -122,7 +123,6 @@ public class JSONParser {
 		Koordinat koordinatKiriAtas = new Koordinat(obj.getString(MUSEUM_KOORDINAT_KIRI_ATAS));
 		Koordinat koordinatKananBawah = new Koordinat(obj.getString(MUSEUM_KOORDINAT_KANAN_BAWAH));
 		boolean statusTerkunci = obj.getBoolean(MUSEUM_STATUS_TERKUNCI);
-		
 		List<Ruangan> daftarRuangan = new ArrayList<Ruangan>();
 		
 		JSONArray daftarRuanganJSON = new JSONArray(obj.get(MUSEUM_DAFTAR_RUANGAN).toString());
@@ -137,7 +137,7 @@ public class JSONParser {
 		return m;
 	}
 	
-	private static Ruangan toRuangan(JSONObject obj) throws JSONException {		
+	private static Ruangan toRuangan(JSONObject obj) throws JSONException {
 		int idMuseum = obj.getInt(RUANGAN_ID_MUSEUM);
 		int id = obj.getInt(RUANGAN_ID);
 		String nama = obj.getString(RUANGAN_NAMA);
@@ -145,7 +145,7 @@ public class JSONParser {
 		boolean statusTerkunci = obj.getBoolean(RUANGAN_STATUS_TERKUNCI);
 		int banyakPercobaanBukaKunci = obj.getInt(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI);
 		int prioritas = obj.getInt(RUANGAN_PRIORITAS);
-		
+
 		List<Barang> daftarBarang = new ArrayList<Barang>();
 		JSONArray daftarBarangJSON = new JSONArray(obj.get(RUANGAN_DAFTAR_BARANG).toString());
 		for (int i = 0; i < daftarBarangJSON.length(); i++){

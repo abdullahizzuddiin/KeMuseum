@@ -5,7 +5,7 @@ public class Koordinat {
 	private float longitude;
 	
 	public Koordinat(String s){
-		String t[] = s.split(";");
+		String t[] = s.split(" ");
 		latitude = Float.parseFloat(t[0]);
 		longitude = Float.parseFloat(t[1]);
 	}
@@ -40,5 +40,9 @@ public class Koordinat {
 		
 		return (kiri < latitude) && (latitude < kanan)
 			 && (atas < longitude) && (longitude < bawah);
+	}
+	
+	public String toString(){
+		return latitude + " " + longitude;
 	}
 }

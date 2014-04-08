@@ -3,35 +3,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewMenuUtama" 
-    android:orientation="vertical">
-	
+    android:orientation="vertical"
+    android:background="@drawable/home_bg">
+    
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="right">
+	    
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/magni2"
+	        android:id="@+id/magni"
+	        android:onClick=""/>
+	</RelativeLayout>
+    
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#40FF40"
         android:gravity="center"
 	    android:id="@+id/llBody"
 	    android:layout_weight="1">
 	    
         <Button 
+            android:layout_margin="5pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pilih Museum"
+            android:background="@drawable/button_menu_museum"
             android:id="@+id/ButtPilMus"
             android:onClick="ButtPilMus_onClick"/>
-        <Button 
+        <Button
+            android:layout_margin="5pt" 
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lihat Capaian"
+            android:layout_height="wrap_content"	
+            android:background="@drawable/button_menu_capaian"
             android:id="@+id/ButtCapaian"
             android:onClick="ButtCapaian_onClick"/>
         <Button 
+            android:layout_margin="5pt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pengembang"
             android:id="@+id/ButtPengembang"
-            android:onClick="ButtPengembang_onClick"/>
+            android:onClick="ButtPengembang_onClick"
+            android:background="@drawable/button_menu_about"/>
     </LinearLayout>
     
 </LinearLayout>

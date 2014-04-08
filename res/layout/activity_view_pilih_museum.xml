@@ -45,4 +45,5 @@
             android:textColor="#96C34C"
             android:text="Status: Terkunci"/>
     </LinearLayout>
+
 </LinearLayout>

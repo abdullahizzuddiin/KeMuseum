@@ -3,6 +3,7 @@ package com.example.kemuseum;
 import com.example.kemuseum.R;
 
 import android.R.layout;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -17,12 +19,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class ViewPilihMuseum extends Activity {	
 	LinearLayout llMusFas, llMusFat, llPilMus;
+	TextView testus;
+	ProgressBar pb;
+	DialogInterface.OnClickListener ViewMuseumTerkunci = null;
 	DialogInterface.OnClickListener test = null;
+	
 	View woww =null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +38,7 @@ public class ViewPilihMuseum extends Activity {
 		setContentView(R.layout.activity_view_pilih_museum);
 		inisiasi();
 		setClickListener();
+		
 	}
 
 	@Override
@@ -44,10 +53,27 @@ public class ViewPilihMuseum extends Activity {
 		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
 		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
+		pb = (ProgressBar) findViewById(R.id.jubar);
+		Log.d("coba", "test"+pb);
+		testus = (TextView) findViewById(R.id.testus);
+		
 	}
 	
     public void setClickListener()
     {
+    	test = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+//				try {
+//					pb.setVisibility(View.VISIBLE);
+//				} catch (Exception e) {
+//					// TODO: handle exception
+//					Log.d("coba", "test"+e.toString());
+//				}
+			}
+		};
+    	
     	llMusFas.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -69,7 +95,7 @@ public class ViewPilihMuseum extends Activity {
 			}
 		});
     	
-    	test = new DialogInterface.OnClickListener() {
+    	ViewMuseumTerkunci = new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -99,7 +125,7 @@ public class ViewPilihMuseum extends Activity {
 			};
 			return new AlertDialog.Builder(this).
 					setNegativeButton("Tidak",null).
-					setPositiveButton("Unduh", test).
+					setPositiveButton("Checkin", test).
 					setView(woww).
 					create();
 		}

@@ -14,6 +14,6 @@
     <string name="title_activity_view_ruangan">ViewRuangan</string>
     <string name="title_activity_view_unduh_museum">ViewUnduhMuseum</string>
     <string name="title_activity_view_daftar_keinginan">ViewDaftarKeinginan</string>
-    <string name="title_activity_view_splash_screen">ViewSplashScreen</string>
-
+    <string name="title_activity_view_splash_screen">ViewDaftarKeinginan</string>
+    <string name="title_activity_dummy">Dummy</string>
 </resources>

@@ -1,15 +1,94 @@
 package com.example.kemuseum.model;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.util.Log;
+
+import com.example.kemuseum.utils.JSONParser;
+
 public class MuseumManager {
 	private List<Museum> daftarMuseum;
+	private String dataDir;
+	private AssetManager assetManager;
+	private Context applicationContext;
 	
-	public MuseumManager(){
-		daftarMuseum = new ArrayList<Museum>();
+	private int BUFFER_SIZE = 2048;
+	private boolean DEBUG_MODE = true;
+	
+	public MuseumManager(AssetManager assetManager, Context applicationContext){
+		this.assetManager = assetManager;
+		this.applicationContext = applicationContext;
+		dataDir = applicationContext.getFilesDir().getAbsolutePath();
+		
+		// sementara begini dulu
+		if (DEBUG_MODE){
+			// simpan file museum dummy.json dari folder assets ke internal memory (dataDir)
+			String fileName = "dummy.json";
+			try {
+				File dummyJSON = new File(dataDir, fileName);
+				FileOutputStream fos = new FileOutputStream(dummyJSON.getAbsolutePath());
+				InputStream is = new BufferedInputStream(assetManager.open(fileName));
+				ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+				int nRead;
+				byte[] data = new byte[BUFFER_SIZE];
+				while ((nRead = is.read(data, 0, data.length)) != -1){
+					buffer.write(data, 0, nRead);
+				}
+				buffer.flush();
+				
+				is.close();
+				fos.write(buffer.toByteArray());
+				fos.close();
+				
+			} catch (FileNotFoundException e) {
+				Log.d("MuseumManager", "gan " + fileName + " bermasalah!");
+			} catch (IOException e){
+				Log.d("MuseumManager", "gan " + fileName + " gak ditemukan dari asset!");
+			}
+		}
 		
 		// TODO loads database
+		daftarMuseum = new ArrayList<Museum>();
+		File museumJSON = new File(dataDir);
+		String[] jsonList = museumJSON.list();
+		for (String js : jsonList){
+			Log.d("MuseumManager", "gan parsing " + js);
+			
+			try {
+				File f = new File(dataDir, js);
+				InputStream is = new BufferedInputStream(new FileInputStream(f));
+				ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+				
+				int nRead;
+				byte[] data = new byte[BUFFER_SIZE];
+				while ((nRead = is.read(data, 0, data.length)) != -1){
+					buffer.write(data, 0, nRead);
+				}
+				buffer.flush();
+				
+				String json = buffer.toString();
+				
+				is.close();
+//				Log.d("MuseumManager", "gan content:" + json);
+				
+				daftarMuseum.add(JSONParser.toMuseum(json));
+				
+			} catch (Exception e) {
+				Log.d("MuseumManager", "gan error parsing " + js);
+			}
+		}
 	}
 	
 	public List<Museum> getDaftarMuseum(){
@@ -17,7 +96,7 @@ public class MuseumManager {
 	}
 	
 	public List<Barang> getDaftarBarang(int idMuseum, int idRuangan){
-		List<Barang> daftar = null;
+		List<Barang> daftar = new ArrayList<Barang>();
 		
 		for (Museum m : daftarMuseum){
 			if (m.getId() == idMuseum){
@@ -30,11 +109,21 @@ public class MuseumManager {
 	}
 	
 	public void tambahMuseum(Museum museum){
-		// TODO
+		try {
+			String fileName = "" + museum.getId();
+			File museumJSON = new File(dataDir, fileName);
+			FileOutputStream fos = new FileOutputStream(museumJSON.getAbsolutePath());
+						
+			fos.write(JSONParser.toJSON(museum).getBytes());
+			fos.close();
+			
+		} catch (Exception e) {
+			Log.d("MuseumManager", "gan museum " + museum.getId() + " bermasalah !");
+		}
 	}
 	
 	public void hapusMuseum(Museum museum){
-		// TODO
+		// TODO iterasi 2
 	}
 	
 	public boolean bukaKunciMuseum(int idMuseum, Koordinat koordinat){
@@ -51,8 +140,8 @@ public class MuseumManager {
 		if (target != null){
 			if (target.cekDiDalam(koordinat)){
 				sukses = true;
-				
-				// TODO: write to database
+				target.setStatusTerkunci(true);
+				// TODO: database??
 			}
 		}
 		
