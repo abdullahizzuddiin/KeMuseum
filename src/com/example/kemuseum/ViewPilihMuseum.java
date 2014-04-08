@@ -5,16 +5,25 @@ import com.example.kemuseum.R;
 import android.R.layout;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewPilihMuseum extends Activity {	
-	LinearLayout llMusFas, llMusFat;
+	LinearLayout llMusFas, llMusFat, llPilMus;
+	DialogInterface.OnClickListener test = null;
+	View woww =null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +43,7 @@ public class ViewPilihMuseum extends Activity {
 	{
 		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
 		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
+		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
 	}
 	
     public void setClickListener()
@@ -55,11 +65,46 @@ public class ViewPilihMuseum extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerkunci.class);
-				i.putExtra("Terkunci", "a");
+				showDialog(0);
+			}
+		});
+    	
+    	test = new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent (ViewPilihMuseum.this, ViewUnduhMuseum.class);
+				i.putExtra("Unduh", "a");
 				final int a = 1;
 				startActivityForResult(i, a);
 			}
-		});
+		};
+    	
     }
+   
+    
+    protected Dialog onCreateDialog(int id) {
+		switch (id) {
+		case 0: {
+			LayoutInflater inflater = LayoutInflater.from(this);
+	    	View inflated = inflater.inflate(R.layout.activity_view_museum_terkunci, null);
+	    	woww = inflated;
+	    	OnTouchListener c = new OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View arg0, MotionEvent arg1) {
+					return false;
+				}
+			};
+			return new AlertDialog.Builder(this).
+					setNegativeButton("Tidak",null).
+					setPositiveButton("Unduh", test).
+					setView(woww).
+					create();
+		}
+		
+		}
+		return null;
+	}
 }

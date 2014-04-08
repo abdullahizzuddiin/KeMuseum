@@ -17,9 +17,8 @@
             android:layout_height="wrap_content"
             android:textSize="12pt"
             android:textColor="#96C34C"
-            android:text="Museum Fasilkom"
-            android:text="Status: Terbuka"/>
-        <TextView 
+            android:text="Museum Fasilkom"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="9pt"
@@ -38,8 +37,7 @@
             android:layout_height="wrap_content"
             android:textSize="12pt"
             android:textColor="#96C34C"
-            android:text="Museum Fatahillah"
-            android:text="Status: Terkunci"/>
+            android:text="Museum Fatahillah"/>
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
