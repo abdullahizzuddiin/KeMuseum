@@ -95,6 +95,19 @@ public class MuseumManager {
 		return daftarMuseum;
 	}
 	
+	public Museum getMuseum(int idMuseum){
+		Museum ret = null;
+		
+		for (Museum m : daftarMuseum){
+			if (m.getId() == idMuseum){
+				ret = m;
+				break;
+			}
+		}
+		
+		return ret;
+	}
+	
 	public List<Barang> getDaftarBarang(int idMuseum, int idRuangan){
 		List<Barang> daftar = new ArrayList<Barang>();
 		
