@@ -26,8 +26,6 @@ import android.widget.TextView;
 
 public class ViewPilihMuseum extends Activity {	
 	LinearLayout llMusFas, llMusFat, llPilMus;
-	TextView testus;
-	ProgressBar pb;
 	DialogInterface.OnClickListener ViewMuseumTerkunci = null;
 	DialogInterface.OnClickListener test = null;
 	
@@ -53,9 +51,6 @@ public class ViewPilihMuseum extends Activity {
 		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
 		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
-		pb = (ProgressBar) findViewById(R.id.jubar);
-		Log.d("coba", "test"+pb);
-		testus = (TextView) findViewById(R.id.testus);
 		
 	}
 	
@@ -125,7 +120,7 @@ public class ViewPilihMuseum extends Activity {
 			};
 			return new AlertDialog.Builder(this).
 					setNegativeButton("Tidak",null).
-					setPositiveButton("Checkin", test).
+					setPositiveButton("Checkin", ViewMuseumTerkunci).
 					setView(woww).
 					create();
 		}
