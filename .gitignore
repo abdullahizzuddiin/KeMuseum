@@ -1,6 +1,11 @@
 # abaikan mereka!
 bin/
+bin/*
+bin/**
+
 gen/
+gen/*
+gen/**
 
 *.apk
 *.ap_

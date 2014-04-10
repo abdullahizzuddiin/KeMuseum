@@ -3,23 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
-    android:gravity="center">
-
-    <TextView
+    
+    android:background="@drawable/about_preview">
+	
+    <ImageView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abdullah Izzuddiin Alqassam" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dika Handika" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Joanina Widiani" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="William Gozali" />
-
+        android:src="@drawable/about_top"/>
 </LinearLayout>

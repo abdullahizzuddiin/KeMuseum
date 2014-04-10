@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
@@ -20,10 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewMenuUtama extends Activity {
-	LinearLayout llBody;
 	Button ButtPilMus, ButtCapaian, ButtPengembang;
 	ImageView Magni;
 	View woww =null;
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +36,14 @@ public class ViewMenuUtama extends Activity {
     }
 
     public void inisiasi() {
-    	llBody = (LinearLayout) findViewById(R.id.llBody);
+    	
     	ButtPilMus = (Button) findViewById(R.id.ButtPilMus);
     	ButtCapaian = (Button) findViewById(R.id.ButtCapaian);
     	ButtPengembang = (Button) findViewById(R.id.ButtPengembang);
     	Magni = (ImageView) findViewById(R.id.magni);
     }
+    
+
     
     public void setClickListener()
     {

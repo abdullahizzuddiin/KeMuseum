@@ -2,26 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/museum_bg">
+	
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/about_top">
+        
+    </LinearLayout>
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/museum_locked_foto_bahari"/>
+    
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Museum Bahari"
+        android:textSize="10pt"
+        android:textColor="#000000"/>
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Museum ini masih terkunci. Silahkan check-in untuk membukanya"
+        android:textColor="#000000"/>
+     <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/locked_potong2"/>
 
-    <TextView
-        android:id="@+id/testus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Museum ini terkunci" />
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Silahkan Check-in terlebih dahulu" />
-    
-    <ProgressBar
-        android:id="@+id/jubar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:visibility="gone" />
 
 </LinearLayout>
