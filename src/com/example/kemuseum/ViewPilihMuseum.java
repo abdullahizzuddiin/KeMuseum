@@ -38,7 +38,6 @@ public class ViewPilihMuseum extends Activity {
 		setContentView(R.layout.activity_view_pilih_museum);
 		inisiasi();
 		setClickListener();
-		
 	}
 
 	@Override

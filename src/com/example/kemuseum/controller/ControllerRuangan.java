@@ -3,7 +3,7 @@ package com.example.kemuseum.controller;
 import java.util.List;
 
 import com.example.kemuseum.model.Barang;
-import com.example.kemuseum.model.MuseumManager;
+import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerRuangan {
 	private MuseumManager museumManager;

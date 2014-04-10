@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.example.kemuseum.model.Koordinat;
 import com.example.kemuseum.model.Museum;
-import com.example.kemuseum.model.MuseumManager;
 import com.example.kemuseum.model.Ruangan;
+import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerMuseum {
 	private MuseumManager museumManager;

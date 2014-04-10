@@ -2,8 +2,8 @@ package com.example.kemuseum.controller;
 
 import java.util.List;
 
-import com.example.kemuseum.model.MuseumManager;
 import com.example.kemuseum.model.Pertanyaan;
+import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerPertanyaan {
 	private MuseumManager museumManager;
