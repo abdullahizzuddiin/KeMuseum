@@ -1,24 +1,24 @@
 package com.example.kemuseum;
 
 
-import com.example.kemuseum.R;
-import android.os.Bundle;
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import com.example.kemuseum.model.Museum;
+import com.example.kemuseum.utils.MuseumManager;
 
 public class ViewMenuUtama extends Activity {
 	Button ButtPilMus, ButtCapaian, ButtPengembang;
@@ -32,7 +32,6 @@ public class ViewMenuUtama extends Activity {
         setContentView(R.layout.activity_main);
         inisiasi();
         setClickListener();
-			
     }
 
     public void inisiasi() {
@@ -41,6 +40,9 @@ public class ViewMenuUtama extends Activity {
     	ButtCapaian = (Button) findViewById(R.id.ButtCapaian);
     	ButtPengembang = (Button) findViewById(R.id.ButtPengembang);
     	Magni = (ImageView) findViewById(R.id.magni);
+    
+    	// loads data
+    	MuseumManager.createMuseumManager(getAssets(), getApplicationContext());
     }
     
 

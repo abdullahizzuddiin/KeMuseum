@@ -26,29 +26,32 @@ public final class R {
         public static final int button_menu_about=0x7f020002;
         public static final int button_menu_capaian=0x7f020003;
         public static final int button_menu_museum=0x7f020004;
-        public static final int home_bg=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int ic_search=0x7f020007;
-        public static final int locked_potong2=0x7f020008;
-        public static final int magni=0x7f020009;
-        public static final int magni2=0x7f02000a;
-        public static final int magnifier12=0x7f02000b;
-        public static final int museum_bg=0x7f02000c;
-        public static final int museum_fatahillah=0x7f02000d;
-        public static final int museum_locked_foto_bahari=0x7f02000e;
-        public static final int museum_locked_preview=0x7f02000f;
-        public static final int museum_top=0x7f020010;
-        public static final int splash_screen=0x7f020011;
+        public static final int dummy_no=0x7f020005;
+        public static final int dummy_yes=0x7f020006;
+        public static final int home_bg=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int ic_search=0x7f020009;
+        public static final int locked_potong2=0x7f02000a;
+        public static final int magni=0x7f02000b;
+        public static final int magni2=0x7f02000c;
+        public static final int magnifier12=0x7f02000d;
+        public static final int museum_bg=0x7f02000e;
+        public static final int museum_fatahillah=0x7f02000f;
+        public static final int museum_locked_foto_bahari=0x7f020010;
+        public static final int museum_locked_preview=0x7f020011;
+        public static final int museum_top=0x7f020012;
+        public static final int splash_screen=0x7f020013;
     }
     public static final class id {
         public static final int ButtCapaian=0x7f080003;
         public static final int ButtPengembang=0x7f080004;
         public static final int ButtPilMus=0x7f080002;
-        public static final int action_settings=0x7f080011;
+        public static final int action_settings=0x7f080012;
         public static final int button_kataKunci=0x7f08000b;
+        public static final int icon=0x7f080010;
+        public static final int label=0x7f080011;
+        public static final int list_view=0x7f08000e;
         public static final int llBody=0x7f080001;
-        public static final int llMusFas=0x7f08000e;
-        public static final int llMusFat=0x7f08000f;
         public static final int llMusTer1=0x7f080005;
         public static final int llMusTer2=0x7f080006;
         public static final int llPencarian1=0x7f080008;
@@ -57,7 +60,7 @@ public final class R {
         public static final int magni=0x7f080000;
         public static final int rlViewPencarian=0x7f080007;
         public static final int spinner_museum=0x7f080009;
-        public static final int teks=0x7f080010;
+        public static final int teks=0x7f08000f;
         public static final int text_kataKunci=0x7f08000a;
     }
     public static final class layout {
@@ -75,6 +78,7 @@ public final class R {
         public static final int activity_view_splash_screen=0x7f03000b;
         public static final int activity_view_unduh_museum=0x7f03000c;
         public static final int dummy_view=0x7f03000d;
+        public static final int row_layout_pilih_museum=0x7f03000e;
     }
     public static final class menu {
         public static final int dummy=0x7f070000;

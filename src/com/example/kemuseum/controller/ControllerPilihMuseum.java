@@ -8,11 +8,9 @@ import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerPilihMuseum {
 	private MuseumManager museumManager;
-	private ViewPilihMuseum viewPilihMuseum;
 	
-	public ControllerPilihMuseum(MuseumManager museumManager, ViewPilihMuseum viewPilihMuseum){
-		this.museumManager = museumManager;
-		this.viewPilihMuseum = viewPilihMuseum;
+	public ControllerPilihMuseum(){
+		museumManager = MuseumManager.getMuseumManager();
 	}
 	
 	public List<Museum> getDaftarMuseum(){

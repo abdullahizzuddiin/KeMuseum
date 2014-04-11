@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:id="@+id/llViewPilMus">
 	
+    <!-- 
     <LinearLayout 
         android:id="@+id/llMusFas"
         android:layout_width="match_parent"
@@ -45,5 +46,13 @@
             android:textColor="#96C34C"
             android:text="Status: Terkunci"/>
     </LinearLayout>
+	 -->
 
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_margin="5pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </ListView>
+ 
 </LinearLayout>
