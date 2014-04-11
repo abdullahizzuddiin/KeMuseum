@@ -64,7 +64,6 @@ public class ViewPilihMuseum extends Activity {
 	
 	public void isiData(){
 		List<Museum> daftarMuseum = controller.getDaftarMuseum();
-		Log.d("asd", "gan " + daftarMuseum.size());
 		
 		arrayAdapter = new ArrayAdapterPilihMuseum(this, daftarMuseum);
 		listView.setAdapter(arrayAdapter);
@@ -75,9 +74,22 @@ public class ViewPilihMuseum extends Activity {
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 				final Museum item = (Museum) parent.getItemAtPosition(position);
-				Log.d("asd", "gan " + position + " " + id + " " + item.getNama());
+				
+				// true -> terkunci
+				if (item.getStatusTerkunci()){
+					Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerkunci.class);
+					i.putExtra("Terkunci", "a");
+					i.putExtra("idMuseum", item.getId());
+					final int a = 1;
+					startActivityForResult(i, a);
+				}else{
+					Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerbuka.class);
+					i.putExtra("Terbuka", "a");
+					i.putExtra("idMuseum", item.getId());
+					final int a = 1;
+					startActivityForResult(i, a);
+				}
 			}
-
 		});
 	}
 	

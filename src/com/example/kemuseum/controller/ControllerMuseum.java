@@ -10,6 +10,10 @@ import com.example.kemuseum.utils.MuseumManager;
 public class ControllerMuseum {
 	private MuseumManager museumManager;
 	
+	public ControllerMuseum(){
+		museumManager = MuseumManager.getMuseumManager();
+	}
+	
 	private Koordinat getKoordinatPengguna(){
 		// TODO
 		return null;

@@ -68,7 +68,7 @@ public class JSONParser {
 		try{
 			m = toMuseum(new JSONObject(museumJSON));
 		}catch (JSONException e){
-			Log.d("JSONParser", "gan string -> json bermasalah");
+			Log.d("JSONParser", "gan string -> json bermasalah:" + museumJSON);
 		}
 		return m;
 	}

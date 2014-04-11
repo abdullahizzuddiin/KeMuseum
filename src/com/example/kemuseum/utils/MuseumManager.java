@@ -13,6 +13,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.example.kemuseum.model.Barang;
@@ -33,6 +34,7 @@ public class MuseumManager {
 	private AssetManager assetManager;
 	private Context applicationContext;
 	
+	private String FOLDER_IMAGE = "img";
 	private int BUFFER_SIZE = 2048;
 	private boolean DEBUG_MODE = true;
 	
@@ -79,6 +81,29 @@ public class MuseumManager {
 				Log.d("MuseumManager", "gan " + fileName + " bermasalah!");
 			} catch (IOException e){
 				Log.d("MuseumManager", "gan " + fileName + " gak ditemukan dari asset!");
+			}
+			
+			try{
+				File folder = applicationContext.getDir(FOLDER_IMAGE, Context.MODE_PRIVATE);
+				File baru = new File(folder.getAbsoluteFile(), "dummy_gambar.jpg");
+				FileOutputStream fos = new FileOutputStream(baru.getAbsolutePath());
+
+				InputStream is = assetManager.open("dummy_gambar.jpg");
+				ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+				
+				int nRead;
+				byte[] data= new byte[2048];
+				while ((nRead = is.read(data, 0, data.length)) != -1){
+					buffer.write(data, 0, nRead);
+				}
+				buffer.flush();
+				
+				fos.write(buffer.toByteArray());
+				fos.close();
+				Log.d("asd", "gan dummy gambar berhasil kesimpan di " + baru.getAbsolutePath());
+				
+			}catch(Exception e){
+				Log.d("asd", "gan dummy gambar error " + e.toString());
 			}
 		}
 		
@@ -235,5 +260,19 @@ public class MuseumManager {
 		}
 		
 		return daftar;
+	}
+
+	public Drawable getDrawableImage(String namaBerkasGambar) {
+		Drawable ret = null;
+		
+		try{
+			File f= new File(applicationContext.getFilesDir().getParent().concat("/app_" + FOLDER_IMAGE + "/" + namaBerkasGambar));
+			InputStream ims = new BufferedInputStream(new FileInputStream(f));
+			
+			ret = Drawable.createFromStream(ims, null);
+		}catch (Exception e){
+		}
+		
+		return ret;
 	}
 }

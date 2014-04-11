@@ -8,8 +8,8 @@ import com.example.kemuseum.utils.MuseumManager;
 public class ControllerRuangan {
 	private MuseumManager museumManager;
 	
-	public ControllerRuangan(MuseumManager museumManager){
-		this.museumManager = museumManager;
+	public ControllerRuangan(){
+		museumManager = MuseumManager.getMuseumManager();
 	}
 	
 	public List<Barang> getDaftarBarang(int idMuseum, int idRuangan){
