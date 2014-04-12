@@ -44,6 +44,7 @@ public class ViewRuangan extends Activity {
 			
 			expandableAdapter = new ExpandableListAdapter(this, daftarBarang);
 			expandableListView.setAdapter(expandableAdapter);
+			
 		}
 	}
 	
