@@ -203,6 +203,7 @@ public class MuseumManager {
 		
 		for (Museum m : daftarMuseum){
 			if (m.getId() == idMuseum){
+				Log.d("HiJud", "tests ada");
 				daftar = m.getDaftarPertanyaan(idRuangan);
 			}
 		}

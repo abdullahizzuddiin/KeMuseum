@@ -5,11 +5,21 @@ import java.util.List;
 import com.example.kemuseum.R;
 import com.example.kemuseum.controller.ControllerPertanyaan;
 import com.example.kemuseum.controller.ControllerPilihMuseum;
+import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Pertanyaan;
+import com.example.kemuseum.utils.ArrayAdapterDaftarPertanyaan;
+import com.example.kemuseum.utils.ArrayAdapterPilihMuseum;
+import com.example.kemuseum.utils.ArrayAdapterPilihRuangan;
 
+import android.R.array;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ViewPertanyaan extends Activity {
@@ -18,11 +28,13 @@ public class ViewPertanyaan extends Activity {
 	private int idMuseum;
 	private int idRuangan;
 	
+	private ArrayAdapterDaftarPertanyaan arrayAdapter = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_pertanyaan);
 		inisiasi();
+		isiData();
 	}
 
 	@Override
@@ -33,12 +45,30 @@ public class ViewPertanyaan extends Activity {
 	}
 	
 	public void inisiasi() {
+		controller = new ControllerPertanyaan();
 		listPertanyaan = (ListView) findViewById(R.id.list_viewPertanyaan);
 		idMuseum = this.getIntent().getIntExtra("idMuseum", -1);
 		idMuseum = this.getIntent().getIntExtra("idRuangan", -1);
 	}
 	
 	public void isiData() {
+		Log.d("HaiJudi", "test");
 		List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
+		Log.d("HaiJudi", "test"+daftarPertanyaan.size());
+		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
+		listPertanyaan.setAdapter(arrayAdapter);
+		
+		
+		
+		
+//		listPertanyaan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, final View view,
+//					int position, long id) {
+//				final Museum item = (Museum) parent.getItemAtPosition(position);
+//				
+//			}
+//		});
+			
 	}
 }
