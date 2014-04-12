@@ -74,7 +74,7 @@ public class JSONParser {
 		try{
 			m = toMuseum(new JSONObject(museumJSON));
 		}catch (JSONException e){
-			Log.d("JSONParser", "gan string -> json bermasalah:" + museumJSON);
+			Log.d("JSONParser", "gan string -> json bermasalah");
 		}
 		return m;
 	}
@@ -151,7 +151,7 @@ public class JSONParser {
 		boolean statusTerkunci = obj.getBoolean(RUANGAN_STATUS_TERKUNCI);
 		int banyakPercobaanBukaKunci = obj.getInt(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI);
 		int prioritas = obj.getInt(RUANGAN_PRIORITAS);
-
+		
 		List<Barang> daftarBarang = new ArrayList<Barang>();
 		JSONArray daftarBarangJSON = new JSONArray(obj.get(RUANGAN_DAFTAR_BARANG).toString());
 		for (int i = 0; i < daftarBarangJSON.length(); i++){
@@ -182,6 +182,8 @@ public class JSONParser {
 		String deskripsi = obj.getString(BARANG_DESKRIPSI);
 		String kategori = obj.getString(BARANG_KATEGORI);
 		
+		Log.d("asd", "gan barang " + id + " " + nama + " : " + namaBerkasGambar);
+		
 		Barang b = new Barang(idMuseum, idRuangan, id, namaBerkasGambar, nama, deskripsi, kategori);
 		
 		return b;
@@ -193,6 +195,8 @@ public class JSONParser {
 		int id = obj.getInt(PERTANYAAN_ID);
 		String soal = obj.getString(PERTANYAAN_SOAL);
 		String jawaban = obj.getString(PERTANYAAN_JAWABAN);
+		
+		Log.d("asd", "gan pertanyaan " + id + " " + soal);
 		
 		Pertanyaan pp = new Pertanyaan(idMuseum, idRuangan, id, soal, jawaban);
 		

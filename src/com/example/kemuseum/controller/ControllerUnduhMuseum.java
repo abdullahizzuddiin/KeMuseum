@@ -81,8 +81,8 @@ public class ControllerUnduhMuseum {
 
 	public Museum unduhMuseum(MetaMuseum meta){
 		try{
-			String json = this.bacaBerkas(meta.getId() + ".json");
-			unduhDanEkstrakBerkas(meta.getId(), meta.getId() + ".zip");
+			String json = this.bacaBerkas(meta.getId() + ".txt");
+			unduhDanEkstrakBerkas(meta.getId(), "pahe.zip");
 
 			Museum m = JSONParser.toMuseum(json);
 			museumManager.tambahMuseum(m);
@@ -109,13 +109,16 @@ public class ControllerUnduhMuseum {
 		InputStream is = urlConnection.getInputStream();
 
 		byte[] buffer = new byte[BUFFER_SIZE];
-
-		while (is.read(buffer) > 0) {
-			bos.write(buffer);
+		
+		int nRead;		
+		while ((nRead = is.read(buffer, 0, buffer.length)) != -1) {
+			bos.write(buffer, 0, nRead);
+			bos.flush();
 		}
 		bos.close();
 
-		return new String(bos.toByteArray());
+		String ret = new String(bos.toByteArray());
+		return ret;
 	}
 
 	public void unduhDanEkstrakBerkas(int idMuseum, String namaBerkas) throws Exception {

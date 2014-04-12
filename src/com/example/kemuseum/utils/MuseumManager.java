@@ -34,7 +34,7 @@ public class MuseumManager {
 	
 	private String FOLDER_GAMBAR = "img";
 	private int BUFFER_SIZE = 2048;
-	private boolean DEBUG_MODE = true;
+	private boolean DEBUG_MODE = false;
 	
 	public static void createMuseumManager(AssetManager assetManager, Context applicationContext){
 		if (instance == null){
