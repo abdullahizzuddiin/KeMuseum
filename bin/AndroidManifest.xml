@@ -52,37 +52,43 @@
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewMuseumTerkunci"
-            android:label="@string/title_activity_view_museum_terkunci" >
+            android:label="@string/title_activity_view_museum_terkunci" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewMuseumTerbuka"
-            android:label="@string/title_activity_view_museum_terbuka" >
+            android:label="@string/title_activity_view_museum_terbuka"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewPertanyaan"
-            android:label="@string/title_activity_view_pertanyaan" >
+            android:label="@string/title_activity_view_pertanyaan" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewRuangan"
-            android:label="@string/title_activity_view_ruangan" >
+            android:label="@string/title_activity_view_ruangan" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewUnduhMuseum"
-            android:label="@string/title_activity_view_unduh_museum" >
+            android:label="@string/title_activity_view_unduh_museum" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
             android:name="com.example.kemuseum.ViewDaftarKeinginan"
-            android:label="@string/title_activity_view_daftar_keinginan" >
+            android:label="@string/title_activity_view_daftar_keinginan" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
         <activity
             android:configChanges="orientation"

@@ -54,10 +54,11 @@ public class MuseumManager {
 		this.applicationContext = applicationContext;
 		dataDir = applicationContext.getFilesDir().getAbsolutePath();
 		
+		Log.d("asd", "gan masuk");
 		// sementara begini dulu
 		if (DEBUG_MODE){
 			// simpan file museum dummy.json dari folder assets ke internal memory (dataDir)
-			String fileName = "dummy.json";
+			String fileName = "blabla.json";
 			try {
 				File dummyJSON = new File(dataDir, fileName);
 				FileOutputStream fos = new FileOutputStream(dummyJSON.getAbsolutePath());
@@ -74,7 +75,7 @@ public class MuseumManager {
 				is.close();
 				fos.write(buffer.toByteArray());
 				fos.close();
-				
+				Log.d("MuseumManager", "gan " + fileName + " sukses!");
 			} catch (FileNotFoundException e) {
 				Log.d("MuseumManager", "gan " + fileName + " bermasalah!");
 			} catch (IOException e){
