@@ -87,7 +87,6 @@ public class ControllerUnduhMuseum {
 			Museum m = JSONParser.toMuseum(json);
 			museumManager.tambahMuseum(m);
 			
-			Log.d("asd", "gan nih " + json);
 		}catch (Exception e){
 			Log.d("asd", "gan error pas mau unduh!");
 		}
@@ -142,8 +141,6 @@ public class ControllerUnduhMuseum {
 		while ((ze = zis.getNextEntry()) != null) {
 			namaBerkas = ze.getName();
 
-			// Need to create directories if not exists, or
-			// it will generate an Exception...
 			if (ze.isDirectory()) {
 				File fmd = new File(museumManager.getFolderGambar(idMuseum).getAbsoluteFile(), namaBerkas);
 				fmd.mkdirs();

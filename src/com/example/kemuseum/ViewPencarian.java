@@ -1,26 +1,33 @@
 package com.example.kemuseum;
 
-import com.example.kemuseum.R;
+import java.util.ArrayList;
+import java.util.List;
 
-import android.R.layout;
-import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
-import android.text.Layout;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ExpandableListView;
+import android.widget.Spinner;
+
+import com.example.kemuseum.controller.ControllerPencarian;
+import com.example.kemuseum.model.Barang;
+import com.example.kemuseum.utils.ExpandableListAdapterPencarian;
 
 public class ViewPencarian extends Activity {
+	private Spinner pilihMuseum;
+	private EditText fieldKataKunci;
+	private ControllerPencarian controller;
+	private ExpandableListAdapterPencarian expandableAdapter;
+	private ExpandableListView listView;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_pencarian);
 		inisiasi();
-		setClickListener();
 	}
 
 	@Override
@@ -30,11 +37,39 @@ public class ViewPencarian extends Activity {
 		return true;
 	}
 	
-	public void inisiasi()
+	private void inisiasi()
 	{
+		listView = (ExpandableListView) findViewById(R.id.list_hasil_pencarian);
+		pilihMuseum = (Spinner) findViewById(R.id.spinner_museum);
+		fieldKataKunci = (EditText) findViewById(R.id.text_kataKunci);
+		controller = new ControllerPencarian();
+		
+		isiDataSpinner();
 	}
 	
-    public void setClickListener()
-    {
+	private void isiDataSpinner(){
+		List<String> list = new ArrayList<String>();
+		list.add("Semua museum");
+		list.addAll(controller.getDaftarNamaMuseum());
+	
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+			android.R.layout.simple_spinner_item, list);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		pilihMuseum.setAdapter(dataAdapter);
+	}
+	
+    public void onClick(View view){
+    	switch(view.getId()){
+    	case R.id.button_cari:
+    		String kataKunci = fieldKataKunci.getEditableText().toString();
+    		String namaMuseum = String.valueOf(pilihMuseum.getSelectedItem());
+
+    		List<Barang> hasilPencarian = controller.getHasilPencarian(kataKunci, namaMuseum);
+    		
+			expandableAdapter = new ExpandableListAdapterPencarian(this, hasilPencarian);
+			listView.setAdapter(expandableAdapter);
+	
+    		break;
+    	}
     }
 }

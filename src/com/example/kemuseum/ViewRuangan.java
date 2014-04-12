@@ -13,10 +13,10 @@ import android.widget.ExpandableListView;
 import com.example.kemuseum.controller.ControllerRuangan;
 import com.example.kemuseum.model.Barang;
 import com.example.kemuseum.model.Ruangan;
-import com.example.kemuseum.utils.ExpandableListAdapter;
+import com.example.kemuseum.utils.ExpandableListAdapterBarang;
 
 public class ViewRuangan extends Activity {
-	ExpandableListAdapter expandableAdapter;
+	ExpandableListAdapterBarang expandableAdapter;
 	ExpandableListView expandableListView;
 	ControllerRuangan controller;
 	
@@ -42,7 +42,7 @@ public class ViewRuangan extends Activity {
 		if ((idMuseum != -1) && (idRuangan != -1)){
 			List<Barang> daftarBarang = controller.getDaftarBarang(idMuseum, idRuangan);
 			
-			expandableAdapter = new ExpandableListAdapter(this, daftarBarang);
+			expandableAdapter = new ExpandableListAdapterBarang(this, daftarBarang);
 			expandableListView.setAdapter(expandableAdapter);
 			
 		}

@@ -1,34 +1,39 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlViewPencarian"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/rlViewPencarian">
+    android:orientation="vertical" >
 
-    <LinearLayout 
+    <LinearLayout
+        android:id="@+id/llPencarian1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:id="@+id/llPencarian1">
-        <Spinner 
-			android:id="@+id/spinner_museum" 
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content" 
-			android:drawSelectorOnTop="true" />
-        
+        android:orientation="vertical" >
+
+        <Spinner
+            android:id="@+id/spinner_museum"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
         <EditText
             android:id="@+id/text_kataKunci"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Masukkan Kata Kunci" />
-        
-        <Button 
-            android:id="@+id/button_kataKunci"
+
+        <Button
+            android:id="@+id/button_cari"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cari"/>
+            android:onClick="onClick"
+            android:text="cari" />
+
+        <ExpandableListView
+            android:id="@+id/list_hasil_pencarian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
-    
 
 </LinearLayout>

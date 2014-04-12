@@ -181,9 +181,7 @@ public class JSONParser {
 		String nama = obj.getString(BARANG_NAMA);
 		String deskripsi = obj.getString(BARANG_DESKRIPSI);
 		String kategori = obj.getString(BARANG_KATEGORI);
-		
-		Log.d("asd", "gan barang " + id + " " + nama + " : " + namaBerkasGambar);
-		
+				
 		Barang b = new Barang(idMuseum, idRuangan, id, namaBerkasGambar, nama, deskripsi, kategori);
 		
 		return b;
@@ -195,8 +193,6 @@ public class JSONParser {
 		int id = obj.getInt(PERTANYAAN_ID);
 		String soal = obj.getString(PERTANYAAN_SOAL);
 		String jawaban = obj.getString(PERTANYAAN_JAWABAN);
-		
-		Log.d("asd", "gan pertanyaan " + id + " " + soal);
 		
 		Pertanyaan pp = new Pertanyaan(idMuseum, idRuangan, id, soal, jawaban);
 		
