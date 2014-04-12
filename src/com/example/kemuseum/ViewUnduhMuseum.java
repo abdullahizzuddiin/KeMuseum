@@ -4,21 +4,27 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kemuseum.controller.ControllerUnduhMuseum;
 import com.example.kemuseum.model.MetaMuseum;
-import com.example.kemuseum.utils.ArrayAdapterPilihMuseum;
+import com.example.kemuseum.model.Museum;
+import com.example.kemuseum.utils.ArrayAdapterUnduhMuseum;
 
 public class ViewUnduhMuseum extends Activity {
 	private ProgressDialog progress;
 	private List<MetaMuseum> daftarMuseumServer;
 	private ControllerUnduhMuseum controller;
 	private ListView listViewServer;
-//	private ArrayAdapterUnduhMuseum;
+	private ArrayAdapterUnduhMuseum arrayAdapter;
+	private boolean selesaiUnduh;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +45,46 @@ public class ViewUnduhMuseum extends Activity {
 		progress.setTitle("Mengambil data dari server");
 		progress.setMessage("Mohon tunggu...");
 		progress.show();
-
+		
+		selesaiUnduh = false;
 		new Thread(new Runnable() {
 			public void run() {
 				daftarMuseumServer = controller.getDaftarSemuaMuseum();
-				
-//				arrayAdapter = new ArrayAdapterPilihMuseum(this, daftarMuseumServer);
-//				listView.setAdapter(arrayAdapter);
-				
+				selesaiUnduh = true;
 				progress.dismiss();
 			}
 		}).start();
+		
+		// busy waiting!
+		while (!selesaiUnduh){};
+		
+		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
+		listViewServer.setAdapter(arrayAdapter);
+		
+		// bila ditap
+		listViewServer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, final View view,
+					int position, long id) {
+				final MetaMuseum item = (MetaMuseum) parent.getItemAtPosition(position);
+				
+				// false -> belum ada
+				if (!item.getSudahDilimiki()){
+					Log.d("asd", "gan mau download " + item.getNama());
+					progress.setTitle("Mengambil data dari server");
+					progress.setMessage("Mohon tunggu...");
+					progress.show();
+					
+					selesaiUnduh = false;
+					new Thread(new Runnable() {
+						public void run() {
+							controller.unduhMuseum(item);
+							progress.dismiss();
+						}
+					}).start();
+				}
+			}
+		});
 	}
 	
 	// sekedar buat testing

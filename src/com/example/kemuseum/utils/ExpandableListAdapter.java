@@ -51,7 +51,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.barang_gambar);
         TextView textView = (TextView) convertView.findViewById(R.id.barang_info);
         
-        Drawable gambar = mm.getDrawableImage(barang.getNamaBerkasGambar());
+        Drawable gambar = mm.getDrawableImage(barang.getIdMuseum(), barang.getNamaBerkasGambar());
         if (gambar != null){
         	imageView.setImageDrawable(gambar);
         }else{
