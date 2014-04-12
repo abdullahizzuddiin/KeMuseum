@@ -38,8 +38,8 @@ public class Koordinat {
 		float atas = Math.min(titikSudut1.getLatitude() , titikSudut2.getLatitude());
 		float bawah = Math.max(titikSudut1.getLatitude() , titikSudut2.getLatitude());
 		
-		return (kiri < latitude) && (latitude < kanan)
-			 && (atas < longitude) && (longitude < bawah);
+		return (atas < latitude) && (latitude < bawah)
+			 && (kiri < longitude) && (longitude < kanan);
 	}
 	
 	public String toString(){

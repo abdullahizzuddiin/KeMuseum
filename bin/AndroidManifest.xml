@@ -69,6 +69,14 @@
             android:label="@string/title_activity_view_pertanyaan" 
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
+        
+        <activity
+            android:configChanges="orientation"
+    		android:screenOrientation="portrait"
+            android:name="com.example.kemuseum.ViewJawaban"
+            android:label="@string/title_activity_view_jawaban" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
         <activity
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
