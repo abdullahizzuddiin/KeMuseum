@@ -36,7 +36,6 @@ public class ViewPilihMuseum extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_pilih_museum);
-		Log.d("asd", "gan masuk");
 
 		inisiasi();
 		isiData();
