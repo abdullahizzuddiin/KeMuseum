@@ -16,7 +16,7 @@ public class ControllerMuseum {
 	
 	private Koordinat getKoordinatPengguna(){
 		// TODO
-		return null;
+		return new Koordinat(0.2f, 0.2f);
 	}
 	
 	public boolean bukaKunciMuseum(int idMuseum){

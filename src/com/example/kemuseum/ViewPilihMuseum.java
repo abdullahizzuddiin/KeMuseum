@@ -23,15 +23,15 @@ import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.ArrayAdapterPilihMuseum;
 
 public class ViewPilihMuseum extends Activity {		
-	ArrayAdapterPilihMuseum arrayAdapter = null;
+	private ArrayAdapterPilihMuseum arrayAdapter = null;
 	
-	LinearLayout llMusFas, llMusFat, llPilMus;
-	DialogInterface.OnClickListener ViewMuseumTerkunci = null;
-	DialogInterface.OnClickListener test = null;
-	ControllerPilihMuseum controller;
-	ListView listView;
+	private LinearLayout llMusFas, llMusFat, llPilMus;
+	private DialogInterface.OnClickListener ViewMuseumTerkunci = null;
+	private DialogInterface.OnClickListener test = null;
+	private ControllerPilihMuseum controller;
+	private ListView listView;
 	
-	View woww =null;
+	private View woww =null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
