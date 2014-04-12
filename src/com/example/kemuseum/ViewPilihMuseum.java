@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -93,8 +92,19 @@ public class ViewPilihMuseum extends Activity {
 		});
 	}
 	
+	public void onClick(View view){
+		switch (view.getId()){
+		case (R.id.button_download):
+			Intent i = new Intent (ViewPilihMuseum.this, ViewUnduhMuseum.class);
+			i.putExtra("Unduh", "a");
+			final int a = 1;
+			startActivityForResult(i, a);
+		}
+	}
+	
     public void setClickListener()
     {
+    	/*
     	test = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -140,7 +150,7 @@ public class ViewPilihMuseum extends Activity {
 				startActivityForResult(i, a);
 			}
 		};
-    	
+    	*/
     }
    
     

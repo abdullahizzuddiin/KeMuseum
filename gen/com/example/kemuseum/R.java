@@ -46,14 +46,16 @@ public final class R {
         public static final int ButtCapaian=0x7f080003;
         public static final int ButtPengembang=0x7f080004;
         public static final int ButtPilMus=0x7f080002;
-        public static final int action_settings=0x7f080015;
-        public static final int barang_gambar=0x7f080013;
-        public static final int barang_info=0x7f080014;
-        public static final int barang_nama=0x7f080012;
+        public static final int action_settings=0x7f080017;
+        public static final int barang_gambar=0x7f080015;
+        public static final int barang_info=0x7f080016;
+        public static final int barang_nama=0x7f080014;
+        public static final int button_download=0x7f08000e;
         public static final int button_kataKunci=0x7f08000b;
-        public static final int icon=0x7f080010;
-        public static final int label=0x7f080011;
-        public static final int list_barang=0x7f08000e;
+        public static final int icon=0x7f080012;
+        public static final int label=0x7f080013;
+        public static final int list_barang=0x7f08000f;
+        public static final int list_museum_server=0x7f080010;
         public static final int list_view=0x7f08000d;
         public static final int list_view_ruangan=0x7f080006;
         public static final int llBody=0x7f080001;
@@ -63,7 +65,7 @@ public final class R {
         public static final int magni=0x7f080000;
         public static final int rlViewPencarian=0x7f080007;
         public static final int spinner_museum=0x7f080009;
-        public static final int teks=0x7f08000f;
+        public static final int teks=0x7f080011;
         public static final int text_kataKunci=0x7f08000a;
     }
     public static final class layout {
@@ -85,6 +87,7 @@ public final class R {
         public static final int row_layout_pilih_ruangan=0x7f03000f;
         public static final int row_layout_ruangan=0x7f030010;
         public static final int row_layout_ruangan_expanded=0x7f030011;
+        public static final int row_layout_unduh_museum=0x7f030012;
     }
     public static final class menu {
         public static final int dummy=0x7f070000;

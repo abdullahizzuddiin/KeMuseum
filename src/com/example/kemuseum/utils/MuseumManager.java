@@ -23,8 +23,6 @@ import com.example.kemuseum.model.Pertanyaan;
 
 /**
  * singleton!
- * 
- * @author gyosh
  */
 public class MuseumManager {
 	private static MuseumManager instance;
@@ -274,5 +272,22 @@ public class MuseumManager {
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * Cek apakah suatu museum sudah ada di dalam database lokal device
+	 * 
+	 * @param idMuseum id museum yang ingin diperiksa
+	 * @return true bila sudah ada, false bila belum ada
+	 */
+	public boolean cekMuseumSudahDimiliki(int idMuseum) {
+		boolean ada = false;
+		for (Museum m : daftarMuseum){
+			if (m.getId() == idMuseum){
+				ada = true;
+				break;
+			}
+		}
+		return ada;
 	}
 }

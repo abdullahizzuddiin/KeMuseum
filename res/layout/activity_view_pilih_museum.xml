@@ -50,9 +50,16 @@
 
     <ListView
         android:id="@+id/list_view"
-        android:layout_margin="5pt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="200pt"
+        android:layout_margin="5pt" >
+
     </ListView>
- 
+
+    <Button
+        android:id="@+id/button_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Download" />
 </LinearLayout>

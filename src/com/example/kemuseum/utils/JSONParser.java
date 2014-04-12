@@ -12,6 +12,7 @@ import android.util.Log;
 import com.example.kemuseum.model.Barang;
 import com.example.kemuseum.model.Keinginan;
 import com.example.kemuseum.model.Koordinat;
+import com.example.kemuseum.model.MetaMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.model.Ruangan;
@@ -56,6 +57,11 @@ public class JSONParser {
 	public static final String KEINGINAN_NAMA = "nama";
 	public static final String KEINGINAN_EMAIL = "email";
 	public static final String KEINGINAN_DESKRIPSI = "deskripsi";
+	
+	public static final String META_MUSEUM_ID = "_id";
+	public static final String META_MUSEUM_NAMA = "nama";
+	public static final String META_MUSEUM_DESKRIPSI = "deskripsi";
+	public static final String META_MUSEUM_SUDAH_DIMILIKI = "sudah_dimiliki";
 	
 	/**
 	 * Diberikan string JSON, return objek Museum dari JSON itu
@@ -203,6 +209,21 @@ public class JSONParser {
 		Keinginan k = new Keinginan(id, tanggal, nama, email, deskripsi);
 		
 		return k;
+	}
+	
+	public static MetaMuseum toMetaMuseum(JSONObject obj) throws JSONException{
+		int id = obj.getInt(META_MUSEUM_ID);
+		String nama = obj.getString(META_MUSEUM_NAMA);
+		String deskripsi = obj.getString(META_MUSEUM_DESKRIPSI);
+	
+		boolean status = false;
+		if (obj.has(META_MUSEUM_SUDAH_DIMILIKI)){
+			obj.getBoolean(META_MUSEUM_SUDAH_DIMILIKI);
+		}
+		
+		MetaMuseum mem = new MetaMuseum(id, nama, deskripsi, status);
+		
+		return mem;
 	}
 	
 	/**

@@ -85,10 +85,10 @@ public class ViewMenuUtama extends Activity {
     public void ButtPilMus_onClick(View view) {
     	switch (view.getId()) {
 		case R.id.ButtPilMus:
-				Intent i = new Intent (ViewMenuUtama.this, ViewPilihMuseum.class);
-				i.putExtra("Pilih Museum", "a");
-				final int a = 1;
-				startActivityForResult(i, a);
+			Intent i = new Intent (ViewMenuUtama.this, ViewPilihMuseum.class);
+			i.putExtra("Pilih Museum", "a");
+			final int a = 1;
+			startActivityForResult(i, a);
 			break;
     	}
     }
