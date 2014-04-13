@@ -53,7 +53,13 @@ public class ControllerMuseum {
 		Koordinat ret = null;
 		
 		// busy waiting
-		while (lokasiTerakhir == null){}
+		int cnt = 0;
+		while (lokasiTerakhir == null){
+			cnt++;
+			if (cnt > 200000000){
+				return null;
+			}
+		}
 		
 		ret = new Koordinat((float) lokasiTerakhir.getLatitude(),
 				(float) lokasiTerakhir.getLongitude());
@@ -66,7 +72,6 @@ public class ControllerMuseum {
 	}
 
 	public List<Ruangan> getDaftarRuangan(int idMuseum) {
-		getKoordinatPengguna();
 		Museum m = museumManager.getMuseum(idMuseum);
 		return m.getDaftarRuangan();
 	}

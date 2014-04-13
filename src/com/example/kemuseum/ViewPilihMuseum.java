@@ -71,8 +71,9 @@ public class ViewPilihMuseum extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
+
+				try{
 				final Museum item = (Museum) parent.getItemAtPosition(position);
-				
 				// true -> terkunci
 				if (item.getStatusTerkunci()){
 					Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerkunci.class);
@@ -86,6 +87,9 @@ public class ViewPilihMuseum extends Activity {
 					i.putExtra("idMuseum", item.getId());
 					final int a = 1;
 					startActivityForResult(i, a);
+				}
+				}catch (Exception e){
+					Log.d("asd", "gan " + e.toString());
 				}
 			}
 		});

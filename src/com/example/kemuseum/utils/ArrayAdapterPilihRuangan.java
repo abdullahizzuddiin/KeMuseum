@@ -3,6 +3,7 @@ package com.example.kemuseum.utils;
 import java.util.List;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kemuseum.R;
-import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Ruangan;
 
 
@@ -21,6 +21,7 @@ public class ArrayAdapterPilihRuangan extends ArrayAdapter<Ruangan> {
 
 	public ArrayAdapterPilihRuangan(Context context, List<Ruangan> daftarRuangan) {
 		super(context, R.layout.row_layout_pilih_museum, daftarRuangan);
+		Log.d("asd", "gan kebikin ");
 		this.context = context;
 		this.daftarRuangan = daftarRuangan;
 	}
@@ -29,6 +30,7 @@ public class ArrayAdapterPilihRuangan extends ArrayAdapter<Ruangan> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		Log.d("asd", "gan view " + position);
 		View rowView = inflater.inflate(R.layout.row_layout_pilih_museum, parent, false);
 		TextView textView = (TextView) rowView.findViewById(R.id.label);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
@@ -47,6 +49,7 @@ public class ArrayAdapterPilihRuangan extends ArrayAdapter<Ruangan> {
 	
 	@Override
 	public long getItemId(int position) {
+		Log.d("asd", "gan " + position);
 		final Ruangan item = getItem(position);
 		return (long)item.getId();
 	}

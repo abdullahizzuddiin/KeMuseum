@@ -44,7 +44,6 @@ public class ViewMenuUtama extends Activity {
 
 	public void setClickListener() {
 		Magni.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(ViewMenuUtama.this, ViewPencarian.class);

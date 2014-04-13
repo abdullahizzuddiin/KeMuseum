@@ -5,14 +5,12 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 import com.example.kemuseum.controller.ControllerRuangan;
 import com.example.kemuseum.model.Barang;
-import com.example.kemuseum.model.Ruangan;
 import com.example.kemuseum.utils.ExpandableListAdapterBarang;
 
 public class ViewRuangan extends Activity {
@@ -30,6 +28,7 @@ public class ViewRuangan extends Activity {
 	}
 
 	private void inisialisasi(){
+		Log.d("asd", "gan berhasil kabur");
 		expandableListView = (ExpandableListView) findViewById(R.id.list_barang);
 		controller = new ControllerRuangan();
 	}
