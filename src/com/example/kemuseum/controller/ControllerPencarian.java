@@ -11,33 +11,35 @@ import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerPencarian {
 	private MuseumManager museumManager;
-	
-	public ControllerPencarian(){
+
+	public ControllerPencarian() {
 		museumManager = MuseumManager.getMuseumManager();
 	}
-	
-	public List<String> getDaftarNamaMuseum(){
+
+	public List<String> getDaftarNamaMuseumTerbuka() {
 		List<String> ret = new ArrayList<String>();
 		List<Museum> daftarMuseum = museumManager.getDaftarMuseum();
-		
-		for (Museum m : daftarMuseum){
-			ret.add(m.getNama());
+
+		for (Museum m : daftarMuseum) {
+			if (!m.getStatusTerkunci()) {
+				ret.add(m.getNama());
+			}
 		}
-		
+
 		return ret;
 	}
-	
-	public List<Barang> getHasilPencarian(String kataKunci, String namaMuseum){
+
+	public List<Barang> getHasilPencarian(String kataKunci, String namaMuseum) {
 		// -1, artinya untuk semua museum
 		int idMuseum = -1;
 		List<Museum> daftar = museumManager.getDaftarMuseum();
-		for (Museum m : daftar){
-			if (m.getNama().equalsIgnoreCase(namaMuseum)){
+		for (Museum m : daftar) {
+			if (m.getNama().equalsIgnoreCase(namaMuseum)) {
 				idMuseum = m.getId();
 				break;
 			}
 		}
-		
+
 		// perhatikan bahwa tidak masalah bila idMuseum = -1
 		List<Barang> ret = museumManager.getHasilPencarian(kataKunci, idMuseum);
 		return ret;
