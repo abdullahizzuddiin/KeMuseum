@@ -104,10 +104,12 @@ public class MuseumManager {
 				
 				String json = buffer.toString();
 				
-				is.close();
 //				Log.d("MuseumManager", "gan content:" + json);
-				
-				daftarMuseum.add(JSONParser.toMuseum(json));
+
+				// DEBUG
+				Museum m = JSONParser.toMuseum(json);
+				m.setStatusTerkunci(true);
+				daftarMuseum.add(m);
 				
 			} catch (Exception e) {
 				Log.d("MuseumManager", "gan error parsing " + js);
@@ -153,6 +155,22 @@ public class MuseumManager {
 		return daftar;
 	}
 	
+	public void updateDatabase(Museum museum){
+		try {
+			String fileName = "" + museum.getId();
+			File museumJSON = new File(dataDir, fileName);
+			FileOutputStream fos = new FileOutputStream(museumJSON.getAbsolutePath());
+			
+			Log.d("asd", "gan keupdate" + museumJSON.getAbsolutePath() + " " + JSONParser.toJSON(museum).toString());
+			
+			fos.write(JSONParser.toJSON(museum).getBytes());
+			fos.close();
+			
+		} catch (Exception e) {
+			Log.d("MuseumManager", "gan museum " + museum.getId() + " bermasalah pas mau update !");
+		}
+	}
+	
 	public void tambahMuseum(Museum museum){
 		try {
 			String fileName = "" + museum.getId();
@@ -190,8 +208,9 @@ public class MuseumManager {
 		if (target != null){
 			if (target.cekDiDalam(koordinat)){
 				sukses = true;
-				target.setStatusTerkunci(true);
-				// TODO: database??
+				target.setStatusTerkunci(false);
+				Log.d("asd", "gan berhasil buka " + JSONParser.toJSON(target).toString());
+				updateDatabase(target);
 			}
 		}
 		

@@ -47,6 +47,7 @@ public class Museum {
 	}
 	
 	public List<Ruangan> getDaftarRuangan(){
+		Log.d("asd", "gan minta daftar ruangan nih");
 		return daftarRuangan;
 	}
 	

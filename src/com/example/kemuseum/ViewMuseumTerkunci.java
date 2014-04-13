@@ -24,7 +24,7 @@ public class ViewMuseumTerkunci extends Activity {
 	private int idMuseum;
 	private View Tampilan;
 	private DialogInterface.OnClickListener pindahTampilan = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,66 +40,64 @@ public class ViewMuseumTerkunci extends Activity {
 		getMenuInflater().inflate(R.menu.view_museum_terkunci, menu);
 		return true;
 	}
-	
-	public void inisiasi()
-	{
+
+	public void inisiasi() {
 		checkin = (ImageView) findViewById(R.id.checkin);
 		chekinCont = new ControllerMuseum();
-		
+
 	}
-	
-	public void setClickListener()
-	{
-		
+
+	public void setClickListener() {
+
 		pindahTampilan = new DialogInterface.OnClickListener() {
-			
+
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				Intent i = new Intent (ViewMuseumTerkunci.this, ViewMuseumTerbuka.class);
-				i.putExtra("idMuseum", 2);
-				
+				Intent i = new Intent(ViewMuseumTerkunci.this,
+						ViewMuseumTerbuka.class);
+				i.putExtra("idMuseum", idMuseum);
+
 				final int a = 1;
 				startActivityForResult(i, a);
 			}
 		};
-		
+
 		checkin.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				boolean berhasilCheckin = chekinCont.bukaKunciMuseum(idMuseum);
-				if(berhasilCheckin) showDialog(0);
-				else showDialog(1);
+				if (berhasilCheckin)
+					showDialog(0);
+				else
+					showDialog(1);
 			}
 		});
 	}
-	
+
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case 0: {
 			LayoutInflater inflater = LayoutInflater.from(this);
 			Tampilan = inflater.inflate(R.layout.dummy_view, null);
-	    	
-			return new AlertDialog.Builder(this).
-					setPositiveButton("Tutup", pindahTampilan).
-					setMessage("Check-in Berhasil").setView(Tampilan).
-					create();
-			
-			}
-		
-			case 1: {
+
+			return new AlertDialog.Builder(this)
+					.setPositiveButton("Tutup", pindahTampilan)
+					.setMessage("Check-in Berhasil").setView(Tampilan).create();
+
+		}
+
+		case 1: {
 			LayoutInflater inflater = LayoutInflater.from(this);
 			Tampilan = inflater.inflate(R.layout.dummy_view, null);
-	    	
-	    	
-			return new AlertDialog.Builder(this).
-					setPositiveButton("Tutup", null).
-					setMessage("Check-in Gagal").setView(Tampilan).
-					create();
-			
-			}
+
+			return new AlertDialog.Builder(this)
+					.setPositiveButton("Tutup", null)
+					.setMessage("Check-in Gagal").setView(Tampilan).create();
+
+		}
 		}
 		return null;
 	}

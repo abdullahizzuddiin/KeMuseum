@@ -3,28 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" 
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="#96C34C">
+    android:gravity="center_horizontal">
 	
-    <!--  
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:id="@+id/llViewCapaian"
         android:background="#96C34C">
         
+        <ExpandableListView
+	     android:id="@+id/list_pencapaian"
+	     android:layout_height="match_parent"
+	     android:layout_width="match_parent"/>
+        
     </LinearLayout>
--->
- <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Abdullah Izzuddiin Alqassam" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dika Handika" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Joanina Widiani" />
 </LinearLayout>

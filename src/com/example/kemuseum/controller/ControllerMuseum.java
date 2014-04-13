@@ -57,7 +57,9 @@ public class ControllerMuseum {
 		while (lokasiTerakhir == null){
 			cnt++;
 			if (cnt > 200000000){
-				return null;
+				// DEBUG
+				Log.d("asd", "gan digunakan koordinat default");
+				return new Koordinat(1f, 1f);
 			}
 		}
 		
@@ -68,7 +70,9 @@ public class ControllerMuseum {
 
 	public boolean bukaKunciMuseum(int idMuseum) {
 		Koordinat posisi = this.getKoordinatPengguna();
-		return museumManager.bukaKunciMuseum(idMuseum, posisi);
+		boolean hasil = museumManager.bukaKunciMuseum(idMuseum, posisi);
+	
+		return hasil;
 	}
 
 	public List<Ruangan> getDaftarRuangan(int idMuseum) {

@@ -82,7 +82,7 @@ public class ControllerUnduhMuseum {
 	public Museum unduhMuseum(MetaMuseum meta){
 		try{
 			String json = this.bacaBerkas(meta.getId() + ".txt");
-			unduhDanEkstrakBerkas(meta.getId(), "pahe.zip");
+			unduhDanEkstrakBerkas(meta.getId(), meta.getId() + ".zip");
 
 			Museum m = JSONParser.toMuseum(json);
 			museumManager.tambahMuseum(m);
