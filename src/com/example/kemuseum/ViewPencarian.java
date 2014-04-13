@@ -50,7 +50,7 @@ public class ViewPencarian extends Activity {
 	private void isiDataSpinner(){
 		List<String> list = new ArrayList<String>();
 		list.add("Semua museum");
-		list.addAll(controller.getDaftarNamaMuseum());
+		list.addAll(controller.getDaftarNamaMuseumTerbuka());
 	
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 			android.R.layout.simple_spinner_item, list);

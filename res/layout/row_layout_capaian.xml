@@ -13,9 +13,16 @@
             android:id="@+id/capaian_nama_museum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-             />
-
+            android:layout_gravity="left" />
+<!-- 
+        <Button
+            android:id="@+id/capaian_tombol_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:onClick="onClick"
+            android:text="share" />
+-->
     </LinearLayout>
 
 </LinearLayout>
