@@ -149,12 +149,12 @@ public class MuseumManager {
 		List<Barang> daftar = new ArrayList<Barang>();
 
 		for (Museum m : daftarMuseum) {
+			Log.d("Judin", "Judin Hanan"+ (m.getId() == idMuseum)+" "+m.getId()+" "+idMuseum);
 			if (m.getId() == idMuseum) {
 				List<Barang> temp = m.getDaftarBarang(idRuangan);
 				daftar.addAll(temp);
 			}
 		}
-
 		return daftar;
 	}
 
@@ -227,6 +227,7 @@ public class MuseumManager {
 	}
 
 	public List<Pertanyaan> getDaftarPertanyaan(int idMuseum, int idRuangan) {
+<<<<<<< HEAD
 		List<Pertanyaan> daftar = null;
 
 		for (Museum m : daftarMuseum){
@@ -234,6 +235,21 @@ public class MuseumManager {
 				daftar = m.getDaftarPertanyaan(idRuangan);
 			}
 		}
+=======
+//		List<Pertanyaan> daftar = null;
+		List<Pertanyaan> daftar = new ArrayList<Pertanyaan>();
+		Log.d("Judin", "Judin Yoman"+ daftar.size());
+		for (Museum m : daftarMuseum) {
+			Log.d("Judin", "Judin Hanan"+ (m.getId() == idMuseum)+" "+m.getId()+" "+idMuseum);
+			if (m.getId() == idMuseum) {
+				List<Pertanyaan> temp = m.getDaftarPertanyaan(idRuangan);
+//				daftar = m.getDaftarPertanyaan(idRuangan);
+				daftar.addAll(temp);
+				Log.d("Judin", "Judin Hanan"+ daftar.size());
+			}
+		}
+		Log.d("Judin", "Judin aja"+ daftar.size());
+>>>>>>> 665ffad7529ea91459db3463954a2f9774abd25f
 		return daftar;
 	}
 

@@ -52,17 +52,10 @@ public class ViewPertanyaan extends Activity {
 	}
 	
 	public void isiData() {
-		Log.d("HaiJudi", "test");
-
-		try{
-			List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
-			Log.d("HaiJudi", "test"+daftarPertanyaan.size());
-			arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
-			listPertanyaan.setAdapter(arrayAdapter);
-		}catch (Exception e){
-			Log.d("asd", "gan error isi data pertanyaan " + e.toString());
-		}
+		List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
 		
+		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
+		listPertanyaan.setAdapter(arrayAdapter);
 		
 		
 //		listPertanyaan.setOnItemClickListener(new AdapterView.OnItemClickListener() {

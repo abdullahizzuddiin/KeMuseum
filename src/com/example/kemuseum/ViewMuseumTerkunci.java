@@ -82,7 +82,7 @@ public class ViewMuseumTerkunci extends Activity {
 		case 0: {
 			LayoutInflater inflater = LayoutInflater.from(this);
 			Tampilan = inflater.inflate(R.layout.dummy_view, null);
-
+ 
 			return new AlertDialog.Builder(this)
 					.setPositiveButton("Tutup", pindahTampilan)
 					.setMessage("Check-in Berhasil").setView(Tampilan).create();
