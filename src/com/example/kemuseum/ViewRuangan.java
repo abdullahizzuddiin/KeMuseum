@@ -28,7 +28,6 @@ public class ViewRuangan extends Activity {
 	}
 
 	private void inisialisasi(){
-		Log.d("asd", "gan berhasil kabur");
 		expandableListView = (ExpandableListView) findViewById(R.id.list_barang);
 		controller = new ControllerRuangan();
 	}

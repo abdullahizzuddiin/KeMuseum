@@ -46,15 +46,17 @@ public final class R {
         public static final int ButtCapaian=0x7f080003;
         public static final int ButtPengembang=0x7f080004;
         public static final int ButtPilMus=0x7f080002;
-        public static final int action_settings=0x7f08001d;
-        public static final int barang_gambar=0x7f08001b;
-        public static final int barang_info=0x7f08001c;
-        public static final int barang_nama=0x7f08001a;
+        public static final int action_settings=0x7f08001f;
+        public static final int barang_gambar=0x7f08001d;
+        public static final int barang_info=0x7f08001e;
+        public static final int barang_nama=0x7f08001c;
         public static final int button_cari=0x7f08000e;
         public static final int button_download=0x7f080013;
+        public static final int capaian_info=0x7f080018;
+        public static final int capaian_nama_museum=0x7f080017;
         public static final int checkin=0x7f080009;
-        public static final int icon=0x7f080019;
-        public static final int label=0x7f080018;
+        public static final int icon=0x7f08001b;
+        public static final int label=0x7f08001a;
         public static final int list_barang=0x7f080014;
         public static final int list_hasil_pencarian=0x7f08000f;
         public static final int list_museum_server=0x7f080015;
@@ -68,7 +70,7 @@ public final class R {
         public static final int llViewPilMus=0x7f080011;
         public static final int llViewPilRuangan=0x7f080007;
         public static final int magni=0x7f080000;
-        public static final int nomor=0x7f080017;
+        public static final int nomor=0x7f080019;
         public static final int rlViewPencarian=0x7f08000a;
         public static final int spinner_museum=0x7f08000c;
         public static final int teks=0x7f080016;
@@ -90,12 +92,14 @@ public final class R {
         public static final int activity_view_splash_screen=0x7f03000c;
         public static final int activity_view_unduh_museum=0x7f03000d;
         public static final int dummy_view=0x7f03000e;
-        public static final int row_layout_daftar_pertanyaan=0x7f03000f;
-        public static final int row_layout_pilih_museum=0x7f030010;
-        public static final int row_layout_pilih_ruangan=0x7f030011;
-        public static final int row_layout_ruangan=0x7f030012;
-        public static final int row_layout_ruangan_expanded=0x7f030013;
-        public static final int row_layout_unduh_museum=0x7f030014;
+        public static final int row_layout_capaian=0x7f03000f;
+        public static final int row_layout_capaian_expanded=0x7f030010;
+        public static final int row_layout_daftar_pertanyaan=0x7f030011;
+        public static final int row_layout_pilih_museum=0x7f030012;
+        public static final int row_layout_pilih_ruangan=0x7f030013;
+        public static final int row_layout_ruangan=0x7f030014;
+        public static final int row_layout_ruangan_expanded=0x7f030015;
+        public static final int row_layout_unduh_museum=0x7f030016;
     }
     public static final class menu {
         public static final int dummy=0x7f070000;

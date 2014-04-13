@@ -106,9 +106,7 @@ public class MuseumManager {
 				
 //				Log.d("MuseumManager", "gan content:" + json);
 
-				// DEBUG
 				Museum m = JSONParser.toMuseum(json);
-				m.setStatusTerkunci(true);
 				daftarMuseum.add(m);
 				
 			} catch (Exception e) {
