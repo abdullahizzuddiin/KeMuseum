@@ -52,11 +52,11 @@ public class ViewPertanyaan extends Activity {
 	}
 	
 	public void isiData() {
-		Log.d("HaiJudi", "test");
 		List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
-		Log.d("HaiJudi", "test"+daftarPertanyaan.size());
-		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
-		listPertanyaan.setAdapter(arrayAdapter);
+		
+		
+//		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
+//		listPertanyaan.setAdapter(arrayAdapter);
 		
 		
 		

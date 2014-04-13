@@ -149,12 +149,12 @@ public class MuseumManager {
 		List<Barang> daftar = new ArrayList<Barang>();
 
 		for (Museum m : daftarMuseum) {
+			Log.d("Judin", "Judin Hanan"+ (m.getId() == idMuseum)+" "+m.getId()+" "+idMuseum);
 			if (m.getId() == idMuseum) {
 				List<Barang> temp = m.getDaftarBarang(idRuangan);
 				daftar.addAll(temp);
 			}
 		}
-
 		return daftar;
 	}
 
@@ -227,15 +227,19 @@ public class MuseumManager {
 	}
 
 	public List<Pertanyaan> getDaftarPertanyaan(int idMuseum, int idRuangan) {
-		List<Pertanyaan> daftar = null;
-
+//		List<Pertanyaan> daftar = null;
+		List<Pertanyaan> daftar = new ArrayList<Pertanyaan>();
+		Log.d("Judin", "Judin Yoman"+ daftar.size());
 		for (Museum m : daftarMuseum) {
+			Log.d("Judin", "Judin Hanan"+ (m.getId() == idMuseum)+" "+m.getId()+" "+idMuseum);
 			if (m.getId() == idMuseum) {
-				Log.d("HiJud", "tests ada");
-				daftar = m.getDaftarPertanyaan(idRuangan);
+				List<Pertanyaan> temp = m.getDaftarPertanyaan(idRuangan);
+//				daftar = m.getDaftarPertanyaan(idRuangan);
+				daftar.addAll(temp);
+				Log.d("Judin", "Judin Hanan"+ daftar.size());
 			}
 		}
-
+		Log.d("Judin", "Judin aja"+ daftar.size());
 		return daftar;
 	}
 
