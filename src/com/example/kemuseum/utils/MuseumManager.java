@@ -229,13 +229,11 @@ public class MuseumManager {
 	public List<Pertanyaan> getDaftarPertanyaan(int idMuseum, int idRuangan) {
 		List<Pertanyaan> daftar = null;
 
-		for (Museum m : daftarMuseum) {
+		for (Museum m : daftarMuseum){
 			if (m.getId() == idMuseum) {
-				Log.d("HiJud", "tests ada");
 				daftar = m.getDaftarPertanyaan(idRuangan);
 			}
 		}
-
 		return daftar;
 	}
 

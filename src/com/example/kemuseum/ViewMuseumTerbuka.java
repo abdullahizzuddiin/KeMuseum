@@ -58,6 +58,7 @@ public class ViewMuseumTerbuka extends Activity {
 						i.putExtra("Terkunci", "a");
 						i.putExtra("idMuseum", item.getIdMuseum());
 						i.putExtra("idRuangan", item.getId());
+						Log.d("asd", "gan " + item.getId() + " " + item.getIdMuseum());
 						final int a = 1;
 						startActivityForResult(i, a);
 					}else{

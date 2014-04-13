@@ -48,16 +48,20 @@ public class ViewPertanyaan extends Activity {
 		controller = new ControllerPertanyaan();
 		listPertanyaan = (ListView) findViewById(R.id.list_viewPertanyaan);
 		idMuseum = this.getIntent().getIntExtra("idMuseum", -1);
-		idMuseum = this.getIntent().getIntExtra("idRuangan", -1);
+		idRuangan = this.getIntent().getIntExtra("idRuangan", -1);
 	}
 	
 	public void isiData() {
 		Log.d("HaiJudi", "test");
-		List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
-		Log.d("HaiJudi", "test"+daftarPertanyaan.size());
-		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
-		listPertanyaan.setAdapter(arrayAdapter);
-		
+
+		try{
+			List<Pertanyaan> daftarPertanyaan = controller.getDaftarPertanyaan(idMuseum, idRuangan);
+			Log.d("HaiJudi", "test"+daftarPertanyaan.size());
+			arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan);
+			listPertanyaan.setAdapter(arrayAdapter);
+		}catch (Exception e){
+			Log.d("asd", "gan error isi data pertanyaan " + e.toString());
+		}
 		
 		
 		

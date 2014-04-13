@@ -2,6 +2,8 @@ package com.example.kemuseum.controller;
 
 import java.util.List;
 
+import android.util.Log;
+
 import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.utils.MuseumManager;
 

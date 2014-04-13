@@ -21,7 +21,6 @@ public class ArrayAdapterPilihRuangan extends ArrayAdapter<Ruangan> {
 
 	public ArrayAdapterPilihRuangan(Context context, List<Ruangan> daftarRuangan) {
 		super(context, R.layout.row_layout_pilih_museum, daftarRuangan);
-		Log.d("asd", "gan kebikin ");
 		this.context = context;
 		this.daftarRuangan = daftarRuangan;
 	}
@@ -49,7 +48,6 @@ public class ArrayAdapterPilihRuangan extends ArrayAdapter<Ruangan> {
 	
 	@Override
 	public long getItemId(int position) {
-		Log.d("asd", "gan " + position);
 		final Ruangan item = getItem(position);
 		return (long)item.getId();
 	}
