@@ -101,17 +101,30 @@ public class ExpandableListAdapterCapaian extends BaseExpandableListAdapter {
 			@Override
 			public void onClick(View arg0) {
 				try {
-					// %20 -> spasi
-					// %25 -> persen
 					String url = "http://www.twitter.com/intent/tweet?text=Aku sudah "
 							+ capaian.getProgress()
-							+ "persen dalam menjelajahi "
+							+ " persen dalam menjelajahi "
 							+ capaian.getNamaMuseum() + " :)";
-					Intent i = new Intent(Intent.ACTION_VIEW);
-					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					i.setData(Uri.parse(url));
-					MuseumManager.getMuseumManager().getContext()
-							.startActivity(i);
+
+					Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+
+					sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					sharingIntent.setType("text/plain");
+					sharingIntent.putExtra(
+							android.content.Intent.EXTRA_TEXT,
+							"Aku sudah " + capaian.getProgress()
+									+ "persen dalam menjelajahi "
+									+ capaian.getNamaMuseum() + " :)");
+					sharingIntent.putExtra(
+							android.content.Intent.EXTRA_SUBJECT, "judul");
+
+					MuseumManager
+							.getMuseumManager()
+							.getContext()
+							.startActivity(
+									Intent.createChooser(sharingIntent,
+											"Share using").setFlags(
+											Intent.FLAG_ACTIVITY_NEW_TASK));
 				} catch (Exception e) {
 					Log.d("asd", "gan " + e.toString());
 				}
