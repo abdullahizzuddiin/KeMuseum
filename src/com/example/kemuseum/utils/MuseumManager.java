@@ -149,7 +149,6 @@ public class MuseumManager {
 		List<Barang> daftar = new ArrayList<Barang>();
 
 		for (Museum m : daftarMuseum) {
-			Log.d("Judin", "Judin Hanan"+ (m.getId() == idMuseum)+" "+m.getId()+" "+idMuseum);
 			if (m.getId() == idMuseum) {
 				List<Barang> temp = m.getDaftarBarang(idRuangan);
 				daftar.addAll(temp);

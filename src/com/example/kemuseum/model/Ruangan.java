@@ -13,6 +13,7 @@ public class Ruangan {
 	private boolean statusTerkunci;
 	private List<Barang> daftarBarang;
 	private List<Pertanyaan> daftarPertanyaan;
+	private List<Pertanyaan> daftarJawaban;
 	
 	public Ruangan(int idMuseum, int id, String nama, String deskripsi, 
 			        boolean statusTerkunci, int banyakPercobaanBukaKunci, int prioritas,
@@ -64,6 +65,15 @@ public class Ruangan {
 		return daftarPertanyaan;
 	}
 	
+//	public List<Pertanyaan> getDaftarJawaban(){
+//		List<Pertanyaan> daftarJawaban = null;
+//		
+//		for (int i = 0; i < daftarPertanyaan.size(); i++){ 
+//			Pertanyaan p = daftarPertanyaan.get(i);
+//			daftarJawaban.add(p.getJawaban());
+//		}
+//		return daftarJawaban;
+//	}
 	public void setStatusTerkunci(boolean nilai){
 		statusTerkunci = nilai;
 	}

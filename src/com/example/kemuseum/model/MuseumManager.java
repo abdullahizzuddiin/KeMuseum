@@ -177,6 +177,18 @@ public class MuseumManager {
 		return daftar;
 	}
 	
+//	public List<Pertanyaan> getDaftarJawaban(int idMuseum, int idRuangan) {
+//		List<Pertanyaan> daftar = null;
+//		
+//		for (Museum m : daftarMuseum) {
+//			if (m.getId() == idMuseum) {
+//					daftar = m.getDaftarJawaban(idRuangan);
+//				}
+//			
+//		}
+//		return daftar;
+//	}
+	
 	public boolean cekJawaban(int idMuseum, int idRuangan, List<String> jawaban){
 		boolean hasil = false;
 		

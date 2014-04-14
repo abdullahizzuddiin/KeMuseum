@@ -17,18 +17,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
+public class ArrayAdapterDaftarJawaban extends ArrayAdapter<Pertanyaan>{
 	private final Context context;
-	private final List<Pertanyaan> daftarPertanyaan;
+	private final List<Pertanyaan> daftarJawaban;
 	
-	public ArrayAdapterDaftarPertanyaan(Context context, List<Pertanyaan> daftarPertanyaan) {
-		super(context, R.layout.row_layout_daftar_pertanyaan, daftarPertanyaan);
+	public ArrayAdapterDaftarJawaban(Context context, List<Pertanyaan> daftarJawaban) {
+		super(context, R.layout.row_layout_daftar_jawaban, daftarJawaban);
 		// TODO Auto-generated constructor stub
 		this.context = context;
-		this.daftarPertanyaan = daftarPertanyaan;
+		this.daftarJawaban = daftarJawaban;
 	}
 	
 	@Override
@@ -36,16 +37,13 @@ public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		View rowView = inflater.inflate(R.layout.row_layout_daftar_pertanyaan, parent, false);
-		View ViewJawaban = inflater.inflate(R.layout.row_layout_daftar_jawaban, parent, false);
-		TextView tvLabel = (TextView) rowView.findViewById(R.id.label);
+		View rowView = inflater.inflate(R.layout.row_layout_daftar_jawaban, parent, false);
+		TextView radioJawaban = (TextView) rowView.findViewById(R.id.tvJawaban);
 		TextView tvNomor = (TextView) rowView.findViewById(R.id.nomor);
-//		TextView tvJawaban = (TextView) rowView.findViewById(R.id.tvJawaban);
 		
 		tvNomor.setText(position+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
-		tvLabel.setText(daftarPertanyaan.get(position).getSoal());
-		tvJawaban.setText("Jawabannya: "+daftarPertanyaan.get(position).getJawaban());
+		radioJawaban.setText(daftarJawaban.get(position).getJawaban());
 		return rowView;
 	}
 	
