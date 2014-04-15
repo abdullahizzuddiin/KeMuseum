@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal" >
+    <TextView
+        android:id="@+id/capaian_nama_museum"
+        style="@style/GroupFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="tes" />
 
-        <TextView
-            android:id="@+id/capaian_nama_museum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left" 
-            style="@style/GroupFont"
-            />
+    <Button
+        android:id="@+id/capaian_tombol_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:text="share" />
 
-        <Button
-            android:id="@+id/capaian_tombol_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="share" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

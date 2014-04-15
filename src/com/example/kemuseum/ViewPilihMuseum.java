@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,17 +25,18 @@ import com.example.kemuseum.controller.ControllerPilihMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.ArrayAdapterPilihMuseum;
 
-public class ViewPilihMuseum extends Activity {		
+public class ViewPilihMuseum extends Activity {
 	private ArrayAdapterPilihMuseum arrayAdapter = null;
-	
+
 	private LinearLayout llMusFas, llMusFat, llPilMus;
 	private DialogInterface.OnClickListener ViewMuseumTerkunci = null;
 	private DialogInterface.OnClickListener test = null;
 	private ControllerPilihMuseum controller;
 	private ListView listView;
 	ImageView Magni;
-	
-	private View woww =null;
+
+	private View woww = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,68 +53,69 @@ public class ViewPilihMuseum extends Activity {
 		getMenuInflater().inflate(R.menu.view_pencarian, menu);
 		return true;
 	}
-	
-	public void inisiasi()
-	{
+
+	public void inisiasi() {
 		/*
-		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
-		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
- 		*/
+		 * llMusFas = (LinearLayout) findViewById(R.id.llMusFas); llMusFat =
+		 * (LinearLayout) findViewById(R.id.llMusFat);
+		 */
 		Magni = (ImageView) findViewById(R.id.magni);
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
 		listView = (ListView) findViewById(R.id.list_view);
 		controller = new ControllerPilihMuseum();
-		
+
 	}
-	
-	public void isiData(){
+
+	public void isiData() {
 		List<Museum> daftarMuseum = controller.getDaftarMuseum();
-		
+
 		arrayAdapter = new ArrayAdapterPilihMuseum(this, daftarMuseum);
 		listView.setAdapter(arrayAdapter);
-		
+
 		// bila ditap
 		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
 
-				try{
-				final Museum item = (Museum) parent.getItemAtPosition(position);
-				// true -> terkunci
-				if (item.getStatusTerkunci()){
-					Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerkunci.class);
-					i.putExtra("Terkunci", "a");
-					i.putExtra("idMuseum", item.getId());
-					final int a = 1;
-					startActivityForResult(i, a);
-				}else{
-					Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerbuka.class);
-					i.putExtra("Terbuka", "a");
-					i.putExtra("idMuseum", item.getId());
-					final int a = 1;
-					startActivityForResult(i, a);
-				}
-				}catch (Exception e){
+				try {
+					final Museum item = (Museum) parent
+							.getItemAtPosition(position);
+					// true -> terkunci
+					if (item.getStatusTerkunci()) {
+						Intent i = new Intent(ViewPilihMuseum.this,
+								ViewMuseumTerkunci.class);
+						i.putExtra("Terkunci", "a");
+						i.putExtra("idMuseum", item.getId());
+						final int a = 1;
+						startActivityForResult(i, a);
+					} else {
+						Intent i = new Intent(ViewPilihMuseum.this,
+								ViewMuseumTerbuka.class);
+						i.putExtra("Terbuka", "a");
+						i.putExtra("idMuseum", item.getId());
+						final int a = 1;
+						startActivityForResult(i, a);
+					}
+				} catch (Exception e) {
 					Log.d("asd", "gan " + e.toString());
 				}
 			}
 		});
 	}
-	
-	public void onClick(View view){
-		switch (view.getId()){
+
+	public void onClick(View view) {
+		switch (view.getId()) {
 		case (R.id.button_download):
-			Intent i = new Intent (ViewPilihMuseum.this, ViewUnduhMuseum.class);
+			Intent i = new Intent(ViewPilihMuseum.this, ViewUnduhMuseum.class);
 			i.putExtra("Unduh", "a");
 			final int a = 1;
 			startActivityForResult(i, a);
 		}
 	}
-	
-    public void setClickListener()
-    {
-    	Magni.setOnClickListener(new OnClickListener() {
+
+	public void setClickListener() {
+		Magni.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(ViewPilihMuseum.this, ViewPencarian.class);
@@ -123,30 +126,37 @@ public class ViewPilihMuseum extends Activity {
 				// showDialog(0);
 			}
 		});
-    }
-   
-    
-    protected Dialog onCreateDialog(int id) {
+	}
+
+	protected Dialog onCreateDialog(int id) {
 		switch (id) {
 		case 0: {
 			LayoutInflater inflater = LayoutInflater.from(this);
-	    	View inflated = inflater.inflate(R.layout.activity_view_museum_terkunci, null);
-	    	woww = inflated;
-	    	OnTouchListener c = new OnTouchListener() {
-				
+			View inflated = inflater.inflate(
+					R.layout.activity_view_museum_terkunci, null);
+			woww = inflated;
+			OnTouchListener c = new OnTouchListener() {
+
 				@Override
 				public boolean onTouch(View arg0, MotionEvent arg1) {
 					return false;
 				}
 			};
-			return new AlertDialog.Builder(this).
-					setNegativeButton("Tidak",null).
-					setPositiveButton("Checkin", ViewMuseumTerkunci).
-					setView(woww).
-					create();
+			return new AlertDialog.Builder(this)
+					.setNegativeButton("Tidak", null)
+					.setPositiveButton("Checkin", ViewMuseumTerkunci)
+					.setView(woww).create();
 		}
-		
+
 		}
 		return null;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		// update, mungkin ada perubahan
+		arrayAdapter.notifyDataSetChanged();
 	}
 }

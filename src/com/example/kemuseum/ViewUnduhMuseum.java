@@ -25,7 +25,7 @@ public class ViewUnduhMuseum extends Activity {
 	private ListView listViewServer;
 	private ArrayAdapterUnduhMuseum arrayAdapter;
 	private boolean selesaiUnduh;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,18 +34,18 @@ public class ViewUnduhMuseum extends Activity {
 		inisialisasi();
 		isiData();
 	}
-	
-	private void inisialisasi(){
+
+	private void inisialisasi() {
 		controller = new ControllerUnduhMuseum();
 		listViewServer = (ListView) findViewById(R.id.list_museum_server);
 	}
-	
-	private void isiData(){
+
+	private void isiData() {
 		progress = new ProgressDialog(this);
 		progress.setTitle("Mengambil data dari server");
 		progress.setMessage("Mohon tunggu...");
 		progress.show();
-		
+
 		selesaiUnduh = false;
 		new Thread(new Runnable() {
 			public void run() {
@@ -54,41 +54,48 @@ public class ViewUnduhMuseum extends Activity {
 				progress.dismiss();
 			}
 		}).start();
-		
+
 		// busy waiting!
-		while (!selesaiUnduh){};
-		
+		while (!selesaiUnduh) {
+		}
+		;
+
 		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
 		listViewServer.setAdapter(arrayAdapter);
-		
+
 		// bila ditap
-		listViewServer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, final View view,
-					int position, long id) {
-				final MetaMuseum item = (MetaMuseum) parent.getItemAtPosition(position);
-				
-				// false -> belum ada
-				if (!item.getSudahDilimiki()){
-					Log.d("asd", "gan mau download " + item.getNama());
-					progress.setTitle("Mengambil data dari server");
-					progress.setMessage("Mohon tunggu...");
-					progress.show();
-					
-					selesaiUnduh = false;
-					new Thread(new Runnable() {
-						public void run() {
-							controller.unduhMuseum(item);
-							progress.dismiss();
+		listViewServer
+				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent,
+							final View view, int position, long id) {
+						final MetaMuseum item = (MetaMuseum) parent
+								.getItemAtPosition(position);
+
+						// false -> belum ada
+						if (!item.getSudahDilimiki()) {
+							Log.d("asd", "gan mau download " + item.getNama());
+							progress.setTitle("Mengambil data dari server");
+							progress.setMessage("Mohon tunggu...");
+							progress.show();
+
+							selesaiUnduh = false;
+							new Thread(new Runnable() {
+								public void run() {
+									controller.unduhMuseum(item);
+									progress.dismiss();
+									// update, mungkin ada perubahan
+									arrayAdapter.notifyDataSetChanged();
+
+								}
+							}).start();
 						}
-					}).start();
-				}
-			}
-		});
+					}
+				});
 	}
-	
+
 	// sekedar buat testing
-	private void pura2nunggu(){
+	private void pura2nunggu() {
 		int nilai = 0;
 		for (int i = 0; i < 50000; i++) {
 			int j = i;
