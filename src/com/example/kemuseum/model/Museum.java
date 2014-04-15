@@ -115,6 +115,19 @@ public class Museum {
 		return daftar;
 	}
 
+//	public List<Pertanyaan> getDaftarJawaban(int idRuangan) {
+//		List<Pertanyaan> daftar = null;
+//
+//		for (Ruangan r : daftarRuangan) {
+//			if (r.getId() == idRuangan) {
+//				daftar = r.getDaftarJawaban();
+//				break;
+//			}
+//		}
+//
+//		return daftar;
+//	}
+	
 	public boolean cekJawaban(int idRuangan, List<String> jawaban) {
 		boolean hasil = false;
 
