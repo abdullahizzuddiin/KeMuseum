@@ -40,12 +40,15 @@ public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 		View ViewJawaban = inflater.inflate(R.layout.row_layout_daftar_jawaban, parent, false);
 		TextView tvLabel = (TextView) rowView.findViewById(R.id.label);
 		TextView tvNomor = (TextView) rowView.findViewById(R.id.nomor);
-//		TextView tvJawaban = (TextView) rowView.findViewById(R.id.tvJawaban);
+		TextView tvJawaban = (TextView) rowView.findViewById(R.id.jawaban);
 		
-		tvNomor.setText(position+"");
+		tvNomor.setText(position+1+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
 		tvLabel.setText(daftarPertanyaan.get(position).getSoal());
+		
 		tvJawaban.setText("Jawabannya: "+daftarPertanyaan.get(position).getJawaban());
+		
+		
 		return rowView;
 	}
 	
