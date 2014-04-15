@@ -6,6 +6,7 @@
     
  	<TextView
     	android:id="@+id/barang_nama"
+    	style="@style/GroupFont"
        	android:layout_width="fill_parent"
        	android:layout_height="wrap_content"/>
 </LinearLayout>
