@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ExpandableListView;
+import android.widget.ImageView;
 
 import com.example.kemuseum.controller.ControllerRuangan;
 import com.example.kemuseum.model.Barang;
@@ -17,6 +20,7 @@ public class ViewRuangan extends Activity {
 	ExpandableListAdapterBarang expandableAdapter;
 	ExpandableListView expandableListView;
 	ControllerRuangan controller;
+	ImageView Magni;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +29,24 @@ public class ViewRuangan extends Activity {
 	
 		inisialisasi();
 		isiData();
+		setClickListener();
 	}
+	public void setClickListener()
+    {
+    	Magni.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ViewRuangan.this, ViewPencarian.class);
+				i.putExtra("Pencarian", "a");
+				final int a = 1;
+				startActivityForResult(i, a);
 
+				// showDialog(0);
+			}
+		});
+    }
 	private void inisialisasi(){
+		Magni = (ImageView) findViewById(R.id.magni);
 		expandableListView = (ExpandableListView) findViewById(R.id.list_barang);
 		controller = new ControllerRuangan();
 	}
