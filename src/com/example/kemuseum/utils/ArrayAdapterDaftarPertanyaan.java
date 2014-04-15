@@ -44,11 +44,11 @@ public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 		
 		tvNomor.setText(position+1+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
-		tvLabel.setText(daftarPertanyaan.get(position).getSoal());
-		
+		tvLabel.setText(daftarPertanyaan.get(position).getSoal());		
 		tvJawaban.setText("Jawabannya: "+daftarPertanyaan.get(position).getJawaban());
 		
 		
+
 		return rowView;
 	}
 	

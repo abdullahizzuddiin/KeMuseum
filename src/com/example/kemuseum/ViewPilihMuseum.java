@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -30,6 +32,7 @@ public class ViewPilihMuseum extends Activity {
 	private DialogInterface.OnClickListener test = null;
 	private ControllerPilihMuseum controller;
 	private ListView listView;
+	ImageView Magni;
 	
 	private View woww =null;
 	@Override
@@ -39,7 +42,7 @@ public class ViewPilihMuseum extends Activity {
 
 		inisiasi();
 		isiData();
-//		setClickListener();
+		setClickListener();
 	}
 
 	@Override
@@ -55,9 +58,11 @@ public class ViewPilihMuseum extends Activity {
 		llMusFas = (LinearLayout) findViewById(R.id.llMusFas);
 		llMusFat = (LinearLayout) findViewById(R.id.llMusFat);
  		*/
+		Magni = (ImageView) findViewById(R.id.magni);
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
 		listView = (ListView) findViewById(R.id.list_view);
 		controller = new ControllerPilihMuseum();
+		
 	}
 	
 	public void isiData(){
@@ -107,53 +112,17 @@ public class ViewPilihMuseum extends Activity {
 	
     public void setClickListener()
     {
-    	/*
-    	test = new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-//				try {
-//					pb.setVisibility(View.VISIBLE);
-//				} catch (Exception e) {
-//					// TODO: handle exception
-//					Log.d("coba", "test"+e.toString());
-//				}
-			}
-		};
-    	
-    	llMusFas.setOnClickListener(new OnClickListener() {
-			
+    	Magni.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent (ViewPilihMuseum.this, ViewMuseumTerbuka.class);
-				i.putExtra("Terbuka", "a");
+				Intent i = new Intent(ViewPilihMuseum.this, ViewPencarian.class);
+				i.putExtra("Pencarian", "a");
 				final int a = 1;
 				startActivityForResult(i, a);
+
+				// showDialog(0);
 			}
 		});
-    	
-    	llMusFat.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				showDialog(0);
-			}
-		});
-    	
-    	ViewMuseumTerkunci = new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
-				Intent i = new Intent (ViewPilihMuseum.this, ViewUnduhMuseum.class);
-				i.putExtra("Unduh", "a");
-				final int a = 1;
-				startActivityForResult(i, a);
-			}
-		};
-    	*/
     }
    
     

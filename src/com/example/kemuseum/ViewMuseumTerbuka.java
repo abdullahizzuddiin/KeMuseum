@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.kemuseum.controller.ControllerMuseum;
@@ -19,6 +21,7 @@ public class ViewMuseumTerbuka extends Activity {
 	ArrayAdapterPilihRuangan arrayAdapter;
 	ListView listView;
 	ControllerMuseum controller;
+	ImageView Magni;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +29,31 @@ public class ViewMuseumTerbuka extends Activity {
 		setContentView(R.layout.activity_view_museum_terbuka);
 	
 		inisialisasi();
+		setClickListener();
 		isiData();
 	}
+	
+	
 
 	private void inisialisasi(){
 		listView = (ListView) findViewById(R.id.list_view_ruangan);
 		controller = new ControllerMuseum();
+		Magni = (ImageView) findViewById(R.id.magni);
 	}
 	
+	public void setClickListener() {
+		Magni.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(ViewMuseumTerbuka.this, ViewPencarian.class);
+				i.putExtra("Pencarian", "a");
+				final int a = 1;
+				startActivityForResult(i, a);
+
+				// showDialog(0);
+			}
+		});
+	}
 	private void isiData(){
 		Intent i = this.getIntent();
 		int idMuseum = i.getIntExtra("idMuseum", -1);

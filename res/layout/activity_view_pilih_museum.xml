@@ -5,49 +5,19 @@
     android:background="@drawable/museum_bg" 
     android:orientation="vertical"
     android:id="@+id/llViewPilMus">
-	
-    <!-- 
-    <LinearLayout 
-        android:id="@+id/llMusFas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12pt"
-            android:textColor="#96C34C"
-            android:text="Museum Fasilkom"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="9pt"
-            android:textColor="#96C34C"
-            android:text="Status: Terbuka"/>
-    </LinearLayout>
     
- 	<LinearLayout
- 	    android:id="@+id/llMusFat" 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12pt"
-            android:textColor="#96C34C"
-            android:text="Museum Fatahillah"/>
-        <TextView 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="9pt"
-            android:textColor="#96C34C"
-            android:text="Status: Terkunci"/>
-    </LinearLayout>
-	 -->
-
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="right">
+	    
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_search"
+	        android:id="@+id/magni"/>
+	</RelativeLayout>
     <ListView
         android:id="@+id/list_view"
         android:layout_width="wrap_content"

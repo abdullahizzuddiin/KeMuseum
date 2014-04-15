@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,6 +28,7 @@ public class ViewMenuUtama extends Activity {
 		setContentView(R.layout.activity_main);
 		inisiasi();
 		setClickListener();
+
 	}
 
 	public void inisiasi() {
@@ -51,7 +51,7 @@ public class ViewMenuUtama extends Activity {
 				final int a = 1;
 				startActivityForResult(i, a);
 
-				//showDialog(0);
+				// showDialog(0);
 			}
 		});
 	}
@@ -82,13 +82,14 @@ public class ViewMenuUtama extends Activity {
 			dialog.setPositiveButton("Cari",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int id) {
-							Intent i = new Intent(ViewMenuUtama.this, ViewPilihMuseum.class);
+							Intent i = new Intent(ViewMenuUtama.this,
+									ViewPilihMuseum.class);
 							i.putExtra("Pilih Museum", "a");
 							final int a = 1;
 							startActivityForResult(i, a);
 						}
 					});
-			
+
 			return dialog.setView(woww).create();
 		}
 
@@ -105,6 +106,7 @@ public class ViewMenuUtama extends Activity {
 			startActivityForResult(i, a);
 			break;
 		}
+
 	}
 
 	public void ButtCapaian_onClick(View view) {

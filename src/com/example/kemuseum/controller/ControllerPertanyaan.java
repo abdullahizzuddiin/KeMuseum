@@ -1,6 +1,7 @@
 package com.example.kemuseum.controller;
 
 import java.util.List;
+import java.util.Random;
 
 import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.utils.MuseumManager;

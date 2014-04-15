@@ -5,7 +5,20 @@
     android:background="@drawable/museum_bg" 
     android:orientation="vertical"
     android:id="@+id/llViewPilRuangan">
-
+	
+    <RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="right">
+	    
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/ic_search"
+	        android:id="@+id/magni"/>
+	</RelativeLayout>
+	
     <ListView
         android:id="@+id/list_view_ruangan"
         android:layout_margin="5pt"

@@ -2,9 +2,9 @@ package com.example.kemuseum.utils;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,16 +15,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.kemuseum.R;
+import com.example.kemuseum.ViewCapaian;
 import com.example.kemuseum.model.Capaian;
 
 public class ExpandableListAdapterCapaian extends BaseExpandableListAdapter {
 	private Context context;
 	private List<Capaian> daftarCapaian;
+	private ViewCapaian host;
 
 	public ExpandableListAdapterCapaian(Context context,
-			List<Capaian> daftarCapaian) {
+			List<Capaian> daftarCapaian, Activity host) {
 		this.context = context;
 		this.daftarCapaian = daftarCapaian;
+		this.host = (ViewCapaian) host;
 	}
 
 	@Override
@@ -101,30 +104,26 @@ public class ExpandableListAdapterCapaian extends BaseExpandableListAdapter {
 			@Override
 			public void onClick(View arg0) {
 				try {
-					String url = "http://www.twitter.com/intent/tweet?text=Aku sudah "
-							+ capaian.getProgress()
-							+ " persen dalam menjelajahi "
-							+ capaian.getNamaMuseum() + " :)";
-
-					Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-
-					sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					sharingIntent.setType("text/plain");
-					sharingIntent.putExtra(
-							android.content.Intent.EXTRA_TEXT,
-							"Aku sudah " + capaian.getProgress()
-									+ "persen dalam menjelajahi "
-									+ capaian.getNamaMuseum() + " :)");
-					sharingIntent.putExtra(
-							android.content.Intent.EXTRA_SUBJECT, "judul");
-
-					MuseumManager
-							.getMuseumManager()
-							.getContext()
-							.startActivity(
-									Intent.createChooser(sharingIntent,
-											"Share using").setFlags(
-											Intent.FLAG_ACTIVITY_NEW_TASK));
+					Log.d("asd", "gan siap2");
+					Bundle data = new Bundle();
+					data.putString(host.BUNDLE_PRESENTASE, "" + capaian.getProgress());
+					data.putString(host.BUNDLE_NAMA_MUSEUM, capaian.getNamaMuseum());
+					host.share(data);
+					/*
+					 * Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+					 * 
+					 * sharingIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					 * sharingIntent.setType("text/plain");
+					 * sharingIntent.putExtra(
+					 * android.content.Intent.EXTRA_TEXT, "Aku sudah " +
+					 * capaian.getProgress() + " persen dalam menjelajahi " +
+					 * capaian.getNamaMuseum() + " :)"); sharingIntent.putExtra(
+					 * android.content.Intent.EXTRA_SUBJECT, "judul");
+					 * 
+					 * MuseumManager .getMuseumManager() .getContext()
+					 * .startActivity( Intent.createChooser(sharingIntent,
+					 * "Share using").setFlags( Intent.FLAG_ACTIVITY_NEW_TASK));
+					 */
 				} catch (Exception e) {
 					Log.d("asd", "gan " + e.toString());
 				}
