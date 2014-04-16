@@ -79,4 +79,8 @@ public class ControllerMuseum {
 		Museum m = museumManager.getMuseum(idMuseum);
 		return m.getDaftarRuangan();
 	}
+
+	public Museum getMuseum(int idMuseum) {
+		return museumManager.getMuseum(idMuseum);
+	}
 }

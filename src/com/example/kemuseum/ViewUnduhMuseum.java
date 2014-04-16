@@ -62,7 +62,8 @@ public class ViewUnduhMuseum extends Activity {
 
 		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
 		listViewServer.setAdapter(arrayAdapter);
-
+		
+		final ViewUnduhMuseum host = this;
 		// bila ditap
 		listViewServer
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,9 +85,8 @@ public class ViewUnduhMuseum extends Activity {
 								public void run() {
 									controller.unduhMuseum(item);
 									progress.dismiss();
-									// update, mungkin ada perubahan
-									arrayAdapter.notifyDataSetChanged();
 
+//									host.onResume();
 								}
 							}).start();
 						}
@@ -114,4 +114,11 @@ public class ViewUnduhMuseum extends Activity {
 		return true;
 	}
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		// update, mungkin ada perubahan
+		arrayAdapter.notifyDataSetChanged();
+	}
 }

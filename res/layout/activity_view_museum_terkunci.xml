@@ -12,20 +12,22 @@
     </LinearLayout>
     
     <ImageView 
+        android:id="@+id/preview_museum_gambar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/museum_locked_foto_bahari"/>
+        />
     
     <TextView 
+        android:id="@+id/preview_museum_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Museum Bahari"
         android:textSize="10pt"
         android:textColor="#000000"/>
     <TextView 
+        android:id="@+id/preview_museum_deskripsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Museum ini masih terkunci. Silahkan check-in untuk membukanya"
         android:textColor="#000000"/>
      <ImageView 
         android:layout_width="wrap_content"
