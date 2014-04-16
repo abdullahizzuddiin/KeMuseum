@@ -23,14 +23,16 @@ import android.widget.TextView;
 public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 	private final Context context;
 	private final List<Pertanyaan> daftarPertanyaan;
-	private final List<String> daftarJawaban;
+	private final List<Pertanyaan> daftarJawaban;
+	private final List<Integer> dijodohkanDengan;
 	
-	public ArrayAdapterDaftarPertanyaan(Context context, List<Pertanyaan> daftarPertanyaan, List<String> daftarJawaban) {
+	public ArrayAdapterDaftarPertanyaan(Context context, List<Pertanyaan> daftarPertanyaan, List<Pertanyaan> daftarJawaban, List<Integer> dijodohkanDengan) {
 		super(context, R.layout.row_layout_daftar_pertanyaan, daftarPertanyaan);
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.daftarPertanyaan = daftarPertanyaan;
 		this.daftarJawaban = daftarJawaban;
+		this.dijodohkanDengan = dijodohkanDengan;
 	}
 	
 	@Override
@@ -47,7 +49,13 @@ public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 		tvNomor.setText(position+1+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
 		tvLabel.setText(daftarPertanyaan.get(position).getSoal());		
-		tvJawaban.setText("Jawabannya: "+daftarJawaban.get(position));
+
+		String jawaban = "";
+		int posJawaban = dijodohkanDengan.get(position);
+		if (posJawaban != -1){
+			jawaban = daftarJawaban.get(posJawaban).getJawaban();
+		}
+		tvJawaban.setText("Jawabannya: " + jawaban);
 
 		return rowView;
 	}

@@ -35,7 +35,7 @@ public class ViewPertanyaan extends Activity {
 	private ArrayAdapterDaftarPertanyaan arrayAdapter = null;
 	private ArrayAdapterDaftarJawaban arrayAdapterJawaban = null;
 	private List<Integer> terjodohkanDengan;
-	private List<String> jawaban;
+	private List<Integer> dijodohkanDengan;
 	private int nomorSoalSekarang;
 	private final ViewPertanyaan host = this;
 	
@@ -44,6 +44,7 @@ public class ViewPertanyaan extends Activity {
 	
 	private AlertDialog alert;
 	private final int TIDAK_TERJODOHKAN = -1;
+	private final int TIDAK_DIJODOHKAN = -1;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +79,13 @@ public class ViewPertanyaan extends Activity {
 		Collections.shuffle(daftarJawaban);
 		
 		terjodohkanDengan = new ArrayList<Integer>();
-		jawaban = new ArrayList<String>();
+		dijodohkanDengan = new ArrayList<Integer>();
 		for (int i = 0; i < daftarPertanyaan.size(); i++){
 			terjodohkanDengan.add(TIDAK_TERJODOHKAN);
-			jawaban.add("");
+			dijodohkanDengan.add(TIDAK_DIJODOHKAN);
 		}
 		
-		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan, jawaban);
+		arrayAdapter = new ArrayAdapterDaftarPertanyaan(this, daftarPertanyaan, daftarJawaban, dijodohkanDengan);
 		listPertanyaan.setAdapter(arrayAdapter);
 							
 		listPertanyaan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,7 +110,7 @@ public class ViewPertanyaan extends Activity {
     	woww = inflated;
     	
     	listJawaban = (ListView) inflated.findViewById(R.id.list_viewJawaban);
-    	arrayAdapterJawaban = new ArrayAdapterDaftarJawaban(this, daftarJawaban);
+    	arrayAdapterJawaban = new ArrayAdapterDaftarJawaban(this, daftarJawaban, terjodohkanDengan);
 		listJawaban.setAdapter(arrayAdapterJawaban);
     	
     	OnTouchListener c = new OnTouchListener() {
@@ -137,12 +138,17 @@ public class ViewPertanyaan extends Activity {
 		// lepas kemelekatan
 		int id = terjodohkanDengan.get(posJawaban);
 		if (id != TIDAK_TERJODOHKAN){
-			jawaban.set(id, "");
+			dijodohkanDengan.set(id, TIDAK_DIJODOHKAN);
+		}
+		id = dijodohkanDengan.get(nomorSoalSekarang);
+		if (id != TIDAK_DIJODOHKAN){
+			terjodohkanDengan.set(id, TIDAK_TERJODOHKAN);
 		}
 		
-		jawaban.set(nomorSoalSekarang,  daftarJawaban.get(posJawaban).getJawaban());
+		dijodohkanDengan.set(nomorSoalSekarang,  posJawaban);
 		terjodohkanDengan.set(posJawaban, nomorSoalSekarang);
 		
+		arrayAdapterJawaban.notifyDataSetChanged();
 		arrayAdapter.notifyDataSetChanged();
 		
 		Log.d("asd", "gan dijodohkan " + nomorSoalSekarang + " " + daftarJawaban.get(posJawaban).getJawaban());
