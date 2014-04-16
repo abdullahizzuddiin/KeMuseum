@@ -79,16 +79,23 @@ public class ViewUnduhMuseum extends Activity {
 							progress.setTitle("Mengambil data dari server");
 							progress.setMessage("Mohon tunggu...");
 							progress.show();
-
+							
 							selesaiUnduh = false;
-							new Thread(new Runnable() {
-								public void run() {
-									controller.unduhMuseum(item);
+							runOnUiThread(new Runnable(){
+							    public void run(){
+							    	controller.unduhMuseum(item);
 									progress.dismiss();
 
-//									host.onResume();
+									host.onResume();
+							    }
+							});
+/*							
+							new Thread(new Runnable() {
+								public void run() {
+									
 								}
 							}).start();
+						*/
 						}
 					}
 				});
