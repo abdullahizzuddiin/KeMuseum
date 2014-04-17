@@ -20,6 +20,7 @@ import com.example.kemuseum.model.Barang;
 import com.example.kemuseum.model.Koordinat;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Pertanyaan;
+import com.example.kemuseum.model.Ruangan;
 
 /**
  * singleton!
@@ -244,7 +245,14 @@ public class MuseumManager {
 				hasil = m.cekJawaban(idRuangan, jawaban);
 			}
 		}
-
+		
+		if (hasil){
+			Museum m = getMuseum(idMuseum);
+			Ruangan target = m.getRuangan(idRuangan);
+			target.setStatusTerkunci(false);
+			
+			updateDatabase(m);
+		}
 		return hasil;
 	}
 

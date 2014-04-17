@@ -17,15 +17,6 @@ public class ControllerPertanyaan {
 		return museumManager.getDaftarPertanyaan(idMuseum, idRuangan);
 	}
 	
-	//belom bener
-//	public List<Pertanyaan> getDaftarJawaban(int idMuseum, int idRuangan) {
-//		List<Pertanyaan> list = museumManager.getDaftarPertanyaan(idMuseum, idRuangan);
-//		List<String>
-//		for (Pertanyaan p : list) {
-//			
-//		}
-//		return museumManager.getDaftarPertanyaan(idMuseum, idRuangan);
-//	}
 	public boolean cekJawaban(int idMuseum, int idRuangan, List<String> jawaban){
 		return museumManager.cekJawaban(idMuseum, idRuangan, jawaban);
 	}

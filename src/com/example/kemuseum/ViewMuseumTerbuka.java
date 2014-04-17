@@ -100,5 +100,13 @@ public class ViewMuseumTerbuka extends Activity {
 		getMenuInflater().inflate(R.menu.view_museum_terbuka, menu);
 		return true;
 	}
+	
 
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		// mungkin ada perubahan
+		arrayAdapter.notifyDataSetChanged();
+	}
 }
