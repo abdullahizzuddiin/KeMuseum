@@ -13,10 +13,10 @@ public class Ruangan {
 	private boolean statusTerkunci;
 	private List<Barang> daftarBarang;
 	private List<Pertanyaan> daftarPertanyaan;
-	private List<Pertanyaan> daftarJawaban;
+	private int warna;
 	
 	public Ruangan(int idMuseum, int id, String nama, String deskripsi, 
-			        boolean statusTerkunci, int banyakPercobaanBukaKunci, int prioritas,
+			        boolean statusTerkunci, int banyakPercobaanBukaKunci, int prioritas, int warna,
 			        List<Barang> daftarBarang, List<Pertanyaan> daftarPertanyaan){
 		this.idMuseum = idMuseum;
 		this.id = id;
@@ -25,6 +25,7 @@ public class Ruangan {
 		this.statusTerkunci = statusTerkunci;
 		this.banyakPercobaanBukaKunci = banyakPercobaanBukaKunci;
 		this.prioritas = prioritas;
+		this.warna = warna;
 		this.daftarBarang = daftarBarang;
 		this.daftarPertanyaan = daftarPertanyaan;
 	}
@@ -35,6 +36,10 @@ public class Ruangan {
 	
 	public int getIdMuseum(){
 		return idMuseum;
+	}
+	
+	public int getWarna(){
+		return warna;
 	}
 	
 	public String getNama(){

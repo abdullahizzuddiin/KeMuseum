@@ -11,6 +11,7 @@ public class Barang {
 	
 	// nama berkas gambar pada folder assets
 	private String namaBerkasGambar;
+	private String namaBerkasGambarTumbnail;
 	
 	// nama dan deskripsi barang
 	private String nama;
@@ -19,11 +20,12 @@ public class Barang {
 	// kategori barang, dipisahkan koma. Contoh: "kesenian,kebudayaan,majapahit,kalung"
 	private String kategori;
 	
-	public Barang(int idMuseum, int idRuangan, int id, String namaBerkasGambar, String nama, String deskripsi, String kategori){
+	public Barang(int idMuseum, int idRuangan, int id, String namaBerkasGambar, String namaBerkasGambarThumbnail, String nama, String deskripsi, String kategori){
 		this.idMuseum = idMuseum;
 		this.idRuangan = idRuangan;
 		this.id = id;
 		this.namaBerkasGambar = namaBerkasGambar;
+		this.namaBerkasGambarTumbnail = namaBerkasGambarThumbnail;
 		this.nama = nama;
 		this.deskripsi = deskripsi;
 		this.kategori = kategori;

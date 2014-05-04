@@ -13,15 +13,20 @@ public class Museum {
 	private Koordinat koordinatKananBawah;
 	private boolean statusTerkunci;
 	private List<Ruangan> daftarRuangan;
-
+	private String namaBerkasGambarMuseum;
+	private String namaBerkasGambarDenah;
+	
 	public Museum(int id, String nama, String deskripsi,
 			Koordinat koordinatKiriAtas, Koordinat koordinatKananBawah,
+			String namaBerkasGambarMuseum, String namaBerkasGambarDenah,
 			boolean statusTerkunci, List<Ruangan> daftarRuangan) {
 		this.id = id;
 		this.nama = nama;
 		this.deskripsi = deskripsi;
 		this.koordinatKiriAtas = koordinatKiriAtas;
 		this.koordinatKananBawah = koordinatKananBawah;
+		this.namaBerkasGambarMuseum = namaBerkasGambarMuseum;
+		this.namaBerkasGambarDenah = namaBerkasGambarDenah;
 		this.statusTerkunci = statusTerkunci;
 		this.daftarRuangan = daftarRuangan;
 	}
@@ -46,6 +51,14 @@ public class Museum {
 		return koordinatKananBawah.toString();
 	}
 
+	public String getNamaBerkasGambarMuseum(){
+		return namaBerkasGambarMuseum;
+	}
+	
+	public String getNamaBerkasGambarDenah(){
+		return namaBerkasGambarDenah;
+	}
+	
 	public List<Ruangan> getDaftarRuangan() {
 		return daftarRuangan;
 	}
