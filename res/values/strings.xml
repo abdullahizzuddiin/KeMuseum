@@ -18,5 +18,6 @@
     <string name="title_activity_view_splash_screen">ViewDaftarKeinginan</string>
     <string name="title_activity_dummy">Dummy</string>
     <string name="app_id">388790937927517</string>
+    <string name="title_activity_view_gambar_barang_fullscreen">ViewGambarBarangFullscreen</string>
 
 </resources>

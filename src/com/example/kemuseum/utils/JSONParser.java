@@ -10,9 +10,8 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.example.kemuseum.model.Barang;
-import com.example.kemuseum.model.Keinginan;
+import com.example.kemuseum.model.Wishlist;
 import com.example.kemuseum.model.Koordinat;
-import com.example.kemuseum.model.MetaMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.model.Ruangan;
@@ -26,6 +25,8 @@ public class JSONParser {
 	public static final String MUSEUM_KOORDINAT_KIRI_ATAS = "koordinat_kiri_atas";
 	public static final String MUSEUM_KOORDINAT_KANAN_BAWAH = "koordinat_kanan_bawah";
 	public static final String MUSEUM_STATUS_TERKUNCI = "status_terkunci";
+	public static final String MUSEUM_NAMA_BERKAS_GAMBAR_MUSEUM = "nama_berkas_gambar_museum";
+	public static final String MUSEUM_NAMA_BERKAS_GAMBAR_DENAH = "nama_berkas_gambar_denah";
 	public static final String MUSEUM_DAFTAR_RUANGAN = "daftar_ruangan";
 
 	public static final String RUANGAN_ID_MUSEUM = "_id_museum";
@@ -37,11 +38,13 @@ public class JSONParser {
 	public static final String RUANGAN_PRIORITAS = "prioritas";
 	public static final String RUANGAN_DAFTAR_BARANG = "daftar_barang";
 	public static final String RUANGAN_DAFTAR_PERTANYAAN = "daftar_pertanyaan";
+	public static final String RUANGAN_WARNA = "warna";
 
 	public static final String BARANG_ID_MUSEUM = "_id_museum";
 	public static final String BARANG_ID_RUANGAN = "_id_ruangan";
 	public static final String BARANG_ID = "_id";
 	public static final String BARANG_NAMA_BERKAS_GAMBAR = "nama_berkas_gambar";
+	public static final String BARANG_NAMA_BERKAS_GAMBAR_THUMBNAIL = "nama_berkas_gambar_thumbnail";
 	public static final String BARANG_NAMA = "nama";
 	public static final String BARANG_DESKRIPSI = "deskripsi";
 	public static final String BARANG_KATEGORI = "kategori";
@@ -106,8 +109,8 @@ public class JSONParser {
 		return p;
 	}
 	
-	public static Keinginan toKeinginan(String keinginanJSON){
-		Keinginan k = null;
+	public static Wishlist toKeinginan(String keinginanJSON){
+		Wishlist k = null;
 		try{
 			k = toKeinginan(new JSONObject(keinginanJSON));
 		}catch (JSONException e){
@@ -123,6 +126,7 @@ public class JSONParser {
 	 */
 	private static Museum toMuseum(JSONObject obj) throws JSONException{
 		// berurutan
+		// TODO: gambar museum & denah
 		int id = obj.getInt(MUSEUM_ID);
 		String nama = obj.getString(MUSEUM_NAMA);
 		String deskripsi = obj.getString(MUSEUM_DESKRIPSI);
@@ -137,7 +141,7 @@ public class JSONParser {
 			daftarRuangan.add(toRuangan(ruanganJSON));
 		}
 		
-		Museum m = new Museum(id, nama, deskripsi, koordinatKiriAtas, koordinatKananBawah, 
+		Museum m = new Museum(id, nama, deskripsi, koordinatKiriAtas, koordinatKananBawah,"","", 
 		               statusTerkunci, daftarRuangan);
 		
 		return m;
@@ -152,6 +156,7 @@ public class JSONParser {
 		int banyakPercobaanBukaKunci = obj.getInt(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI);
 		int prioritas = obj.getInt(RUANGAN_PRIORITAS);
 		
+		// TODO: warna
 		List<Barang> daftarBarang = new ArrayList<Barang>();
 		JSONArray daftarBarangJSON = new JSONArray(obj.get(RUANGAN_DAFTAR_BARANG).toString());
 		for (int i = 0; i < daftarBarangJSON.length(); i++){
@@ -167,7 +172,7 @@ public class JSONParser {
 		}
 		
 		Ruangan r = new Ruangan(idMuseum, id, nama, deskripsi, 
-				                 statusTerkunci, banyakPercobaanBukaKunci, prioritas, 
+				                 statusTerkunci, banyakPercobaanBukaKunci, prioritas, -1, 
 				                 daftarBarang, daftarPertanyaan);
 				
 		return r;
@@ -181,8 +186,9 @@ public class JSONParser {
 		String nama = obj.getString(BARANG_NAMA);
 		String deskripsi = obj.getString(BARANG_DESKRIPSI);
 		String kategori = obj.getString(BARANG_KATEGORI);
-				
-		Barang b = new Barang(idMuseum, idRuangan, id, namaBerkasGambar, nama, deskripsi, kategori);
+		
+		// TODO: thumbnail
+		Barang b = new Barang(idMuseum, idRuangan, id, namaBerkasGambar, "", nama, deskripsi, kategori);
 		
 		return b;
 	}
@@ -199,31 +205,16 @@ public class JSONParser {
 		return pp;
 	}
 	
-	private static Keinginan toKeinginan(JSONObject obj) throws JSONException{
+	private static Wishlist toKeinginan(JSONObject obj) throws JSONException{
 		int id = obj.getInt(KEINGINAN_ID);
 		String tanggal = obj.getString(KEINGINAN_TANGGAL);
 		String nama = obj.getString(KEINGINAN_NAMA);
 		String email = obj.getString(KEINGINAN_EMAIL);
 		String deskripsi = obj.getString(KEINGINAN_DESKRIPSI);
 		
-		Keinginan k = new Keinginan(id, tanggal, nama, email, deskripsi);
+		Wishlist k = new Wishlist(id, tanggal, nama, email, deskripsi);
 		
 		return k;
-	}
-	
-	public static MetaMuseum toMetaMuseum(JSONObject obj) throws JSONException{
-		int id = obj.getInt(META_MUSEUM_ID);
-		String nama = obj.getString(META_MUSEUM_NAMA);
-		String deskripsi = obj.getString(META_MUSEUM_DESKRIPSI);
-	
-		boolean status = false;
-		if (obj.has(META_MUSEUM_SUDAH_DIMILIKI)){
-			obj.getBoolean(META_MUSEUM_SUDAH_DIMILIKI);
-		}
-		
-		MetaMuseum mem = new MetaMuseum(id, nama, deskripsi, status);
-		
-		return mem;
 	}
 	
 	/**
@@ -337,7 +328,7 @@ public class JSONParser {
 		return s;
 	}
 	
-	public static String toJSON(Keinginan k){
+	public static String toJSON(Wishlist k){
 		String s = "";
 		
 		try {

@@ -14,13 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.kemuseum.controller.ControllerUnduhMuseum;
-import com.example.kemuseum.model.MetaMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.ArrayAdapterUnduhMuseum;
 
 public class ViewUnduhMuseum extends Activity {
 	private ProgressDialog progress;
-	private List<MetaMuseum> daftarMuseumServer;
+	private List<Museum> daftarMuseumServer;
 	private ControllerUnduhMuseum controller;
 	private ListView listViewServer;
 	private ArrayAdapterUnduhMuseum arrayAdapter;
@@ -62,7 +61,7 @@ public class ViewUnduhMuseum extends Activity {
 
 		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
 		listViewServer.setAdapter(arrayAdapter);
-		
+
 		final ViewUnduhMuseum host = this;
 		// bila ditap
 		listViewServer
@@ -70,32 +69,32 @@ public class ViewUnduhMuseum extends Activity {
 					@Override
 					public void onItemClick(AdapterView<?> parent,
 							final View view, int position, long id) {
-						final MetaMuseum item = (MetaMuseum) parent
-								.getItemAtPosition(position);
+						final Museum item = (Museum) parent.getItemAtPosition(position);
 
 						// false -> belum ada
-						if (!item.getSudahDilimiki()) {
+						if (!controller.sudahDimiliki(item)) {
 							Log.d("asd", "gan mau download " + item.getNama());
 							progress.setTitle("Mengambil data dari server");
 							progress.setMessage("Mohon tunggu...");
 							progress.show();
-							
-							selesaiUnduh = false;
-							runOnUiThread(new Runnable(){
-							    public void run(){
-							    	controller.unduhMuseum(item);
-									progress.dismiss();
 
-									host.onResume();
-							    }
-							});
-/*							
+							selesaiUnduh = false;
 							new Thread(new Runnable() {
 								public void run() {
-									
+									controller.unduhMuseum(item);
+									progress.dismiss();
+									selesaiUnduh = true;
+								
+									host.runOnUiThread(new Runnable() {
+										public void run() {
+											while (!selesaiUnduh){};
+											host.onResume();
+										}
+									});
 								}
 							}).start();
-						*/
+							
+							
 						}
 					}
 				});
@@ -124,7 +123,7 @@ public class ViewUnduhMuseum extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		// update, mungkin ada perubahan
 		arrayAdapter.notifyDataSetChanged();
 	}

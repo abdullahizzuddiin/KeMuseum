@@ -21,7 +21,6 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import com.example.kemuseum.model.MetaMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.JSONParser;
 import com.example.kemuseum.utils.MuseumManager;
@@ -35,11 +34,12 @@ public class ControllerUnduhMuseum {
 		museumManager = MuseumManager.getMuseumManager();
 	}
 
-	public List<MetaMuseum> getDaftarSemuaMuseum() {
-		List<MetaMuseum> ret = new ArrayList<MetaMuseum>();
+	public List<Museum> getDaftarSemuaMuseum() {
+		List<Museum> ret = new ArrayList<Museum>();
 
 		try {
-			URL url = new URL(BASE_URL + "daftarMuseum.txt");
+			// HARD CODED, DEBUG
+			URL url = new URL("http://ristekfasilkom.com/wp-content/uploads/2014/05/deskripsiMuseum.txt");
 			HttpURLConnection urlConnection = (HttpURLConnection) url
 					.openConnection();
 
@@ -66,10 +66,8 @@ public class ControllerUnduhMuseum {
 			for (int i = 0; i < daftar.length(); i++) {
 				JSONObject memObject = daftar.getJSONObject(i);
 
-				MetaMuseum mem = JSONParser.toMetaMuseum(memObject);
-				mem.setSudahDimiliki(museumManager.cekMuseumSudahDimiliki(mem
-						.getId()));
-				ret.add(mem);
+				Museum m = JSONParser.toMuseum(memObject.toString());
+				ret.add(m);
 			}
 
 		} catch (final Exception e) {
@@ -79,7 +77,7 @@ public class ControllerUnduhMuseum {
 		return ret;
 	}
 
-	public Museum unduhMuseum(MetaMuseum meta){
+	public Museum unduhMuseum(Museum meta){
 		try{
 			String json = this.bacaBerkas(meta.getId() + ".txt");
 			unduhDanEkstrakBerkas(meta.getId(), meta.getId() + ".zip");
@@ -88,7 +86,7 @@ public class ControllerUnduhMuseum {
 			museumManager.tambahMuseum(m);
 			
 		}catch (Exception e){
-			Log.d("asd", "gan error pas mau unduh!");
+			Log.d("asd", "gan error pas mau unduh! " + e.toString());
 		}
 		return null;
 	}
@@ -160,5 +158,9 @@ public class ControllerUnduhMuseum {
 		}
 
 		zis.close();
+	}
+
+	public boolean sudahDimiliki(Museum item) {
+		return museumManager.cekMuseumSudahDimiliki(item.getId());
 	}
 }

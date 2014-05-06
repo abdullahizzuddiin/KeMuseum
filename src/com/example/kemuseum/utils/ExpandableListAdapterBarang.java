@@ -1,19 +1,22 @@
 package com.example.kemuseum.utils;
 
-import java.io.File;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kemuseum.R;
+import com.example.kemuseum.ViewGambarBarangFullscreen;
 import com.example.kemuseum.model.Barang;
 
 public class ExpandableListAdapterBarang extends BaseExpandableListAdapter {
@@ -57,6 +60,17 @@ public class ExpandableListAdapterBarang extends BaseExpandableListAdapter {
         }else{
         	imageView.setImageResource(R.drawable.ic_launcher);
         }
+        
+        imageView.setOnTouchListener(new OnTouchListener(){
+	        @Override
+	        public boolean onTouch(View v, MotionEvent event){
+				Intent i = new Intent(context, ViewGambarBarangFullscreen.class);
+				i.putExtra("idMuseum", barang.getIdMuseum());
+				i.putExtra("gambar", barang.getNamaBerkasGambar());
+				context.startActivity(i);
+		        return false;
+	        }
+	   });
         
         textView.setText(barang.getDeksipsi());
         return convertView;
