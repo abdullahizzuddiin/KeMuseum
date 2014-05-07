@@ -73,6 +73,7 @@ public class ViewMuseumTerkunci extends Activity {
 
 				final int a = 1;
 				startActivityForResult(i, a);
+				finish();
 			}
 		};
 
