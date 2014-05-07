@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerPencarian;
 import com.example.kemuseum.model.Barang;
@@ -19,6 +20,7 @@ import com.example.kemuseum.utils.ExpandableListAdapterPencarian;
 public class ViewPencarian extends Activity {
 	private Spinner pilihMuseum;
 	private EditText fieldKataKunci;
+	private TextView fieldPesanPencarian;
 	private ControllerPencarian controller;
 	private ExpandableListAdapterPencarian expandableAdapter;
 	private ExpandableListView listView;
@@ -42,6 +44,8 @@ public class ViewPencarian extends Activity {
 		listView = (ExpandableListView) findViewById(R.id.list_hasil_pencarian);
 		pilihMuseum = (Spinner) findViewById(R.id.spinner_museum);
 		fieldKataKunci = (EditText) findViewById(R.id.text_kataKunci);
+		fieldPesanPencarian = (TextView) findViewById(R.id.text_pesan_pencarian);
+		
 		controller = new ControllerPencarian();
 		
 		isiDataSpinner();
@@ -65,6 +69,14 @@ public class ViewPencarian extends Activity {
     		String namaMuseum = String.valueOf(pilihMuseum.getSelectedItem());
 
     		List<Barang> hasilPencarian = controller.getHasilPencarian(kataKunci, namaMuseum);
+
+    		String pesanPencarian = "";
+    		if (hasilPencarian.size() > 0){
+    			pesanPencarian = hasilPencarian.size() + " hasil ditemukan";
+    		}else{
+    			pesanPencarian = "Tidak ada barang yang ditemukan";
+    		}
+    		fieldPesanPencarian.setText(pesanPencarian);
     		
 			expandableAdapter = new ExpandableListAdapterPencarian(this, hasilPencarian);
 			listView.setAdapter(expandableAdapter);

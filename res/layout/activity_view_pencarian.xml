@@ -30,12 +30,21 @@
             android:layout_height="wrap_content"
             android:onClick="onClick"
             android:text="cari" />
-
+        
+        <TextView
+            android:id="@+id/text_pesan_pencarian"
+            style="@style/ChildFont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            />
+        
         <ExpandableListView
             android:id="@+id/list_hasil_pencarian"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:groupIndicator="@null" />
+        
     </LinearLayout>
 
 </LinearLayout>
