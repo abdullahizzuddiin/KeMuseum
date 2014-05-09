@@ -181,9 +181,9 @@ public class ViewPertanyaan extends Activity {
 				}
 			}
 
-			boolean benarSemua = controllerPertanyaan.cekJawaban(idMuseum,
+			int benar = controllerPertanyaan.cekJawaban(idMuseum,
 					idRuangan, jawaban);
-			showDialog(benarSemua ? 0 : 1);
+			showDialog(benar);
 		}
 	}
 	
@@ -201,8 +201,7 @@ public class ViewPertanyaan extends Activity {
 		};
 		
 		View Tampilan;
-		switch (id) {
-		case 0: {
+		if (id == daftarPertanyaan.size()){
 			LayoutInflater inflater = LayoutInflater.from(this);
 			Tampilan = inflater.inflate(R.layout.dummy_view, null);
 
@@ -210,18 +209,13 @@ public class ViewPertanyaan extends Activity {
 					.setPositiveButton("Tutup", pindahTampilan)
 					.setMessage("Jawaban benar semua!").setView(Tampilan).create();
 
-		}
-
-		case 1: {
+		}else{
 			LayoutInflater inflater = LayoutInflater.from(this);
 			Tampilan = inflater.inflate(R.layout.dummy_view, null);
 
 			return new AlertDialog.Builder(this)
 					.setPositiveButton("Tutup", null)
-					.setMessage("Masih ada jawaban yang salah...").setView(Tampilan).create();
-
+					.setMessage("Baru benar untuk " + id + " pertanyaan!").setView(Tampilan).create();
 		}
-		}
-		return null;
 	}
 }

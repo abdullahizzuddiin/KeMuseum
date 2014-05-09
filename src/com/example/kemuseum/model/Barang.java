@@ -71,4 +71,8 @@ public class Barang {
 		
 		return ada;
 	}
+
+	public String getNamaBerkasGambarThumbnail() {
+		return namaBerkasGambarTumbnail;
+	}
 }

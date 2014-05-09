@@ -27,7 +27,7 @@ import com.example.kemuseum.utils.MuseumManager;
 
 public class ControllerUnduhMuseum {
 	private final int BUFFER_SIZE = 1 << 15;
-	private final String BASE_URL = "http://ristekfasilkom.com/wp-content/uploads/2014/04/";
+	private final String BASE_URL = "http://ristekfasilkom.com/wp-content/uploads/2014/05/";
 	private MuseumManager museumManager;
 
 	public ControllerUnduhMuseum() {
@@ -39,7 +39,7 @@ public class ControllerUnduhMuseum {
 
 		try {
 			// HARD CODED, DEBUG
-			URL url = new URL("http://ristekfasilkom.com/wp-content/uploads/2014/05/deskripsiMuseum.txt");
+			URL url = new URL(BASE_URL + "deskripsiMuseum.txt");
 			HttpURLConnection urlConnection = (HttpURLConnection) url
 					.openConnection();
 
@@ -84,6 +84,8 @@ public class ControllerUnduhMuseum {
 
 			Museum m = JSONParser.toMuseum(json);
 			museumManager.tambahMuseum(m);
+			
+			Log.d("asd", "gan " + m.getNamaBerkasGambarMuseum() + " " + m.getNamaBerkasGambarDenah());
 			
 		}catch (Exception e){
 			Log.d("asd", "gan error pas mau unduh! " + e.toString());
@@ -135,6 +137,7 @@ public class ControllerUnduhMuseum {
 
 		ZipEntry ze;
 		int count;
+		int p = 0;
 
 		while ((ze = zis.getNextEntry()) != null) {
 			namaBerkas = ze.getName();
@@ -151,8 +154,10 @@ public class ControllerUnduhMuseum {
 				fos.write(buffer, 0, count);
 			}
 			
-			Log.d("asd", "gan jadi ada " + f.getAbsolutePath());
-			
+			p++;
+			if (p % 50 == 0){
+				Log.d("asd", "gan jadi ada " + f.getAbsolutePath());
+			}
 			fos.close();
 			zis.closeEntry();
 		}

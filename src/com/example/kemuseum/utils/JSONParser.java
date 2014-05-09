@@ -126,7 +126,6 @@ public class JSONParser {
 	 */
 	private static Museum toMuseum(JSONObject obj) throws JSONException{
 		// berurutan
-		// TODO: gambar museum & denah
 		int id = obj.getInt(MUSEUM_ID);
 		String nama = obj.getString(MUSEUM_NAMA);
 		String deskripsi = obj.getString(MUSEUM_DESKRIPSI);
@@ -134,14 +133,23 @@ public class JSONParser {
 		Koordinat koordinatKananBawah = new Koordinat(obj.getString(MUSEUM_KOORDINAT_KANAN_BAWAH));
 		boolean statusTerkunci = obj.getBoolean(MUSEUM_STATUS_TERKUNCI);
 		List<Ruangan> daftarRuangan = new ArrayList<Ruangan>();
+		String namaBerkasGambarMuseum = "";
+		String namaBerkasGambarDenah = "";
 		
+		if (obj.has(MUSEUM_NAMA_BERKAS_GAMBAR_MUSEUM)){
+			namaBerkasGambarMuseum = obj.getString(MUSEUM_NAMA_BERKAS_GAMBAR_MUSEUM);
+		}
+		if (obj.has(MUSEUM_NAMA_BERKAS_GAMBAR_DENAH)){
+			namaBerkasGambarDenah = obj.getString(MUSEUM_NAMA_BERKAS_GAMBAR_DENAH);
+		}
 		JSONArray daftarRuanganJSON = new JSONArray(obj.get(MUSEUM_DAFTAR_RUANGAN).toString());
 		for (int i = 0; i < daftarRuanganJSON.length(); i++){
 			JSONObject ruanganJSON = daftarRuanganJSON.getJSONObject(i);
 			daftarRuangan.add(toRuangan(ruanganJSON));
 		}
 		
-		Museum m = new Museum(id, nama, deskripsi, koordinatKiriAtas, koordinatKananBawah,"","", 
+		Museum m = new Museum(id, nama, deskripsi, koordinatKiriAtas, koordinatKananBawah, 
+					   namaBerkasGambarMuseum ,namaBerkasGambarDenah, 
 		               statusTerkunci, daftarRuangan);
 		
 		return m;
@@ -155,8 +163,8 @@ public class JSONParser {
 		boolean statusTerkunci = obj.getBoolean(RUANGAN_STATUS_TERKUNCI);
 		int banyakPercobaanBukaKunci = obj.getInt(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI);
 		int prioritas = obj.getInt(RUANGAN_PRIORITAS);
+		int warna = obj.getInt(RUANGAN_WARNA);
 		
-		// TODO: warna
 		List<Barang> daftarBarang = new ArrayList<Barang>();
 		JSONArray daftarBarangJSON = new JSONArray(obj.get(RUANGAN_DAFTAR_BARANG).toString());
 		for (int i = 0; i < daftarBarangJSON.length(); i++){
@@ -172,7 +180,7 @@ public class JSONParser {
 		}
 		
 		Ruangan r = new Ruangan(idMuseum, id, nama, deskripsi, 
-				                 statusTerkunci, banyakPercobaanBukaKunci, prioritas, -1, 
+				                 statusTerkunci, banyakPercobaanBukaKunci, prioritas, warna, 
 				                 daftarBarang, daftarPertanyaan);
 				
 		return r;
@@ -233,6 +241,8 @@ public class JSONParser {
 			obj.put(MUSEUM_DESKRIPSI, m.getDeskripsi());
 			obj.put(MUSEUM_KOORDINAT_KIRI_ATAS, m.getStringKoordinatKiriAtas());
 			obj.put(MUSEUM_KOORDINAT_KANAN_BAWAH, m.getStringKoordinatKananBawah());
+			obj.put(MUSEUM_NAMA_BERKAS_GAMBAR_DENAH, m.getNamaBerkasGambarDenah());
+			obj.put(MUSEUM_NAMA_BERKAS_GAMBAR_MUSEUM, m.getNamaBerkasGambarMuseum());
 			obj.put(MUSEUM_STATUS_TERKUNCI, m.getStatusTerkunci());
 			
 			JSONArray daftarRuanganJSON = new JSONArray();
@@ -263,6 +273,7 @@ public class JSONParser {
 			obj.put(RUANGAN_STATUS_TERKUNCI, r.getStatusTerkunci());
 			obj.put(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI, r.getBanyakPercobaanBukaKunci());
 			obj.put(RUANGAN_PRIORITAS, r.getPrioritas());
+			obj.put(RUANGAN_WARNA, r.getWarna());
 			
 			JSONArray daftarBarangJSON = new JSONArray();
 			List<Barang> daftarBarang = r.getDaftarBarang();
@@ -300,6 +311,7 @@ public class JSONParser {
 			obj.put(BARANG_NAMA, b.getNama());
 			obj.put(BARANG_DESKRIPSI, b.getDeksipsi());
 			obj.put(BARANG_KATEGORI, b.getKategori());
+			obj.put(BARANG_NAMA_BERKAS_GAMBAR_THUMBNAIL, b.getNamaBerkasGambarThumbnail());
 			
 			s = obj.toString();
 		} catch (JSONException e) {

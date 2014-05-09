@@ -3,11 +3,13 @@ package com.example.kemuseum.controller;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.example.kemuseum.model.Koordinat;
 import com.example.kemuseum.model.Museum;
@@ -79,8 +81,29 @@ public class ControllerMuseum {
 		Museum m = museumManager.getMuseum(idMuseum);
 		return m.getDaftarRuangan();
 	}
-
+	
+	
 	public Museum getMuseum(int idMuseum) {
 		return museumManager.getMuseum(idMuseum);
+	}
+
+	public Drawable getGambarMuseum(int idMuseum) {
+		Museum m = museumManager.getMuseum(idMuseum);
+		Drawable ret = museumManager.getDrawableImage(idMuseum, m.getNamaBerkasGambarMuseum());
+	
+		return ret;
+	}
+
+	public Drawable getGambarDenah(int idMuseum) {
+		Museum m = museumManager.getMuseum(idMuseum);
+		Drawable ret = museumManager.getDrawableImage(idMuseum, m.getNamaBerkasGambarDenah());
+	
+		return ret;
+	}
+
+	public Ruangan getRuanganDariWarna(int idMuseum, int warna) {
+		Museum m = museumManager.getMuseum(idMuseum);
+		
+		return m.getRuanganDariWarna(warna);
 	}
 }

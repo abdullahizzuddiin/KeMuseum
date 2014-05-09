@@ -61,7 +61,7 @@ public class MuseumManager {
 		if (DEBUG_MODE) {
 			// simpan file museum dummy.json dari folder assets ke internal
 			// memory (dataDir)
-			String fileName = "dummy.json";
+			String fileName = "tes.json";
 			try {
 				File dummyJSON = new File(dataDir, fileName);
 				FileOutputStream fos = new FileOutputStream(
@@ -237,17 +237,14 @@ public class MuseumManager {
 		return daftar;
 	}
 
-	public boolean cekJawaban(int idMuseum, int idRuangan, List<String> jawaban) {
-		boolean hasil = false;
+	public int cekJawaban(int idMuseum, int idRuangan, List<String> jawaban) {
+		int hasil = 0;
 
-		for (Museum m : daftarMuseum) {
-			if (m.getId() == idMuseum) {
-				hasil = m.cekJawaban(idRuangan, jawaban);
-			}
-		}
+		Museum m = getMuseum(idMuseum);
+		hasil = m.cekJawaban(idRuangan, jawaban);
 		
-		if (hasil){
-			Museum m = getMuseum(idMuseum);
+		// benar semua? unlock!
+		if (hasil == m.getDaftarPertanyaan(idRuangan).size()){
 			Ruangan target = m.getRuangan(idRuangan);
 			target.setStatusTerkunci(false);
 			

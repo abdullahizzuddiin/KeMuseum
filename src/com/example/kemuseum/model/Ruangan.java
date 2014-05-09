@@ -87,17 +87,16 @@ public class Ruangan {
 		banyakPercobaanBukaKunci = nilai;
 	}
 	
-	public boolean cekJawaban(List<String> jawaban){
-		boolean benarSemua = true;
+	public int cekJawaban(List<String> jawaban){
+		int benar = 0;
 		for (int i = 0; i < daftarPertanyaan.size(); i++){
 			// cek kebenaran untuk setiap pertanyaan i dan jawaban i 
 			Pertanyaan p = daftarPertanyaan.get(i);
-			if (!p.getJawaban().equals(jawaban.get(i))){
-				benarSemua = false;
-				break;
+			if (p.getJawaban().equals(jawaban.get(i))){
+				benar++;
 			}
 		}
-		return benarSemua;
+		return benar;
 	}
 	
 	public List<Barang> cariBarang(String kataKunci){

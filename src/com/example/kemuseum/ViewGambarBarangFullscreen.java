@@ -67,6 +67,7 @@ public class ViewGambarBarangFullscreen extends Activity implements
 		if (gambar != null) {
 			field.setImageDrawable(gambar);
 		} else {
+			gambar = getResources().getDrawable(R.drawable.ic_launcher);
 			field.setImageResource(R.drawable.ic_launcher);
 		}
 		

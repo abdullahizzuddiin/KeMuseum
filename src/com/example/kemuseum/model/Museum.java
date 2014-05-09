@@ -141,8 +141,8 @@ public class Museum {
 //		return daftar;
 //	}
 	
-	public boolean cekJawaban(int idRuangan, List<String> jawaban) {
-		boolean hasil = false;
+	public int cekJawaban(int idRuangan, List<String> jawaban) {
+		int hasil = 0;
 
 		for (Ruangan r : daftarRuangan) {
 			if (r.getId() == idRuangan) {
@@ -166,5 +166,15 @@ public class Museum {
 		}
 
 		return daftar;
+	}
+
+	public Ruangan getRuanganDariWarna(int warna) {
+		for (Ruangan r : daftarRuangan) {
+			if (r.getWarna() == warna){
+				return r;
+			}
+		}
+
+		return null;
 	}
 }
