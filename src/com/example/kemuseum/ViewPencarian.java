@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerPencarian;
 import com.example.kemuseum.model.Barang;
+import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.ExpandableListAdapterPencarian;
+import com.example.kemuseum.utils.MuseumManager;
 
 public class ViewPencarian extends Activity {
 	private Spinner pilihMuseum;

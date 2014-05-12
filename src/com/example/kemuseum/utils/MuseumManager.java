@@ -21,7 +21,6 @@ import com.example.kemuseum.model.Koordinat;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.model.Ruangan;
-import com.example.kemuseum.model.Wishlist;
 
 /**
  * singleton!
@@ -200,7 +199,18 @@ public class MuseumManager {
 	}
 
 	public void hapusMuseum(Museum museum) {
-		// TODO iterasi 2
+//		int idMuseum = museum.getId();
+		int idMuseum = 1;
+		String filename = "" + museum.getId();
+		File museumJSON = new File(dataDir, filename);
+		museumJSON.delete();
+		File folderGambar = applicationContext.getDir(FOLDER_GAMBAR + idMuseum,
+				Context.MODE_PRIVATE);
+		for(File gambar: folderGambar.listFiles()){
+			gambar.delete();
+		}
+		folderGambar.delete();
+		daftarMuseum.remove(museum);		
 	}
 
 	public boolean bukaKunciMuseum(int idMuseum, Koordinat koordinat) {
@@ -243,13 +253,17 @@ public class MuseumManager {
 
 		Museum m = getMuseum(idMuseum);
 		hasil = m.cekJawaban(idRuangan, jawaban);
+		Ruangan target = m.getRuangan(idRuangan);
 		
-		// benar semua? unlock!
+		
 		if (hasil == m.getDaftarPertanyaan(idRuangan).size()){
-			Ruangan target = m.getRuangan(idRuangan);
+			// benar semua? unlock!
 			target.setStatusTerkunci(false);
 			
 			updateDatabase(m);
+		}else{
+			// gagal? tambah kegagalan
+			target.setBanyakPercobaanBukaKunci(target.getBanyakPercobaanBukaKunci() + 1);
 		}
 		return hasil;
 	}
