@@ -21,8 +21,7 @@ public class ArrayAdapterWishlist extends ArrayAdapter<Wishlist>{
 	
 	
 	public ArrayAdapterWishlist(Context context, List<Wishlist> daftarWishlist) {
-		super(context, R.layout.row_layout_wishlist);
-		// TODO Auto-generated constructor stub
+		super(context, R.layout.row_layout_wishlist, daftarWishlist);
 		this.context = context;
 		this.daftarWishlist = daftarWishlist;
 	}
