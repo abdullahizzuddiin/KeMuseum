@@ -94,7 +94,10 @@ public class MuseumManager {
 		File museumJSON = new File(dataDir);
 		String[] jsonList = museumJSON.list();
 		for (String js : jsonList) {
-			Log.d("MuseumManager", "gan parsing " + js);
+			// ini wishlist! jadi lewatin aja
+			if (js.contains("json")) continue;
+			
+			Log.d("MuseumManager", "gan MuseumManager parsing " + js);
 
 			try {
 				File f = new File(dataDir, js);
@@ -116,7 +119,7 @@ public class MuseumManager {
 				daftarMuseum.add(m);
 
 			} catch (Exception e) {
-				Log.d("MuseumManager", "gan error parsing " + js);
+				Log.d("MuseumManager", "gan MuseumManager error parsing " + js);
 			}
 		}
 	}

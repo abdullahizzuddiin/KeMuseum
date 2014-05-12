@@ -35,8 +35,10 @@ public class ArrayAdapterWishlist extends ArrayAdapter<Wishlist>{
 		TextView tanggal = (TextView) rowView.findViewById(R.id.tanggal);
 		TextView wishlist = (TextView) rowView.findViewById(R.id.wishlist);
 		
-		wishlist.setText(daftarWishlist.get(position).getDeskripsi());
-		tanggal.setText(daftarWishlist.get(position).getTanggal());
+		Wishlist w = daftarWishlist.get(position);
+		
+		tanggal.setText(w.getTanggal());
+		wishlist.setText(w.getNama() + ": " + w.getDeskripsi());
 		return rowView;
 	}
 	
