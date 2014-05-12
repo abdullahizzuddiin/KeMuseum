@@ -1,11 +1,12 @@
 package com.example.kemuseum;
 
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,8 @@ public class ViewUnduhMuseum extends Activity {
 	private ListView listViewServer;
 	private ArrayAdapterUnduhMuseum arrayAdapter;
 	private boolean selesaiUnduh;
+
+	private ViewUnduhMuseum host = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,73 +47,17 @@ public class ViewUnduhMuseum extends Activity {
 		progress.setTitle("Mengambil data dari server");
 		progress.setMessage("Mohon tunggu...");
 		progress.show();
-
+		
 		selesaiUnduh = false;
-		new Thread(new Runnable() {
+		new DownloadMuseumListTask().execute();
+		
+		host.runOnUiThread(new Runnable() {
 			public void run() {
-				daftarMuseumServer = controller.getDaftarSemuaMuseum();
-				selesaiUnduh = true;
-				progress.dismiss();
+				while (!selesaiUnduh) {
+				}
+				aturReaksi();
 			}
-		}).start();
-
-		// busy waiting!
-		while (!selesaiUnduh) {
-		}
-		;
-
-		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
-		listViewServer.setAdapter(arrayAdapter);
-
-		final ViewUnduhMuseum host = this;
-		// bila ditap
-		listViewServer
-				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-					@Override
-					public void onItemClick(AdapterView<?> parent,
-							final View view, int position, long id) {
-						final Museum item = (Museum) parent.getItemAtPosition(position);
-
-						// false -> belum ada
-						if (!controller.sudahDimiliki(item)) {
-							Log.d("asd", "gan mau download " + item.getNama());
-							progress.setTitle("Mengambil data dari server");
-							progress.setMessage("Mohon tunggu...");
-							progress.show();
-
-							selesaiUnduh = false;
-							new Thread(new Runnable() {
-								public void run() {
-									controller.unduhMuseum(item);
-									progress.dismiss();
-									selesaiUnduh = true;
-								
-									host.runOnUiThread(new Runnable() {
-										public void run() {
-											while (!selesaiUnduh){};
-											host.onResume();
-										}
-									});
-								}
-							}).start();
-							
-							
-						}
-					}
-				});
-	}
-
-	// sekedar buat testing
-	private void pura2nunggu() {
-		int nilai = 0;
-		for (int i = 0; i < 50000; i++) {
-			int j = i;
-			while (j > 0) {
-				j--;
-				nilai += j;
-			}
-		}
-		Log.d("asd", "gan akhirnya " + nilai);
+		});
 	}
 
 	@Override
@@ -125,6 +72,59 @@ public class ViewUnduhMuseum extends Activity {
 		super.onResume();
 
 		// update, mungkin ada perubahan
-		arrayAdapter.notifyDataSetChanged();
+		if (arrayAdapter != null){
+			arrayAdapter.notifyDataSetChanged();
+		}
+	}
+
+	private void aturReaksi(){
+		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
+		listViewServer.setAdapter(arrayAdapter);
+		listViewServer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent,
+					final View view, int position, long id) {
+				final Museum item = (Museum) parent
+						.getItemAtPosition(position);
+
+				// false -> belum ada
+				if (!controller.sudahDimiliki(item)) {
+					Log.d("asd",
+							"gan mau download " + item.getNama());
+					progress.setTitle("Mengambil data dari server");
+					progress.setMessage("Mohon tunggu...");
+					progress.show();
+
+					selesaiUnduh = false;
+					new Thread(new Runnable() {
+						public void run() {
+							controller.unduhMuseum(item);
+							progress.dismiss();
+							selesaiUnduh = true;
+
+							host.runOnUiThread(new Runnable() {
+								public void run() {
+									while (!selesaiUnduh) {
+									}
+									;
+									host.onResume();
+								}
+							});
+						}
+					}).start();
+
+				}
+			}
+		});
+	}
+	
+	class DownloadMuseumListTask extends AsyncTask<Void, Void, Void> {
+		protected Void doInBackground(Void... v) {
+			daftarMuseumServer = controller.getDaftarSemuaMuseum();
+			progress.dismiss();
+			selesaiUnduh = true;
+			
+			return null;
+		}
 	}
 }
