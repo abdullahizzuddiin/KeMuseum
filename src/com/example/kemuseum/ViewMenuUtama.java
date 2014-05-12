@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.kemuseum.utils.MuseumManager;
+import com.example.kemuseum.utils.WishlistManager;
 
 public class ViewMenuUtama extends Activity {
 	Button ButtPilMus, ButtCapaian, ButtPengembang, ButtWishlist;
@@ -41,6 +42,7 @@ public class ViewMenuUtama extends Activity {
 
 		// loads data
 		MuseumManager.createMuseumManager(getAssets(), getApplicationContext());
+		WishlistManager.createWishlistManager(getAssets(), getApplicationContext());
 	}
 
 	public void setClickListener() {
