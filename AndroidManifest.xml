@@ -122,10 +122,16 @@
         </activity>
         <activity
             android:name="com.example.kemuseum.ViewGambarBarangFullscreen"
-            android:label="@string/title_activity_view_gambar_barang_fullscreen" 
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+            android:label="@string/title_activity_view_gambar_barang_fullscreen"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.example.kemuseum.ViewHapusMuseum"
+            android:label="@string/title_activity_view_hapus_museum" >
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET">
-	</uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+
 </manifest>

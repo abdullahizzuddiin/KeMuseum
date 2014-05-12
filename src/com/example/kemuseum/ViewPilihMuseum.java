@@ -55,15 +55,10 @@ public class ViewPilihMuseum extends Activity {
 	}
 
 	public void inisiasi() {
-		/*
-		 * llMusFas = (LinearLayout) findViewById(R.id.llMusFas); llMusFat =
-		 * (LinearLayout) findViewById(R.id.llMusFat);
-		 */
 		Magni = (ImageView) findViewById(R.id.magni);
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
 		listView = (ListView) findViewById(R.id.list_view);
 		controller = new ControllerPilihMuseum();
-
 	}
 
 	public void isiData() {
@@ -105,12 +100,20 @@ public class ViewPilihMuseum extends Activity {
 	}
 
 	public void onClick(View view) {
+		Intent i;
+		final int a = 1;
+		
 		switch (view.getId()) {
 		case (R.id.button_download):
-			Intent i = new Intent(ViewPilihMuseum.this, ViewUnduhMuseum.class);
+			i = new Intent(ViewPilihMuseum.this, ViewUnduhMuseum.class);
 			i.putExtra("Unduh", "a");
-			final int a = 1;
 			startActivityForResult(i, a);
+			break;
+		case (R.id.button_hapus):
+			i = new Intent(ViewPilihMuseum.this, ViewHapusMuseum.class);
+			i.putExtra("Unduh", "a");
+			startActivityForResult(i, a);
+			break;
 		}
 	}
 
