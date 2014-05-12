@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.kemuseum.model.Capaian;
-import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.model.Wishlist;
 import com.example.kemuseum.utils.WishlistManager;
 
@@ -19,4 +18,7 @@ public class ControllerWishlist {
 		return wishlistManager.getDaftarKeinginan();
 	}
 	
+	public void tambahWishlist (Wishlist w) {
+		wishlistManager.tambahWishlist(w);
+	}
 }

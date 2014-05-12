@@ -38,6 +38,9 @@ public class WishlistManager {
 	private WishlistManager(AssetManager assetManager, Context applicationContext) {
 		this.assetManager = assetManager;
 		this.applicationContext = applicationContext;
+		
+		//mencari lokasi tempat memyimpan jsonnya
+		dataDir = applicationContext.getFilesDir().getAbsolutePath();
 		if (DEBUG_MODE) {
 			String fileName = "tes.json";
 			try {
@@ -55,11 +58,11 @@ public class WishlistManager {
 				is.close();
 				fos.write(buffer.toByteArray());
 				fos.close();
-				Log.d("MuseumManager", "gan " + fileName + " sukses!");
+				Log.d("WishlistManager", "gan " + fileName + " sukses!");
 			} catch (FileNotFoundException e) {
-				Log.d("MuseumManager", "gan " + fileName + " bermasalah!");
+				Log.d("WishlistManager", "gan " + fileName + " bermasalah!");
 			} catch (IOException e) {
-				Log.d("MuseumManager", "gan " + fileName
+				Log.d("WishlistManager", "gan " + fileName
 						+ " gak ditemukan dari asset!");
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -100,6 +103,22 @@ public class WishlistManager {
 			Log.w("warning", "WishlistManager kosong");
 		}
 		return instance;
+	}
+	
+	public void tambahWishlist(Wishlist w) {
+		try {
+			String fileName = "json" + w.getId();
+			File wishlistJSON = new File(dataDir, fileName);
+			FileOutputStream fos = new FileOutputStream(wishlistJSON.getAbsolutePath());
+			
+			fos.write(JSONParser.toJSON(w).getBytes());
+			fos.close();
+			
+			daftarKeinginan.add(w);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 	public List<Wishlist> getDaftarKeinginan () {		

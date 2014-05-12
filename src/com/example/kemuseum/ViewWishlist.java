@@ -14,6 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import com.example.kemuseum.controller.ControllerWishlist;
 import com.example.kemuseum.model.Wishlist;
 import com.example.kemuseum.utils.ArrayAdapterWishlist;
+import com.example.kemuseum.utils.WishlistManager;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,8 +30,10 @@ public class ViewWishlist extends Activity {
 	private Button buttKirim;
 	private String url = "http://kawung.cs.ui.ac.id/~abdullah.izzuddin/";
 	private ControllerWishlist controllerWishlist;
+	private List<Wishlist> daftarWishlist;
 	private ArrayAdapterWishlist arrayAdapter;
 	private Calendar c;
+	private int id;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +41,12 @@ public class ViewWishlist extends Activity {
 		setContentView(R.layout.activity_view_wishlist);
 		inisiasi();
 		setClickListener();
-		isiData();
+//		isiData();
 		
 		
 	}
 	public void isiData() {
-		List<Wishlist> daftarWishlist = controllerWishlist.getWishlist();
+		daftarWishlist = controllerWishlist.getWishlist();
 		arrayAdapter = new ArrayAdapterWishlist(this, daftarWishlist);
 		
 	}
@@ -68,13 +71,15 @@ public class ViewWishlist extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String tanggal = c.get(Calendar.DATE)+"";
+				id = controllerWishlist.getWishlist().size();
+				String tanggal = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
 				String nama = text_namaPengirim.getText().toString();
 				String email = text_alamatEmail.getText().toString();
 				String deskripsi = text_namaWishlist.getText().toString();
-				Log.d("sa", "hehe"+" "+tanggal);
+				Log.d("sa", "hehe"+" "+tanggal+" "+nama+" "+email+" "+deskripsi);
 				
-//				Wishlist w = new Wishlist(id, tanggal, nama, email, deskripsi);
+				Wishlist w = new Wishlist(id, tanggal, nama, email, deskripsi);
+				controllerWishlist.tambahWishlist(w);
 				
 //				url="http://kawung.cs.ui.ac.id/~abdullah.izzuddin/museum.php";
 //            	url +="?user="+text_namaWishlist.getText().toString();
