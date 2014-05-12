@@ -55,6 +55,7 @@ public class MuseumManager {
 	private MuseumManager(AssetManager assetManager, Context applicationContext) {
 		this.assetManager = assetManager;
 		this.applicationContext = applicationContext;
+		dataDir = applicationContext.getFilesDir().getAbsolutePath();
 
 		Log.d("asd", "gan masuk");
 		// sementara begini dulu
