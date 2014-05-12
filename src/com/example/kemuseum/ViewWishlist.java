@@ -24,10 +24,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 public class ViewWishlist extends Activity {
 	private EditText text_namaWishlist, text_namaPengirim, text_alamatEmail;
 	private Button buttKirim;
+	private ListView listViewWishlist;
+	
 	private String url = "http://kawung.cs.ui.ac.id/~abdullah.izzuddin/";
 	private ControllerWishlist controllerWishlist;
 	private List<Wishlist> daftarWishlist;
@@ -41,13 +44,22 @@ public class ViewWishlist extends Activity {
 		setContentView(R.layout.activity_view_wishlist);
 		inisiasi();
 		setClickListener();
-//		isiData();
+		isiData();
 		
 		
 	}
 	public void isiData() {
 		daftarWishlist = controllerWishlist.getWishlist();
 		arrayAdapter = new ArrayAdapterWishlist(this, daftarWishlist);
+		listViewWishlist.setAdapter(arrayAdapter);
+		
+		try {
+			Log.d("ViewWishlist", "muncul"+daftarWishlist.size());
+			Log.d("ViewWishlist", "muncul"+daftarWishlist.get(daftarWishlist.size()-1).getDeskripsi());
+		} catch (Exception e) {
+			// TODO: handle exception
+			Log.d("ViewWishlist", "muncul"+e.toString());
+		}
 		
 	}
 	@Override
@@ -61,7 +73,9 @@ public class ViewWishlist extends Activity {
 		text_namaWishlist = (EditText) findViewById(R.id.text_namaWishlist);
 		text_namaPengirim = (EditText) findViewById(R.id.text_namaPengirim);
 		text_alamatEmail = (EditText) findViewById(R.id.text_alamatEmail);
+		listViewWishlist = (ListView) findViewById(R.id.listViewWishlist);
 		buttKirim = (Button) findViewById(R.id.button_kirim);
+		
 		controllerWishlist = new ControllerWishlist();
 		c = Calendar.getInstance();
 	}
@@ -80,7 +94,8 @@ public class ViewWishlist extends Activity {
 				
 				Wishlist w = new Wishlist(id, tanggal, nama, email, deskripsi);
 				controllerWishlist.tambahWishlist(w);
-				
+				arrayAdapter.notifyDataSetChanged();
+//				isiData();
 //				url="http://kawung.cs.ui.ac.id/~abdullah.izzuddin/museum.php";
 //            	url +="?user="+text_namaWishlist.getText().toString();
 //                getRequest(text_namaWishlist,url);

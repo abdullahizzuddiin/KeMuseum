@@ -13,10 +13,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.kemuseum.R;
-import com.example.kemuseum.model.Pertanyaan;
 import com.example.kemuseum.model.Wishlist;
 
-public class ArrayAdapterWishlist extends ArrayAdapter<Pertanyaan>{
+public class ArrayAdapterWishlist extends ArrayAdapter<Wishlist>{
 	private final Context context;
 	private final List<Wishlist> daftarWishlist;
 	
@@ -39,7 +38,6 @@ public class ArrayAdapterWishlist extends ArrayAdapter<Pertanyaan>{
 		
 		wishlist.setText(daftarWishlist.get(position).getDeskripsi());
 		tanggal.setText(daftarWishlist.get(position).getTanggal());
-		
 		return rowView;
 	}
 	
