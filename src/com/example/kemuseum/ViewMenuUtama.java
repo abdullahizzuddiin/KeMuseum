@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import com.example.kemuseum.utils.MuseumManager;
 
 public class ViewMenuUtama extends Activity {
-	Button ButtPilMus, ButtCapaian, ButtPengembang;
+	Button ButtPilMus, ButtCapaian, ButtPengembang, ButtWishlist;
 	ImageView Magni;
 	View woww = null;
 
@@ -36,6 +36,7 @@ public class ViewMenuUtama extends Activity {
 		ButtPilMus = (Button) findViewById(R.id.ButtPilMus);
 		ButtCapaian = (Button) findViewById(R.id.ButtCapaian);
 		ButtPengembang = (Button) findViewById(R.id.ButtPengembang);
+		ButtWishlist = (Button) findViewById(R.id.ButtWishlist);
 		Magni = (ImageView) findViewById(R.id.magni);
 
 		// loads data
@@ -125,6 +126,17 @@ public class ViewMenuUtama extends Activity {
 		case R.id.ButtPengembang:
 			Intent i = new Intent(ViewMenuUtama.this, ViewInfoPengembang.class);
 			i.putExtra("Pengembang", "a");
+			final int a = 1;
+			startActivityForResult(i, a);
+			break;
+		}
+	}
+	
+	public void ButtWishlist_onClick(View view) {
+		switch (view.getId()) {
+		case R.id.ButtWishlist:
+			Intent i = new Intent(ViewMenuUtama.this, ViewWishlist.class);
+			i.putExtra("Wishlist", "a");
 			final int a = 1;
 			startActivityForResult(i, a);
 			break;

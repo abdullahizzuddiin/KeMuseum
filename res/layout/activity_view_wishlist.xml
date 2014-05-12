@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/museum_bg"
+    android:orientation="vertical"
+    tools:context=".ViewWishlist" >
+
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/about_top">
+        <TextView 
+            android:text="Wishlist"
+            android:textSize="12pt"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            android:textColor="#ffffff"/>
+    </LinearLayout>
+	
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+		
+        <EditText
+            android:id="@+id/text_namaPengirim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tuliskan Nama Anda" />
+        
+        <EditText
+            android:id="@+id/text_alamatEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tuliskan Email Anda" />
+        
+        <EditText
+            android:id="@+id/text_namaWishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tuliskan Museum" />
+        <Button
+            android:id="@+id/button_kirim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kirim" />
+    </LinearLayout>
+</LinearLayout>
