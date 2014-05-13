@@ -1,6 +1,7 @@
 package com.example.kemuseum.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Capaian {
@@ -31,19 +32,26 @@ public class Capaian {
 		
 		List<Ruangan> daftarRuangan = museum.getDaftarRuangan();
 		progress = 0;
+		int totalRuanganBerisiBarang = 0;
 		for (Ruangan r : daftarRuangan){
+			// bukan ruangan yang berisi barang
+			if (r.getDaftarBarang().size() == 0) continue;
+			
 			String status = "Status: " + (r.getStatusTerkunci() ? "terkunci" : "terbuka");
 			String percobaan = "Banyak percobaan: " + r.getBanyakPercobaanBukaKunci() + " kali";
 			
 			ret.add(r.getNama() + "\n" + status + "\n" + percobaan);
 			
+			totalRuanganBerisiBarang++;
 			if (!r.getStatusTerkunci()){
 				progress++;
 			}
 		}
 		// ambil presentasenya
-		progress /= daftarRuangan.size();
+		progress /= totalRuanganBerisiBarang;
 		progress *= 100;
+		
+		Collections.sort(ret);
 		
 		return ret;
 	}

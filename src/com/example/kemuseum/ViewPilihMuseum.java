@@ -111,7 +111,7 @@ public class ViewPilihMuseum extends Activity {
 			break;
 		case (R.id.button_hapus):
 			i = new Intent(ViewPilihMuseum.this, ViewHapusMuseum.class);
-			i.putExtra("Unduh", "a");
+			i.putExtra("Hapus", "a");
 			startActivityForResult(i, a);
 			break;
 		}

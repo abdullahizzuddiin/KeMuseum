@@ -74,8 +74,6 @@ public class ViewMuseumTerbuka extends Activity {
 				i.putExtra("Pencarian", "a");
 				final int a = 1;
 				startActivityForResult(i, a);
-
-				// showDialog(0);
 			}
 		});
 	}
@@ -137,33 +135,47 @@ public class ViewMuseumTerbuka extends Activity {
 			        		text.setText(text.getText() + ": " + ruanganTerpilih.getDeskripsi());
 			        	}
 			        	
-			        	final Ruangan targetRuangan = ruanganTerpilih;
-			        	image.setOnTouchListener(new OnTouchListener(){
-					        @Override
-					        public boolean onTouch(View v, MotionEvent event){
-								// true -> terkunci
-								if (targetRuangan.getStatusTerkunci()){
-									Intent i = new Intent (ViewMuseumTerbuka.this, ViewPertanyaan.class);
-									i.putExtra("Terkunci", "a");
-									i.putExtra("idMuseum", targetRuangan.getIdMuseum());
-									i.putExtra("idRuangan", targetRuangan.getId());
-									final int a = 1;
-									startActivityForResult(i, a);
-								}else{
-									Intent i = new Intent (ViewMuseumTerbuka.this, ViewRuangan.class);
-									i.putExtra("Terbuka", "a");
-									i.putExtra("idMuseum", targetRuangan.getIdMuseum());
-									i.putExtra("idRuangan", targetRuangan.getId());
-									final int a = 1;						
-									startActivityForResult(i, a);
-								}
-					        	
-								toast.cancel();
-					        	return false;
-					        }
-			        	});
+			        	// hanya bisa diklik bila ruangan itu berisi koleksi
+			        	if (ruanganTerpilih.getDaftarBarang().size() == 0){
+			        		image.setVisibility(View.INVISIBLE);
+			        		image.setImageDrawable(null);
+			        	}else{
+			        		image.setVisibility(View.VISIBLE);
+				        	if (ruanganTerpilih.getStatusTerkunci()){
+				        		// masih terkunci
+				        		image.setImageResource(R.drawable.icon_locked);
+				        	}else{
+				        		image.setImageResource(R.drawable.icon_masuk);
+				        	}
+				        	
+				        	final Ruangan targetRuangan = ruanganTerpilih;
+				        	image.setOnTouchListener(new OnTouchListener(){
+						        @Override
+						        public boolean onTouch(View v, MotionEvent event){
+									// true -> terkunci
+									if (targetRuangan.getStatusTerkunci()){
+										Intent i = new Intent (ViewMuseumTerbuka.this, ViewPertanyaan.class);
+										i.putExtra("Terkunci", "a");
+										i.putExtra("idMuseum", targetRuangan.getIdMuseum());
+										i.putExtra("idRuangan", targetRuangan.getId());
+										final int a = 1;
+										startActivityForResult(i, a);
+									}else{
+										Intent i = new Intent (ViewMuseumTerbuka.this, ViewRuangan.class);
+										i.putExtra("Terbuka", "a");
+										i.putExtra("idMuseum", targetRuangan.getIdMuseum());
+										i.putExtra("idRuangan", targetRuangan.getId());
+										final int a = 1;						
+										startActivityForResult(i, a);
+									}
+						        	
+									toast.cancel();
+						        	return false;
+						        }
+				        	});
+			        	}
 			        	
-			        	toast.setGravity(Gravity.TOP, 0, 60);
+			        	toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, 70);
 			        	toast.setDuration(Toast.LENGTH_SHORT);
 			        	toast.setView(toastLayout);
 			        	toast.show();
@@ -172,39 +184,6 @@ public class ViewMuseumTerbuka extends Activity {
 			        return false;
 		        }
 		   });
-			/*
-			List<Ruangan> daftarRuangan = controller.getDaftarRuangan(idMuseum);
-			
-			arrayAdapter = new ArrayAdapterPilihRuangan(this, daftarRuangan);
-			listView.setAdapter(arrayAdapter);
-			
-			// bila ditap
-			listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> parent, final View view,
-						int position, long id) {
-					final Ruangan item = (Ruangan) parent.getItemAtPosition(position);
-					
-					// true -> terkunci
-					if (item.getStatusTerkunci()){
-						Intent i = new Intent (ViewMuseumTerbuka.this, ViewPertanyaan.class);
-						i.putExtra("Terkunci", "a");
-						i.putExtra("idMuseum", item.getIdMuseum());
-						i.putExtra("idRuangan", item.getId());
-						Log.d("asd", "gan " + item.getId() + " " + item.getIdMuseum());
-						final int a = 1;
-						startActivityForResult(i, a);
-					}else{
-						Intent i = new Intent (ViewMuseumTerbuka.this, ViewRuangan.class);
-						i.putExtra("Terbuka", "a");
-						i.putExtra("idMuseum", item.getIdMuseum());
-						i.putExtra("idRuangan", item.getId());
-						final int a = 1;						
-						startActivityForResult(i, a);
-					}
-				}
-			});
-			*/
 		}
 	}
 	
@@ -213,14 +192,5 @@ public class ViewMuseumTerbuka extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.view_museum_terbuka, menu);
 		return true;
-	}
-	
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		
-		// mungkin ada perubahan
-//		arrayAdapter.notifyDataSetChanged();
 	}
 }

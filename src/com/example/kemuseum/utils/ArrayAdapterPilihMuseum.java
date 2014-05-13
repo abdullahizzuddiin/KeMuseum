@@ -36,9 +36,9 @@ public class ArrayAdapterPilihMuseum extends ArrayAdapter<Museum> {
 		// tentukan icon terkunci atau tidak
 		boolean statusTerkunci = daftarMuseum.get(position).getStatusTerkunci();
 		if (statusTerkunci) {
-			imageView.setImageResource(R.drawable.dummy_no);
+			imageView.setImageResource(R.drawable.icon_locked);
 		} else {
-			imageView.setImageResource(R.drawable.dummy_yes);
+			imageView.setImageResource(R.drawable.icon_unlock);
 		}
 
 		return rowView;

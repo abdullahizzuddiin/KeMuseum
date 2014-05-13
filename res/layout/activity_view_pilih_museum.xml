@@ -36,10 +36,10 @@
 
         <Button
             android:id="@+id/button_hapus"
-            android:layout_width="142dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5pt"
-            android:background="@drawable/button_unduh_museum"
+            android:background="@drawable/button_hapusmuseum"
             android:onClick="onClick" />
 
         <Button

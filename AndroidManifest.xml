@@ -127,7 +127,8 @@
         </activity>
         <activity
             android:name="com.example.kemuseum.ViewHapusMuseum"
-            android:label="@string/title_activity_view_hapus_museum" >
+            android:label="@string/title_activity_view_hapus_museum"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
     </application>
 
