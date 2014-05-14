@@ -34,11 +34,13 @@ public class ArrayAdapterWishlist extends ArrayAdapter<Wishlist>{
 		View rowView = inflater.inflate(R.layout.row_layout_wishlist, parent, false);
 		TextView tanggal = (TextView) rowView.findViewById(R.id.tanggal);
 		TextView wishlist = (TextView) rowView.findViewById(R.id.wishlist);
+		TextView nama = (TextView) rowView.findViewById(R.id.nama);
 		
 		Wishlist w = daftarWishlist.get(position);
 		
 		tanggal.setText(w.getTanggal());
-		wishlist.setText(w.getNama() + ": " + w.getDeskripsi());
+		nama.setText(w.getNama());
+		wishlist.setText(w.getDeskripsi());
 		return rowView;
 	}
 	

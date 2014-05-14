@@ -12,6 +12,13 @@
         android:ems="5"
         android:text="Tanggal" />
     <TextView
+        android:id="@+id/nama"
+        style="@style/GroupFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="5"
+        android:text="Nama" />
+    <TextView
         android:id="@+id/wishlist"
         style="@style/GroupFont"
         android:layout_width="wrap_content"
