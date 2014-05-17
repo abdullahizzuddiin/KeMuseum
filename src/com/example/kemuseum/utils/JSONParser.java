@@ -163,7 +163,11 @@ public class JSONParser {
 		boolean statusTerkunci = obj.getBoolean(RUANGAN_STATUS_TERKUNCI);
 		int banyakPercobaanBukaKunci = obj.getInt(RUANGAN_BANYAK_PERCOBAAN_BUKA_KUNCI);
 		int prioritas = obj.getInt(RUANGAN_PRIORITAS);
-		int warna = obj.getInt(RUANGAN_WARNA);
+		int warna = 0;
+		
+		if (obj.has(RUANGAN_WARNA)){
+			warna = obj.getInt(RUANGAN_WARNA);
+		}
 		
 		List<Barang> daftarBarang = new ArrayList<Barang>();
 		JSONArray daftarBarangJSON = new JSONArray(obj.get(RUANGAN_DAFTAR_BARANG).toString());

@@ -69,6 +69,7 @@ public class ViewMuseumTerkunci extends Activity {
 		
 		namaMuseum.setText(museum.getNama());
 		deskripsiMuseum.setText(museum.getDeskripsi());
+		gambarMuseum.setImageDrawable(chekinCont.getGambarMuseum(idMuseum));
 	}
 	
 	public void setClickListener() {

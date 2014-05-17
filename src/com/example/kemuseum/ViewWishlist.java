@@ -11,20 +11,30 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.example.kemuseum.controller.ControllerWishlist;
 import com.example.kemuseum.model.Wishlist;
 import com.example.kemuseum.utils.ArrayAdapterWishlist;
-import com.example.kemuseum.utils.WishlistManager;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import com.rogerlemmonapps.captcha.Captcha;
 
 public class ViewWishlist extends Activity {
 	private EditText text_namaWishlist, text_namaPengirim, text_alamatEmail;
@@ -36,7 +46,14 @@ public class ViewWishlist extends Activity {
 	private List<Wishlist> daftarWishlist;
 	private ArrayAdapterWishlist arrayAdapter;
 	private Calendar c;
-	private int id;
+	
+	private AlertDialog dialogCaptcha;
+	private Captcha captchaGenerator;
+	
+	// keperluan dialog
+	private ImageView gambarCaptcha;
+	private Button tombolKumpul;
+	private EditText jawabanPengguna;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +68,9 @@ public class ViewWishlist extends Activity {
 	public void isiData() {
 		daftarWishlist = controllerWishlist.getWishlist();
 		arrayAdapter = new ArrayAdapterWishlist(this, daftarWishlist);
-		listViewWishlist.setAdapter(arrayAdapter);
+		listViewWishlist.setAdapter(arrayAdapter);	
 		
-		try {
-			Log.d("ViewWishlist", "muncul"+daftarWishlist.size());
-			Log.d("ViewWishlist", "muncul"+daftarWishlist.get(daftarWishlist.size()-1).getDeskripsi());
-		} catch (Exception e) {
-			// TODO: handle exception
-			Log.d("ViewWishlist", "muncul"+e.toString());
-		}
-		
+		captchaGenerator = controllerWishlist.getCaptcha();
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,24 +94,86 @@ public class ViewWishlist extends Activity {
 		buttKirim.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				id = controllerWishlist.getWishlist().size();
-				String tanggal = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
-				String nama = text_namaPengirim.getText().toString();
-				String email = text_alamatEmail.getText().toString();
-				String deskripsi = text_namaWishlist.getText().toString();
-				Log.d("sa", "hehe"+" "+tanggal+" "+nama+" "+email+" "+deskripsi);
-				
-				Wishlist w = new Wishlist(id, tanggal, nama, email, deskripsi);
-				controllerWishlist.tambahWishlist(w);
-				arrayAdapter.notifyDataSetChanged();
-//				isiData();
-//				url="http://kawung.cs.ui.ac.id/~abdullah.izzuddin/museum.php";
-//            	url +="?user="+text_namaWishlist.getText().toString();
-//                getRequest(text_namaWishlist,url);
+				// tunjukkan captcha dulu
+				showDialog(0);				
 			}
 		});
 	}
+
+	protected Dialog onCreateDialog(int id) {
+		final ViewWishlist host = this;
+		switch (id) {
+		case 0: {
+			LayoutInflater inflater = LayoutInflater.from(this);
+			View inflated = inflater.inflate(R.layout.activity_dialog_captcha,
+					null);
+			
+			gambarCaptcha = (ImageView) inflated.findViewById(R.id.gambar_captcha);
+			tombolKumpul = (Button) inflated.findViewById(R.id.tombol_konfirmasi_captcha);
+			jawabanPengguna = (EditText) inflated.findViewById(R.id.isian_captcha);
+			
+			gambarCaptcha.setImageBitmap(captchaGenerator.getImage());
+
+			tombolKumpul.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					boolean lulusCaptcha = captchaGenerator.checkAnswer(jawabanPengguna.getText().toString());
+					dialogCaptcha.dismiss();
+					
+					String pesan;
+					if (lulusCaptcha){ 
+						int id = controllerWishlist.getWishlist().size();
+						String tanggal = c.get(Calendar.DATE)+"/"+c.get(Calendar.MONTH)+"/"+c.get(Calendar.YEAR);
+						String nama = text_namaPengirim.getText().toString();
+						String email = text_alamatEmail.getText().toString();
+						String deskripsi = text_namaWishlist.getText().toString();
+						Log.d("sa", "hehe"+" "+tanggal+" "+nama+" "+email+" "+deskripsi);
+						
+						Wishlist w = new Wishlist(id, tanggal, nama, email, deskripsi);
+						controllerWishlist.tambahWishlist(w);
+						arrayAdapter.notifyDataSetChanged();
+		//				isiData();
+		//				url="http://kawung.cs.ui.ac.id/~abdullah.izzuddin/museum.php";
+		//            	url +="?user="+text_namaWishlist.getText().toString();
+		//                getRequest(text_namaWishlist,url);
+						
+						pesan = "Wishlist tersimpan!";
+					}else{
+						pesan = "Wishlist gagal tersimpan!";
+					}
+					
+					Context context = getApplicationContext();
+					Toast toast = Toast.makeText(context, pesan, Toast.LENGTH_SHORT);
+					toast.setGravity(Gravity.TOP, 0, 70);
+					toast.show();
+				}
+			});
+
+			OnTouchListener c = new OnTouchListener() {
+				@Override
+				public boolean onTouch(View arg0, MotionEvent arg1) {
+					return false;
+				}
+			};
+			
+			dialogCaptcha = new AlertDialog.Builder(this).setView(inflated).create();
+			return dialogCaptcha;
+		}
+
+		}
+		return null;
+	}
+	protected void onPrepareDialog(int id, Dialog dialog) {
+	    switch(id) {
+	    case 0:
+			captchaGenerator.refresh();
+			jawabanPengguna.setText("");
+			gambarCaptcha.setImageBitmap(captchaGenerator.getImage());
+	    	
+	        break;
+	    }
+	}
+	
 	/**
 	 * Method untuk Mengirimkan data ke server
 	 * event by button login diklik
