@@ -202,8 +202,7 @@ public class MuseumManager {
 	}
 
 	public void hapusMuseum(Museum museum) {
-//		int idMuseum = museum.getId();
-		int idMuseum = 1;
+		int idMuseum = museum.getId();
 		String filename = "" + museum.getId();
 		File museumJSON = new File(dataDir, filename);
 		museumJSON.delete();
