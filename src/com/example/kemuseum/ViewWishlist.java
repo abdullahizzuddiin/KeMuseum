@@ -121,8 +121,6 @@ public class ViewWishlist extends Activity {
 				arrayAdapter.notifyDataSetChanged();
 				
 				json = controllerWishlist.ambilJSON(w);
-//					url +="?json="+URLEncoder.encode(json);
-//					getRequest(url);
 				try {
 					postData(json);
 				} catch (Exception e) {
@@ -155,82 +153,6 @@ public class ViewWishlist extends Activity {
 	    } 
 	}
 	
-//	public boolean isConnected() {
-//		ConnectivityManager connManager = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
-//		NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
-//        if (networkInfo != null && networkInfo.isConnected()) 
-//            return true;
-//        else
-//            return false;
-//	}
-//	
-//	public static String POST(String url, Wishlist w){
-//        InputStream inputStream = null;
-//        String result = "";
-//        try {
-// 
-//            // 1. create HttpClient
-//            HttpClient httpclient = new DefaultHttpClient();
-// 
-//            // 2. make POST request to the given URL
-//            HttpPost httpPost = new HttpPost(url);
-// 
-//            // ** Alternative way to convert Person object to JSON string usin Jackson Lib 
-//            // ObjectMapper mapper = new ObjectMapper();
-//            // json = mapper.writeValueAsString(person); 
-// 
-//            // 5. set json to StringEntity
-//            StringEntity se = new StringEntity(json);
-// 
-//            // 6. set httpPost Entity
-//            httpPost.setEntity(se);
-// 
-//            // 7. Set some headers to inform server about the type of the content   
-//            httpPost.setHeader("Accept", "application/json");
-//            httpPost.setHeader("Content-type", "application/json");
-// 
-//            // 8. Execute POST request to the given URL
-//            HttpResponse httpResponse = httpclient.execute(httpPost);
-// 
-//            // 9. receive response as inputStream
-//            inputStream = httpResponse.getEntity().getContent();
-// 
-//            // 10. convert inputstream to string
-//            if(inputStream != null)
-//                result = convertInputStreamToString(inputStream);
-//            else
-//                result = "Did not work!";
-// 
-//        } catch (Exception e) {
-//            Log.d("InputStream", e.getLocalizedMessage());
-//        }
-// 
-//        // 11. return result
-//        return result;
-//    }
-//	private static String convertInputStreamToString(InputStream inputStream) throws IOException{
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//        String line = "";
-//        String result = "";
-//        while((line = bufferedReader.readLine()) != null)
-//            result += line;
-// 
-//        inputStream.close();
-//        return result;
-// 
-//    }
-//	private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-//        @Override
-//        protected String doInBackground(String... urls) {
-//            return POST(urls[0],daftarWishlist.get(daftarWishlist.size()-1));
-//        }
-//        // onPostExecute displays the results of the AsyncTask.
-//        @Override
-//        protected void onPostExecute(String result) {
-//            Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
-//       }
-//    }
-	
 	/**
 	 * Method untuk Mengirimkan data ke server
 	 * event by button login diklik
@@ -250,28 +172,5 @@ public class ViewWishlist extends Activity {
         }
 
     }
-//	
-//	/**
-//	 * Method untuk Menerima data dari server
-//	 * @param response
-//	 * @return
-//	 */
-//	public static String request(HttpResponse response){
-//        String result = "";
-//        try{
-//            InputStream in = response.getEntity().getContent();
-//            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//            StringBuilder str = new StringBuilder();
-//            String line = null;
-//            while((line = reader.readLine()) != null){
-//                str.append(line + "\n");
-//            }
-//            in.close();
-//            result = str.toString();
-//        }catch(Exception ex){
-//            result = "Error";
-//        }
-//        return result;
-//    }
 }
 
