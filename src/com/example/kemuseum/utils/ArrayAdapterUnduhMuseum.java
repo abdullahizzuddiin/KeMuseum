@@ -3,6 +3,7 @@ package com.example.kemuseum.utils;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class ArrayAdapterUnduhMuseum extends ArrayAdapter<Museum> {
 		
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		textView.setText(mem.getNama());
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
 
 		// tentukan icon sudah ada atau belum ada
 		if (museumManager.cekMuseumSudahDimiliki(mem.getId())) {

@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +41,8 @@ public class ArrayAdapterDaftarJawaban extends ArrayAdapter<Pertanyaan>{
 		tvNomor.setText(position+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
 		radioJawaban.setText(daftarJawaban.get(position).getJawaban());
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		radioJawaban.setTypeface(font);
 		
 		if (terjodohkanDengan.get(position) != -1){
 			radioJawaban.setPaintFlags(radioJawaban.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);

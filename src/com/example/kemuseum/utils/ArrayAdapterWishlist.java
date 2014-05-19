@@ -5,6 +5,7 @@ import java.util.List;
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,10 @@ public class ArrayAdapterWishlist extends ArrayAdapter<Wishlist>{
 		tanggal.setText(w.getTanggal());
 		nama.setText(w.getNama());
 		wishlist.setText(w.getDeskripsi());
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		tanggal.setTypeface(font);
+		nama.setTypeface(font);
+		wishlist.setTypeface(font);
 		return rowView;
 	}
 	

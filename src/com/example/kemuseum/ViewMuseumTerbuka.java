@@ -1,7 +1,5 @@
 package com.example.kemuseum;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,7 +18,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -83,6 +80,13 @@ public class ViewMuseumTerbuka extends Activity {
 		
 		// valid
 		if (idMuseum != -1){
+			Display display = getWindowManager().getDefaultDisplay();
+			Point size = new Point();
+			display.getSize(size);
+			
+			int screenWidth = size.x;
+			int screenHeight = size.y;
+			
 			// set gambar museum
 			Drawable gambar= controller.getGambarMuseum(idMuseum);
 			if (gambar != null){
@@ -95,27 +99,25 @@ public class ViewMuseumTerbuka extends Activity {
 			
 			// urusan denah ruangan
 			Drawable denah = controller.getGambarDenah(idMuseum);
-			if (denah != null){
-				denahMuseum.setImageDrawable(denah);
+			if (denah != null){				
+				Bitmap bmp = ((BitmapDrawable) denah).getBitmap();
+				double scale = (double) screenWidth / bmp.getWidth();
+				int fitWidth = screenWidth;
+				int fitHeight = (int)(scale * bmp.getHeight());
+				Drawable scaled = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bmp, fitWidth, fitHeight, true));
+				denahMuseum.setImageDrawable(scaled);
 			}else{
 				denahMuseum.setImageResource(R.drawable.denah_gabung);
 			}
 			
 			
-			final Bitmap bitmap = ((BitmapDrawable)denahMuseum.getDrawable()).getBitmap();
-
-			// get touch constant for screen - image scaling
-			Display display = getWindowManager().getDefaultDisplay();
-			Point size = new Point();
-			display.getSize(size);
-			final float constant = (float)bitmap.getWidth() / size.x; 
-			denahMuseum.setOnTouchListener(new OnTouchListener(){
+			final Bitmap bitmap = ((BitmapDrawable)denahMuseum.getDrawable()).getBitmap();			denahMuseum.setOnTouchListener(new OnTouchListener(){
 		        @Override
 		        public boolean onTouch(View v, MotionEvent event){
-			        int x = (int)(event.getX() * constant);
-			        int y = (int)(event.getY() * constant);
+			        int x = (int)(event.getX());
+			        int y = (int)(event.getY()); 
 			        int pixel = bitmap.getPixel(x,y);
-	
+			     
 			        // ambil warna pixel
 			        int redValue = Color.red(pixel);
 			        int greenValue = Color.green(pixel);        

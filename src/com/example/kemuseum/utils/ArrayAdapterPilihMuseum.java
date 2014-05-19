@@ -3,6 +3,8 @@ package com.example.kemuseum.utils;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,11 @@ public class ArrayAdapterPilihMuseum extends ArrayAdapter<Museum> {
 		TextView textView = (TextView) rowView.findViewById(R.id.label);
 		ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 		textView.setText(daftarMuseum.get(position).getNama());
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
+		
+		
+		
 
 		// tentukan icon terkunci atau tidak
 		boolean statusTerkunci = daftarMuseum.get(position).getStatusTerkunci();

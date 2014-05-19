@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -96,7 +97,8 @@ public class ExpandableListAdapterCapaian extends BaseExpandableListAdapter {
 				.findViewById(R.id.capaian_nama_museum);
 		textView.setText(capaian.getNamaMuseum() + "(" + capaian.getProgress()
 				+ " %)");
-
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
 		Button tombolShare = (Button) convertView
 				.findViewById(R.id.capaian_tombol_share);
 		tombolShare.setFocusable(false);

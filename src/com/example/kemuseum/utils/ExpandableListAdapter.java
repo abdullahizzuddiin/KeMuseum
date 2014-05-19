@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,6 +60,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
         
         textView.setText(barang.getDeksipsi());
+        Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
         return convertView;
     }
     

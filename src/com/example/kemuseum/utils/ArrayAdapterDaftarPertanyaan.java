@@ -9,6 +9,7 @@ import com.example.kemuseum.R;
 
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -48,7 +49,9 @@ public class ArrayAdapterDaftarPertanyaan extends ArrayAdapter<Pertanyaan>{
 		
 		tvNomor.setText(position+1+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
-		tvLabel.setText(daftarPertanyaan.get(position).getSoal());		
+		tvLabel.setText(daftarPertanyaan.get(position).getSoal());	
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		tvLabel.setTypeface(font);
 
 		String jawaban = "";
 		int posJawaban = dijodohkanDengan.get(position);

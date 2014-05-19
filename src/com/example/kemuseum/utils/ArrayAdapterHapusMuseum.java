@@ -3,6 +3,7 @@ package com.example.kemuseum.utils;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,11 @@ public class ArrayAdapterHapusMuseum extends ArrayAdapter<Museum> {
 		View rowView = inflater.inflate(R.layout.row_layout_hapus_museum, parent, false);
 		TextView textView = (TextView) rowView.findViewById(R.id.label);
 		Museum mem = daftarMuseum.get(position);
-		
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
 		textView.setText(mem.getNama());
+		textView.setTypeface(font);
+		
+		
 
 		return rowView;
 	}
