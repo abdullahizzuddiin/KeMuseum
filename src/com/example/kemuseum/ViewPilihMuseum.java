@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerPilihMuseum;
 import com.example.kemuseum.model.Museum;
@@ -29,6 +31,7 @@ public class ViewPilihMuseum extends Activity {
 	private ArrayAdapterPilihMuseum arrayAdapter = null;
 
 	private LinearLayout llMusFas, llMusFat, llPilMus;
+	private TextView tvTop;
 	private DialogInterface.OnClickListener ViewMuseumTerkunci = null;
 	private DialogInterface.OnClickListener test = null;
 	private ControllerPilihMuseum controller;
@@ -59,6 +62,12 @@ public class ViewPilihMuseum extends Activity {
 		llPilMus = (LinearLayout) findViewById(R.id.llViewPilMus);
 		listView = (ListView) findViewById(R.id.list_view);
 		controller = new ControllerPilihMuseum();
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
+		
+		
 	}
 
 	public void isiData() {
