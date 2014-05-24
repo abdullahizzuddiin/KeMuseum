@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,12 +14,14 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerUnduhMuseum;
 import com.example.kemuseum.model.Museum;
 import com.example.kemuseum.utils.ArrayAdapterUnduhMuseum;
 
 public class ViewUnduhMuseum extends Activity {
+	private TextView tvTop;
 	private ProgressDialog progress;
 	private List<Museum> daftarMuseumServer;
 	private ControllerUnduhMuseum controller;
@@ -40,6 +43,9 @@ public class ViewUnduhMuseum extends Activity {
 	private void inisialisasi() {
 		controller = new ControllerUnduhMuseum();
 		listViewServer = (ListView) findViewById(R.id.list_museum_server);
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
 	}
 
 	private void isiData() {
@@ -115,6 +121,7 @@ public class ViewUnduhMuseum extends Activity {
 
 				}
 			}
+			
 		});
 	}
 	

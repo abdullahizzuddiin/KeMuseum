@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class ViewMuseumTerbuka extends Activity {
 	private ListView listView;
 	private ImageView gambarMuseum;
 	private ImageView denahMuseum;
-	private TextView deskripsiMuseum;
+	private TextView deskripsiMuseum, tvTop;
 	private ControllerMuseum controller;
 	private ImageView Magni;
 	private Ruangan ruanganTerpilih;
@@ -56,7 +57,10 @@ public class ViewMuseumTerbuka extends Activity {
 		deskripsiMuseum = (TextView) findViewById(R.id.deskripsi_museum);
 		listView = (ListView) findViewById(R.id.list_view_ruangan);
 		Magni = (ImageView) findViewById(R.id.magni);
-		
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
+		deskripsiMuseum.setTypeface(font);
 		controller = new ControllerMuseum();
 	
 		LayoutInflater inflater = getLayoutInflater();
@@ -95,6 +99,7 @@ public class ViewMuseumTerbuka extends Activity {
 				gambarMuseum.setImageResource(R.drawable.museum_locked_foto_bahari);
 			}
 			// set deskripsi museum
+			tvTop.setText(controller.getMuseum(idMuseum).getNama());
 			deskripsiMuseum.setText(controller.getMuseum(idMuseum).getDeskripsi());
 			
 			// urusan denah ruangan

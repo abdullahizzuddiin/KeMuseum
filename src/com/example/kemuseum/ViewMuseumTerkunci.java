@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerMuseum;
 import com.example.kemuseum.model.Museum;
+import com.example.kemuseum.utils.TextJustifyUtils;
 
 public class ViewMuseumTerkunci extends Activity {
 	private ProgressDialog progress;
@@ -25,6 +27,7 @@ public class ViewMuseumTerkunci extends Activity {
 	private View Tampilan;
 	private TextView namaMuseum;
 	private TextView deskripsiMuseum;
+	private TextView tvTop;
 	private ImageView gambarMuseum;
 	private Museum museum;
 	private DialogInterface.OnClickListener pindahTampilan;
@@ -52,12 +55,16 @@ public class ViewMuseumTerkunci extends Activity {
 
 	private void inisiasi() {
 		checkin = (ImageView) findViewById(R.id.checkin);
-		namaMuseum = (TextView) findViewById(R.id.preview_museum_nama);
+//		namaMuseum = (TextView) findViewById(R.id.preview_museum_nama);
 		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
 		gambarMuseum = (ImageView) findViewById(R.id.preview_museum_gambar);
 
 		chekinCont = new ControllerMuseum();
-		
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
+		deskripsiMuseum.setTypeface(font);
+		TextJustifyUtils.justify(deskripsiMuseum);
 		progress = new ProgressDialog(this);
 		progress.setTitle("Mengambil posisi Anda");
 		progress.setMessage("Mohon tunggu...");
@@ -66,8 +73,8 @@ public class ViewMuseumTerkunci extends Activity {
 	private void isiData(){
 		this.idMuseum = this.getIntent().getIntExtra("idMuseum", -1);
 		museum = chekinCont.getMuseum(idMuseum);
-		
-		namaMuseum.setText(museum.getNama());
+		tvTop.setText(museum.getNama());
+//		namaMuseum.setText(museum.getNama());
 		deskripsiMuseum.setText(museum.getDeskripsi());
 		gambarMuseum.setImageDrawable(chekinCont.getGambarMuseum(idMuseum));
 	}

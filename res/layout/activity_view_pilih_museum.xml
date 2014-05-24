@@ -17,7 +17,9 @@
 		    android:layout_height="wrap_content"
 		    android:text="Pilih Museum"
 		    android:textSize="13pt"
-		    android:textStyle="bold"/>
+		    android:textStyle="bold"
+		    android:paddingLeft="7pt"
+		    android:paddingTop="2pt"/>
 		
         <ImageView
             android:id="@+id/magni"

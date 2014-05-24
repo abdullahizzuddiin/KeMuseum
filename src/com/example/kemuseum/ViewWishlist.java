@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kemuseum.controller.ControllerWishlist;
@@ -55,6 +57,7 @@ public class ViewWishlist extends Activity {
 	private ImageView gambarCaptcha;
 	private Button tombolKumpul;
 	private EditText jawabanPengguna;
+	private TextView tvTop;
 
 	private static String json;
 	private int id;
@@ -93,6 +96,9 @@ public class ViewWishlist extends Activity {
 		bulan = new String[]{"Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agus", "Sept", "Okt", "Nov", "Des"};
 		controllerWishlist = new ControllerWishlist();
 		c = Calendar.getInstance();
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
 	}
 	
 	public void setClickListener() {

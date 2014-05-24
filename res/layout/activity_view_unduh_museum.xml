@@ -1,10 +1,24 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/museum_bg" >
+    android:background="@drawable/museum_bg" 
+    android:orientation="vertical">
 
-   
+   <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/about_top">
+		<TextView 
+		    android:id="@+id/tvTop"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Unduh Museum"
+		    android:textSize="13pt"
+		    android:textStyle="bold"
+		    android:paddingLeft="5pt"
+		    android:paddingTop="2pt"/>
+    </LinearLayout>
     <ListView
        android:id="@+id/list_museum_server"
        android:layout_width="wrap_content"
@@ -12,4 +26,4 @@
        android:layout_margin="5pt" >
     </ListView>
 	
-</RelativeLayout>
+</LinearLayout>
