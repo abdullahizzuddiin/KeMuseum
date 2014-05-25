@@ -46,14 +46,21 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/museum_locked_foto_bahari" />
 	
-            <TextView 
+            <!-- <TextView 
                 style="@style/ChildFont"
                 android:id="@+id/deskripsi_museum"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
 				android:layout_margin="5pt"
                 android:text="asd"
-                />
+                /> -->
+                <WebView 
+                style="@style/ChildFont"
+                android:id="@+id/deskripsi_museum"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+				android:layout_margin="5pt"
+                android:text="asd"/>
             
             <ImageView
                 android:id="@+id/gambar_denah"

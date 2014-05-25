@@ -35,7 +35,12 @@
         android:textSize="10pt"
         android:textColor="#000000"/>
         -->
-    <TextView 
+    <!-- <TextView 
+        android:id="@+id/preview_museum_deskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"/> -->
+        <WebView 
         android:id="@+id/preview_museum_deskripsi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +34,9 @@ public class ViewMuseumTerbuka extends Activity {
 	private ListView listView;
 	private ImageView gambarMuseum;
 	private ImageView denahMuseum;
-	private TextView deskripsiMuseum, tvTop;
+//	private TextView deskripsiMuseum;
+	private TextView tvTop;
+	private WebView deskripsiMuseum;
 	private ControllerMuseum controller;
 	private ImageView Magni;
 	private Ruangan ruanganTerpilih;
@@ -54,13 +57,15 @@ public class ViewMuseumTerbuka extends Activity {
 		toast = new Toast(getApplicationContext());
 		gambarMuseum = (ImageView) findViewById(R.id.gambar_museum);
 		denahMuseum = (ImageView) findViewById(R.id.gambar_denah);
-		deskripsiMuseum = (TextView) findViewById(R.id.deskripsi_museum);
+//		deskripsiMuseum = (TextView) findViewById(R.id.deskripsi_museum);
+		deskripsiMuseum = (WebView) findViewById(R.id.deskripsi_museum);
+		deskripsiMuseum.setBackgroundColor(Color.parseColor("#F6DEA0"));
 		listView = (ListView) findViewById(R.id.list_view_ruangan);
 		Magni = (ImageView) findViewById(R.id.magni);
 		tvTop = (TextView) findViewById(R.id.tvTop);
 		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
 		tvTop.setTypeface(font);
-		deskripsiMuseum.setTypeface(font);
+//		deskripsiMuseum.setTypeface(font);
 		controller = new ControllerMuseum();
 	
 		LayoutInflater inflater = getLayoutInflater();
@@ -100,7 +105,10 @@ public class ViewMuseumTerbuka extends Activity {
 			}
 			// set deskripsi museum
 			tvTop.setText(controller.getMuseum(idMuseum).getNama());
-			deskripsiMuseum.setText(controller.getMuseum(idMuseum).getDeskripsi());
+			String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
+			String myData = controller.getMuseum(idMuseum).getDeskripsi();
+			deskripsiMuseum.loadData(String.format(htmlText, myData), "text/html", "utf-8");
+//			deskripsiMuseum.setText(controller.getMuseum(idMuseum).getDeskripsi());
 			
 			// urusan denah ruangan
 			Drawable denah = controller.getGambarDenah(idMuseum);

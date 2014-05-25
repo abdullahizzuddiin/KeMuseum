@@ -6,12 +6,14 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +28,8 @@ public class ViewMuseumTerkunci extends Activity {
 	private int idMuseum;
 	private View Tampilan;
 	private TextView namaMuseum;
-	private TextView deskripsiMuseum;
+//	private TextView deskripsiMuseum;
+	private WebView deskripsiMuseum;
 	private TextView tvTop;
 	private ImageView gambarMuseum;
 	private Museum museum;
@@ -56,15 +59,17 @@ public class ViewMuseumTerkunci extends Activity {
 	private void inisiasi() {
 		checkin = (ImageView) findViewById(R.id.checkin);
 //		namaMuseum = (TextView) findViewById(R.id.preview_museum_nama);
-		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
+//		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
+		deskripsiMuseum = (WebView) findViewById(R.id.preview_museum_deskripsi);
+		deskripsiMuseum.setBackgroundColor(Color.parseColor("#F6DEA0"));
 		gambarMuseum = (ImageView) findViewById(R.id.preview_museum_gambar);
 
 		chekinCont = new ControllerMuseum();
 		tvTop = (TextView) findViewById(R.id.tvTop);
 		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
 		tvTop.setTypeface(font);
-		deskripsiMuseum.setTypeface(font);
-		TextJustifyUtils.justify(deskripsiMuseum);
+//		deskripsiMuseum.setTypeface(font);
+		
 		progress = new ProgressDialog(this);
 		progress.setTitle("Mengambil posisi Anda");
 		progress.setMessage("Mohon tunggu...");
@@ -75,7 +80,10 @@ public class ViewMuseumTerkunci extends Activity {
 		museum = chekinCont.getMuseum(idMuseum);
 		tvTop.setText(museum.getNama());
 //		namaMuseum.setText(museum.getNama());
-		deskripsiMuseum.setText(museum.getDeskripsi());
+//		deskripsiMuseum.setText(museum.getDeskripsi());
+		String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
+		String myData = museum.getDeskripsi();
+		deskripsiMuseum.loadData(String.format(htmlText, myData), "text/html", "utf-8");
 		gambarMuseum.setImageDrawable(chekinCont.getGambarMuseum(idMuseum));
 	}
 	
