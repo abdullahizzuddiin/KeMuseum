@@ -59,6 +59,10 @@ public class ExpandableListAdapterCapaian extends BaseExpandableListAdapter {
 				.findViewById(R.id.capaian_info);
 
 		textView.setText(capaian);
+		
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
+
 		return convertView;
 	}
 

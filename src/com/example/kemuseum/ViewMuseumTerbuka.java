@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -56,6 +57,10 @@ public class ViewMuseumTerbuka extends Activity {
 		deskripsiMuseum = (TextView) findViewById(R.id.deskripsi_museum);
 		listView = (ListView) findViewById(R.id.list_view_ruangan);
 		Magni = (ImageView) findViewById(R.id.magni);
+		
+		Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/ubuntu.ttf");
+		deskripsiMuseum.setTypeface(font);
+
 		
 		controller = new ControllerMuseum();
 	
@@ -132,6 +137,10 @@ public class ViewMuseumTerbuka extends Activity {
 			        	TextView text = (TextView) toastLayout.findViewById(R.id.deskripsi_ruangan);
 			        	ImageView image = (ImageView) toastLayout.findViewById(R.id.tombol_masuk);
 			        	
+			        	Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/ubuntu.ttf");
+			    		text.setTypeface(font);
+
+			    		
 			        	text.setText(ruanganTerpilih.getNama());
 			        	if (ruanganTerpilih.getDeskripsi().length() > 0){
 			        		text.setText(text.getText() + ": " + ruanganTerpilih.getDeskripsi());

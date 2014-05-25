@@ -97,7 +97,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
  
         TextView textView = (TextView) convertView.findViewById(R.id.barang_nama);
         textView.setText(barang.getNama());
- 
+        
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
+		textView.setTypeface(font);
+
         return convertView;
     }
  

@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -56,6 +57,10 @@ public class ViewMuseumTerkunci extends Activity {
 		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
 		gambarMuseum = (ImageView) findViewById(R.id.preview_museum_gambar);
 
+		Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/ubuntu.ttf");
+		deskripsiMuseum.setTypeface(font);
+		namaMuseum.setTypeface(font);
+		
 		chekinCont = new ControllerMuseum();
 		
 		progress = new ProgressDialog(this);
