@@ -38,7 +38,7 @@ public class ControllerUnduhMuseum {
 		List<Museum> ret = new ArrayList<Museum>();
 
 		try {
-			URL url = new URL("http://ristekfasilkom.com/wp-content/uploads/2014/04/daftarMuseum.txt");
+			URL url = new URL(BASE_URL + "deskripsiMuseum.txt");
 			HttpURLConnection urlConnection = (HttpURLConnection) url
 					.openConnection();
 

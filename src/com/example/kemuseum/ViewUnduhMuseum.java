@@ -57,35 +57,6 @@ public class ViewUnduhMuseum extends Activity {
 		selesaiUnduh = false;
 		new DownloadMuseumListTask().execute();
 		
-		host.runOnUiThread(new Runnable() {
-			public void run() {
-				while (!selesaiUnduh) {
-				}
-				aturReaksi();
-			}
-		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.view_unduh_museum, menu);
-		return true;
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-
-		// update, mungkin ada perubahan
-		if (arrayAdapter != null){
-			arrayAdapter.notifyDataSetChanged();
-		}
-	}
-
-	private void aturReaksi(){
-		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
-		listViewServer.setAdapter(arrayAdapter);
 		listViewServer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent,
@@ -124,6 +95,29 @@ public class ViewUnduhMuseum extends Activity {
 			
 		});
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.view_unduh_museum, menu);
+		return true;
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
+		// update, mungkin ada perubahan
+		if (arrayAdapter != null){
+			arrayAdapter.notifyDataSetChanged();
+		}
+	}
+
+	private void aturReaksi(){
+		arrayAdapter = new ArrayAdapterUnduhMuseum(this, daftarMuseumServer);
+		listViewServer.setAdapter(arrayAdapter);
+		
+	}
 	
 	class DownloadMuseumListTask extends AsyncTask<Void, Void, Void> {
 		protected Void doInBackground(Void... v) {
@@ -131,6 +125,12 @@ public class ViewUnduhMuseum extends Activity {
 			progress.dismiss();
 			selesaiUnduh = true;
 						
+			host.runOnUiThread(new Runnable(){
+				public void run() {
+					host.aturReaksi();					
+				}
+			});
+			
 			return null;
 		}
 	}
