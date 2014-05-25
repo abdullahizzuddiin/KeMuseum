@@ -41,9 +41,9 @@ public class ArrayAdapterUnduhMuseum extends ArrayAdapter<Museum> {
 
 		// tentukan icon sudah ada atau belum ada
 		if (museumManager.cekMuseumSudahDimiliki(mem.getId())) {
-			imageView.setImageResource(R.drawable.dummy_yes);
+			imageView.setImageResource(R.drawable.icon_centang);
 		} else {
-			imageView.setImageResource(R.drawable.dummy_no);
+			imageView.setImageResource(R.drawable.icon_x);
 		}
 
 		return rowView;

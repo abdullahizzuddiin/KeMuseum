@@ -38,8 +38,7 @@ public class ControllerUnduhMuseum {
 		List<Museum> ret = new ArrayList<Museum>();
 
 		try {
-			// HARD CODED, DEBUG
-			URL url = new URL(BASE_URL + "deskripsiMuseum.txt");
+			URL url = new URL("http://ristekfasilkom.com/wp-content/uploads/2014/04/daftarMuseum.txt");
 			HttpURLConnection urlConnection = (HttpURLConnection) url
 					.openConnection();
 
@@ -60,7 +59,7 @@ public class ControllerUnduhMuseum {
 			while ((v = inputStream.read()) != -1) {
 				buffer[p++] = (byte) v;
 			}
-
+			
 			String s = new String(buffer);
 			JSONArray daftar = new JSONArray(s);
 			for (int i = 0; i < daftar.length(); i++) {
@@ -69,7 +68,9 @@ public class ControllerUnduhMuseum {
 				Museum m = JSONParser.toMuseum(memObject.toString());
 				ret.add(m);
 			}
-
+			
+			Log.d("asd", "gan " + s);
+			
 		} catch (final Exception e) {
 			Log.d("asd", "gan " + e.toString());
 		}

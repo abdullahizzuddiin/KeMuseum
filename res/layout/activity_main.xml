@@ -45,14 +45,7 @@
             android:background="@drawable/button_menu_capaian"
             android:onClick="ButtCapaian_onClick" />
 
-        <Button
-            android:id="@+id/ButtPengembang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5pt"
-            android:background="@drawable/button_menu_about"
-            android:onClick="ButtPengembang_onClick" />
-        
+
         <Button
             android:id="@+id/ButtWishlist"
             android:layout_width="wrap_content"
@@ -60,6 +53,14 @@
             android:layout_margin="5pt"
             android:background="@drawable/button_menu_wishlist"
             android:onClick="ButtWishlist_onClick" />
+        
+        <Button
+            android:id="@+id/ButtPengembang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5pt"
+            android:background="@drawable/button_menu_about"
+            android:onClick="ButtPengembang_onClick" />
     </LinearLayout>
 
 </LinearLayout>

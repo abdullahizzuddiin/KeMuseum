@@ -10,12 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/about_top">
-        <TextView 
-            android:text="Wishlist"
-            android:textSize="12pt"
-            android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-            android:textColor="#ffffff"/>
+		<TextView 
+		    android:id="@+id/tvTop"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Wish List"
+		    android:textSize="13pt"
+		    android:textStyle="bold"
+		    android:paddingLeft="5pt"
+		    android:paddingTop="2pt"/>
     </LinearLayout>
 	
     <LinearLayout 
@@ -44,7 +47,8 @@
             android:id="@+id/button_kirim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kirim" />
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/button_submit" />
 
 		<View
 		    android:layout_width="wrap_content"

@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerCapaian;
 import com.example.kemuseum.model.Capaian;
@@ -40,6 +42,7 @@ public class ViewCapaian extends Activity {
 	public static final String SHARE_LINK = "https://github.com/abdullahizzuddiin/KeMuseum";
 	public static final String SHARE_URL_GAMBAR = "https://cdn1.iconfinder.com/data/icons/New-Social-Media-Icon-Set-V11/512/facebook.png";
 
+	private TextView tvTop;
 	private ControllerCapaian controller;
 	private ExpandableListAdapterCapaian expandableAdapter;
 	private ExpandableListView expandableListView;
@@ -106,6 +109,10 @@ public class ViewCapaian extends Activity {
 		expandableListView = (ExpandableListView) findViewById(R.id.list_pencapaian);
 		facebookManager = new FacebookManager();
 		facebookListener = new FacebookListener();
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
+		
 	}
 
 	private void isiData() {

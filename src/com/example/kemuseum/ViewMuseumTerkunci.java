@@ -6,17 +6,21 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerMuseum;
 import com.example.kemuseum.model.Museum;
+import com.example.kemuseum.utils.TextJustifyUtils;
 
 public class ViewMuseumTerkunci extends Activity {
 	private ProgressDialog progress;
@@ -25,7 +29,9 @@ public class ViewMuseumTerkunci extends Activity {
 	private int idMuseum;
 	private View Tampilan;
 	private TextView namaMuseum;
-	private TextView deskripsiMuseum;
+//	private TextView deskripsiMuseum;
+	private WebView deskripsiMuseum;
+	private TextView tvTop;
 	private ImageView gambarMuseum;
 	private Museum museum;
 	private DialogInterface.OnClickListener pindahTampilan;
@@ -53,15 +59,17 @@ public class ViewMuseumTerkunci extends Activity {
 
 	private void inisiasi() {
 		checkin = (ImageView) findViewById(R.id.checkin);
-		namaMuseum = (TextView) findViewById(R.id.preview_museum_nama);
-		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
+//		namaMuseum = (TextView) findViewById(R.id.preview_museum_nama);
+//		deskripsiMuseum = (TextView) findViewById(R.id.preview_museum_deskripsi);
+		deskripsiMuseum = (WebView) findViewById(R.id.preview_museum_deskripsi);
+		deskripsiMuseum.setBackgroundColor(Color.parseColor("#F6DEA0"));
 		gambarMuseum = (ImageView) findViewById(R.id.preview_museum_gambar);
-
-		Typeface font = Typeface.createFromAsset(getApplicationContext().getAssets(), "fonts/ubuntu.ttf");
-		deskripsiMuseum.setTypeface(font);
-		namaMuseum.setTypeface(font);
 		
 		chekinCont = new ControllerMuseum();
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
+//		deskripsiMuseum.setTypeface(font);
 		
 		progress = new ProgressDialog(this);
 		progress.setTitle("Mengambil posisi Anda");
@@ -71,9 +79,12 @@ public class ViewMuseumTerkunci extends Activity {
 	private void isiData(){
 		this.idMuseum = this.getIntent().getIntExtra("idMuseum", -1);
 		museum = chekinCont.getMuseum(idMuseum);
-		
-		namaMuseum.setText(museum.getNama());
-		deskripsiMuseum.setText(museum.getDeskripsi());
+		tvTop.setText(museum.getNama());
+//		namaMuseum.setText(museum.getNama());
+//		deskripsiMuseum.setText(museum.getDeskripsi());
+		String htmlText = "<html><body style=\"text-align:justify\"> %s </body></Html>";
+		String myData = museum.getDeskripsi();
+		deskripsiMuseum.loadData(String.format(htmlText, myData), "text/html", "utf-8");
 		gambarMuseum.setImageDrawable(chekinCont.getGambarMuseum(idMuseum));
 	}
 	

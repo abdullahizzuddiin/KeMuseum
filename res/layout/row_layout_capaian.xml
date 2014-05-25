@@ -3,7 +3,9 @@
     android:id="@+id/RelativeLayout01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+	
 
+    
     <TextView
         android:id="@+id/capaian_nama_museum"
         style="@style/GroupFont"
