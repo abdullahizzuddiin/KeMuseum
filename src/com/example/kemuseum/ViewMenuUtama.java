@@ -19,7 +19,7 @@ import com.example.kemuseum.utils.WishlistManager;
 
 public class ViewMenuUtama extends Activity {
 	Button ButtPilMus, ButtCapaian, ButtPengembang, ButtWishlist;
-	ImageView Magni;
+//	ImageView Magni;
 	View woww = null;
 
 	@Override
@@ -38,7 +38,7 @@ public class ViewMenuUtama extends Activity {
 		ButtCapaian = (Button) findViewById(R.id.ButtCapaian);
 		ButtPengembang = (Button) findViewById(R.id.ButtPengembang);
 		ButtWishlist = (Button) findViewById(R.id.ButtWishlist);
-		Magni = (ImageView) findViewById(R.id.magni);
+//		Magni = (ImageView) findViewById(R.id.magni);
 
 		// loads data
 		MuseumManager.createMuseumManager(getAssets(), getApplicationContext());
@@ -46,17 +46,17 @@ public class ViewMenuUtama extends Activity {
 	}
 
 	public void setClickListener() {
-		Magni.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent i = new Intent(ViewMenuUtama.this, ViewPencarian.class);
-				i.putExtra("Pencarian", "a");
-				final int a = 1;
-				startActivityForResult(i, a);
-
-				// showDialog(0);
-			}
-		});
+//		Magni.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				Intent i = new Intent(ViewMenuUtama.this, ViewPencarian.class);
+//				i.putExtra("Pencarian", "a");
+//				final int a = 1;
+//				startActivityForResult(i, a);
+//
+//				// showDialog(0);
+//			}
+//		});
 	}
 
 	protected Dialog onCreateDialog(int id) {

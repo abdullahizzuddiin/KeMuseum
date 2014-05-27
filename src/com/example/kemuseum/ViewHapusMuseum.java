@@ -5,12 +5,14 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerHapusMuseum;
 import com.example.kemuseum.model.Museum;
@@ -21,6 +23,7 @@ public class ViewHapusMuseum extends Activity {
 	private ControllerHapusMuseum controller;
 	private ListView listViewDevice;
 	private ArrayAdapterHapusMuseum arrayAdapter;
+	private TextView tvTop;
 	
 	private ViewHapusMuseum host = this;
 	
@@ -35,6 +38,9 @@ public class ViewHapusMuseum extends Activity {
 	
 	void inisiasi(){
 		controller = new ControllerHapusMuseum();
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
 		
 		listViewDevice = (ListView) findViewById(R.id.list_museum_device);		
 	}
