@@ -38,7 +38,7 @@ public class ArrayAdapterDaftarJawaban extends ArrayAdapter<Pertanyaan>{
 		TextView radioJawaban = (TextView) rowView.findViewById(R.id.tvJawaban);
 		TextView tvNomor = (TextView) rowView.findViewById(R.id.nomor);
 		
-		tvNomor.setText(position+"");
+		tvNomor.setText(position+1+"");
 		tvNomor.setLayoutParams(new TableRow.LayoutParams(LayoutParams.WRAP_CONTENT , LayoutParams.WRAP_CONTENT));
 		radioJawaban.setText(daftarJawaban.get(position).getJawaban());
 		Typeface font = Typeface.createFromAsset(context.getAssets(), "fonts/ubuntu.ttf");
