@@ -5,7 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/museum_top"
+        android:orientation="horizontal" >
+        
+		<TextView 
+		    android:id="@+id/tvTop"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Pencarian"
+		    android:textSize="13pt"
+		    android:textStyle="bold"
+		    android:paddingLeft="6pt"
+		    android:paddingTop="1pt"/>
+		
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/llPencarian1"
         android:layout_width="match_parent"

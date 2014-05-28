@@ -175,11 +175,13 @@ public class ViewMuseumTerbuka extends Activity {
 						        public boolean onTouch(View v, MotionEvent event){
 									// true -> terkunci
 									if (targetRuangan.getStatusTerkunci()){
+										Log.d("View Museum Terbuka", "Ngetest");
 										Intent i = new Intent (ViewMuseumTerbuka.this, ViewPertanyaan.class);
 										i.putExtra("Terkunci", "a");
 										i.putExtra("idMuseum", targetRuangan.getIdMuseum());
 										i.putExtra("idRuangan", targetRuangan.getId());
 										final int a = 1;
+										Log.d("View Museum Terbuka", "Ngetest2");
 										startActivityForResult(i, a);
 									}else{
 										Intent i = new Intent (ViewMuseumTerbuka.this, ViewRuangan.class);

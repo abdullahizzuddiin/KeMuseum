@@ -5,20 +5,20 @@
     android:orientation="vertical"
     tools:context=".ViewMenuUtama" >
 
-    <RelativeLayout
+    <!-- <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/museum_top"
         android:orientation="horizontal" >
 
-        <!-- <ImageView
+        <ImageView
             android:id="@+id/magni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_search" /> -->
-    </RelativeLayout>
+            android:src="@drawable/ic_search" />
+    </RelativeLayout> -->
 
     <LinearLayout
         android:id="@+id/llBody"

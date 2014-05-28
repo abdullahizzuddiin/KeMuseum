@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.example.kemuseum.utils.MuseumManager;
 public class ViewPencarian extends Activity {
 	private Spinner pilihMuseum;
 	private EditText fieldKataKunci;
-	private TextView fieldPesanPencarian;
+	private TextView fieldPesanPencarian, tvTop;
 	private ControllerPencarian controller;
 	private ExpandableListAdapterPencarian expandableAdapter;
 	private ExpandableListView listView;
@@ -47,7 +48,9 @@ public class ViewPencarian extends Activity {
 		pilihMuseum = (Spinner) findViewById(R.id.spinner_museum);
 		fieldKataKunci = (EditText) findViewById(R.id.text_kataKunci);
 		fieldPesanPencarian = (TextView) findViewById(R.id.text_pesan_pencarian);
-		
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
 		controller = new ControllerPencarian();
 		
 		isiDataSpinner();

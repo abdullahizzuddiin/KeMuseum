@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.view.View.OnTouchListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.kemuseum.controller.ControllerPertanyaan;
 import com.example.kemuseum.model.Pertanyaan;
@@ -30,7 +32,7 @@ public class ViewPertanyaan extends Activity {
 	private ListView listPertanyaan = null;
 	private ListView listJawaban = null;
 	private Button tombolKumpul;
-
+	private TextView tvTop;
 	private ControllerPertanyaan controllerPertanyaan;
 	private int idMuseum;
 	private int idRuangan;
@@ -69,7 +71,9 @@ public class ViewPertanyaan extends Activity {
 		controllerPertanyaan = new ControllerPertanyaan();
 		listPertanyaan = (ListView) findViewById(R.id.list_viewPertanyaan);
 		tombolKumpul = (Button) findViewById(R.id.button_submit);
-
+		tvTop = (TextView) findViewById(R.id.tvTop);
+		Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/ubuntu.ttf");
+		tvTop.setTypeface(font);
 		// radioJawaban = (RadioGroup) findVIewById(R.id.radio_groupJawaban);
 		idMuseum = this.getIntent().getIntExtra("idMuseum", -1);
 		idRuangan = this.getIntent().getIntExtra("idRuangan", -1);
